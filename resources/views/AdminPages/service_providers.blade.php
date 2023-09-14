@@ -14,6 +14,7 @@
         </div>
     </div>
     <hr class="bg-dark mx-3"/>
+    <livewire:admin.service-providers.index/>
 </main
 
 @include('AdminPages.partials.footer')

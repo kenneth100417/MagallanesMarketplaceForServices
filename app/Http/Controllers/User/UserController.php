@@ -174,13 +174,13 @@ class UserController extends Controller
             if(User::where('email',$validated['email'])->exists()){
                 if(Hash::check($validated['password'], $user->password)){
                     if($user->access == "customer"){
-                        $user_info = Customer::where('user_id',$user->id)->first();
+                        $user_info = Customer::where('user_id',$user->id)->where('status','1')->first();
                         auth()->login($user);
                         return redirect('user_dashboard')->with('message', 'Welcome back '.$user_info->firstname.' !');
                         
                     }else if($user->access == "service_provider"){
                         
-                        $user_info = ServiceProvider::where('user_id',$user->id)->first();
+                        $user_info = ServiceProvider::where('user_id',$user->id)->where('status','1')->first();
                         auth()->login($user);
                         return redirect('service_provider_dashboard')->with('message', 'Welcome back '.$user_info->firstname.' !');
                          
