@@ -44,17 +44,7 @@
                         <td style="max-width: 200px;">Computer Hardware and Software troubleshooting</td>
                         <td>&#8369;350.00</td>
                         <td style="max-width: 50px;">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Select Service Time</option>
-                                <option value="1">1 HOUR</option>
-                                <option value="2">2 HOURS</option>
-                                <option value="3">3 HOURS</option>
-                                <option value="4">4 HOURS</option>
-                                <option value="5">5 HOURS</option>
-                                <option value="6">6 HOURS</option>
-                                <option value="7">7 HOURS</option>
-                                <option value="8">8 HOURS</option>
-                            </select>
+                            3 hours
                         </td>
                         <td class="text-success">Available</td>
                     </tr>
@@ -80,51 +70,35 @@
             </div>
             <div class="modal-body">
                 <div class="container">
-                    <form action="">
+                    <form action="/addService" method="POST">
+                        @csrf
                         <div class="row">
                             {{-- Form --}}
                             <div class="col-xl-12">
                                 <div class="form-group">
                                     <label for="service">Service Title</label>
-                                    <input type="text" class="form-control" id="service" placeholder="Enter service title">
+                                    <input name="service_title" type="text" class="form-control" id="service" placeholder="Enter service title">
                                 </div>
                                 <div class="form-group mt-3">
                                     <label for="description">Service Description</label>
-                                    <textarea class="form-control" id="service" placeholder="Enter service description"></textarea>
+                                    <textarea name="service_description" class="form-control" id="service" placeholder="Enter service description"></textarea>
                                 </div>
                                 <div class="form-group mt-3">
-                                    <label for="description">Service Schedule Availability</label>
+                                    <label for="description">Service Time</label>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <div class="form-check me-4">
-                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                        <label class="form-check-label" for="defaultCheck1">Sun</label>
-                                    </div>
-                                    <div class="form-check me-4">
-                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-                                        <label class="form-check-label" for="defaultCheck2">Mon</label>
-                                    </div>
-                                    <div class="form-check me-4">
-                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
-                                        <label class="form-check-label" for="defaultCheck3">Tues</label>
-                                    </div>
-                                    <div class="form-check me-4">
-                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
-                                        <label class="form-check-label" for="defaultCheck4">Wed</label>
-                                    </div>
-                                    <div class="form-check me-4">
-                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck5">
-                                        <label class="form-check-label" for="defaultCheck5">Thu</label>
-                                    </div>
-                                    <div class="form-check me-4">
-                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck6">
-                                        <label class="form-check-label" for="defaultCheck6">Fri</label>
-                                    </div>
-                                    <div class="form-check me-4">
-                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck7">
-                                        <label class="form-check-label" for="defaultCheck7">Sat</label>
-                                    </div>
-                                    <div class="input-group input-group-outline mb-2 date" id="datepicker">
+                                    <select name="service_time" class="form-select" aria-label="Default select example">
+                                        <option selected>Select Service Time</option>
+                                        <option value="1">1 Hour</option>
+                                        <option value="2">2 Hours</option>
+                                        <option value="3">3 Hours</option>
+                                        <option value="4">4 Hours</option>
+                                        <option value="5">5 Hours</option>
+                                        <option value="6">6 Hours</option>
+                                        <option value="7">7 Hours</option>
+                                        <option value="8">8 Hours</option>
+                                    </select>
+                                    {{-- <div class="input-group input-group-outline mb-2 date" id="datepicker">
                                         <input placeholder="Date" data-format="dd/mm/yy hh/mm" name="date" id="date" type="text" class="form-control" value="" required>
                                         <span class="input-group-append">
                                           <span class="input-group-text mx-2">
@@ -134,7 +108,7 @@
                                     </div>
                                     <div>
                                         <input type="time">
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
 
