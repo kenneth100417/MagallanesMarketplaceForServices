@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\ServiceProvider;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Service extends Model
 {
@@ -14,6 +15,11 @@ class Service extends Model
         'service_provider_id',
         'service_title',
         'service_description',
-        'service_time',
+        'service_rate',
+        'service_time'
     ];
+
+    public function serviceProviders(){
+        return  $this->belongsTo(ServiceProvider::class, 'service_provider_id', 'id');
+    }
 }

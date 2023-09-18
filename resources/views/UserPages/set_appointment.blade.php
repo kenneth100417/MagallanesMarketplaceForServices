@@ -4,7 +4,7 @@
 <main>
     <div class="d-flex justify-content-between">
         <div>
-            <h3 class="text-dark mt-4 mx-4">Services</h3>
+            <h3 class="text-dark mt-4 mx-4">Set Appointment</h3>
         </div>
         <div>
             <div class="input-group mt-4 px-4">
@@ -15,7 +15,6 @@
     </div>
     <hr class="bg-dark mx-3"/>
 
-    <livewire:user.services/>
 </main
 
 @include('UserPages.partials.footer')

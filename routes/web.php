@@ -35,7 +35,15 @@ Route::middleware(['auth','isCustomer'])->group(function() {
         Route::get('/user_service_providers', 'UserServiceProviders');
         Route::get('/user_appointments', 'UserAppointments');
         Route::get('/user_profile', 'UserProfile');
-    });
+        
+    })->middleware('auth');
+
+    Route::controller(App\Http\Controllers\User\AppointmentController::class)->group(function(){
+
+        
+    })->middleware('auth');
+
+
     
 
 });
