@@ -1,7 +1,21 @@
 <div>
+    <div class="d-flex justify-content-between mb-0">
+        <div>
+            <h3 class="text-dark mt-4 mx-4">Services</h3>
+        </div>
+        <div class="d-flex">
+            <div class="input-group mt-4 px-4">
+                <input wire:model.live="search" name="search" id="search" class="form-control " type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                <button class="btn btn-primary" id="btnNavbarSearch" type="button" x-on:click="$dispatch('search')"><i class="fas fa-search" ></i></button>
+            </div>
+            
+        </div>
+    </div>
+    <hr class="bg-dark mx-3"/>
     <section style="background-color: #eee;">
+       
         <div class="container py-5">
-
+            
             @forelse ($services as $service)
                 <div class="row justify-content-center mb-3">
                     <div class="col-md-12 col-xl-10">
@@ -25,7 +39,7 @@
                                             </div>
                                         </div>
                                      
-                                        <h6 class="text-dark">{{$service->serviceProvider}}</h6>
+                                        <h6 class="text-dark">{{$service->serviceProviders->business_name}}</h6>
                                         <h6 class="text-success mt-3">Service Description</h6>
                                         <div class="mb-2 text-muted small">
                                             <p class="mb-4 mb-md-0">
@@ -52,7 +66,7 @@
             </form>
             @empty
                 <div class="text-center mt-5">
-                    No services available at this moment..
+                    No Services Found.
                 </div>
             @endforelse
         
