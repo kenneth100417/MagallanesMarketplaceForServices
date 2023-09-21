@@ -1,17 +1,25 @@
 
+.div1{
+  width: calc( 50% - 40px) ;
+  height: 100%;
+  background-image: url('/assets/img/background.png'); 
+}
+
+.div2{
+  width: calc( 50% + 40px );
+  height: 100%;
+  background-color:white;
+ 
+}
+
+
+
 /* LOG IN FORM */
 
   
   .login-dark form {
-    max-width:320px;
-    width:90%;
     background: rgba(255, 255, 255, 1);
-    padding:40px;
     border-radius:4px;
-    transform:translate(-50%, -50%);
-    position:absolute;
-    top:50%;
-    left:50%;
     color:#fff;
     box-shadow:3px 3px 4px rgba(0,0,0,0.2);
   }
