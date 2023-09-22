@@ -1,15 +1,15 @@
 @include('LandingPage.partials.header')
        
         <!-- home section-->
-        <section id="home" style="background-color:rgb(255, 255, 255); min-height: 100vh !important;background-repeat: no-repeat;background-size: cover;">
-            <div class="container px-4">
-                <div class="row">
-                    <div class="text-center">
-                        <img class="p-0" src="assets/img/logo.png" alt="Marketplace Services" style="width: 1000px; !important;">
+        <section id="home" style=" background-color:rgb(255, 255, 255); !important; background-repeat: no-repeat; min-height: 120vh;">
+            <div class="container-fluid px-4" style="background-image: url('assets/img/wave.png');background-position: bottom; margin: 0 0; height: 100vh; background-repeat: no-repeat; width: vw100">
+                <div class="row" >
+                    <div class="text-center position-relative">
+                        <img class="p-0" src="assets/img/logo.png" alt="Marketplace Services" style="width: 700px; !important;">
                     </div>
                 </div>
-                <div class="row gx-4 justify-content-center align-items-center">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login" style="width: 100px">Log In</button>
+                <div class="row gx-4 justify-content-center align-items-center mt-2">
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#login" style="width: 120px">Log In</button>
                 </div>
             </div>
         </section> 
@@ -19,7 +19,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content" style="background: none; border:none">
                     <div class="modal-body d-flex justify-content-center">
-                        <div class="login-dark position-relative" >
+                        <div class="login-dark position-relative" style="width: 300px">
                             <form action="/login" method="post" role="form" style="padding: 30px !important">
                                 @csrf
                                 <div class="position-absolute end-0 top-0">
@@ -28,9 +28,7 @@
                                 <div class="d-flex justify-content-center">
                                     <img class="p-0" src="assets/img/logo.png" alt="Marketplace Services" style="width: 200px; filter: drop-shadow(2px 2px 2px white) !important;">
                                 </div>
-                                <div class="illustration">
-                                    <i class="icon ion-ios-locked-outline"></i>
-                                </div>
+                                
                                 <div class="form-group">
                                     <input class="form-control text-dark" type="email" name="email" placeholder="Email"  value="{{old('email')}}">
                                 
@@ -38,8 +36,8 @@
                                 <div class="form-group mt-3">
                                     <input class="form-control text-dark" type="password" name="password" placeholder="Password"  value="{{old('password')}}">
                                 </div>
-                                <div class="form-group d-flex justify-content-center">
-                                    <button class="btn btn-primary btn-block py-1 px-2" type="submit">Log In</button>
+                                <div class="form-group d-flex justify-content-center mt-4">
+                                    <button class="btn btn-primary btn-block py-1 px-3" type="submit">Log In</button>
                                 </div>
                                 <a href="#" class="forgot mt-3">Forgot your email or password?</a>
                             </form>

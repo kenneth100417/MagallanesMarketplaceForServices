@@ -3,7 +3,7 @@
         <div class="card-header d-flex justify-content-between">
             <div>
                 <i class="fas fa-table me-1"></i>
-            List of Service Providers
+            List of Customers
             </div>
             {{-- <div>
                 <a class="align items-center"><i class="fas fa-plus-square text-success" style="cursor: pointer; font-size: 24px"></i> </a>
