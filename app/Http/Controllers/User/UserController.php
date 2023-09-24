@@ -131,7 +131,7 @@ class UserController extends Controller
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => 'required|confirmed|min:6'
         ]);
-        
+        //dd('here');
         $validated['password'] = Hash::make($validated['password']);
 
         if($validated){

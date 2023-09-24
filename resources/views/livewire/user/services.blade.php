@@ -1,7 +1,7 @@
 <div>
     <div class="d-flex justify-content-between mb-0">
         <div>
-            <h3 class="text-dark mt-4 mx-4">Services</h3>
+            <h3 class="text-dark mt-4 mx-4">Discover Services</h3>
         </div>
         <div class="d-flex">
             <div class="input-group mt-4 px-4">
@@ -54,8 +54,34 @@
                                         </div>
                                         <h6 class="text-success">Rate per Service</h6>
                                         <div class="d-flex flex-column mt-4">
-                                            <button type="submit" class="btn btn-primary btn-sm" >Set Appointment</button>
-                                            <button class="btn btn-outline-primary btn-sm mt-2" type="button">View Service Provider's datails</button>
+                                            <form action="/set_appointment/{{$service->id}}" method="GET">
+                                                @csrf
+                                                <button type="submit" class="btn btn-primary btn-sm w-100" >Set Appointment</button>
+                                            </form>
+                                            {{-- <button class="btn btn-outline-primary btn-sm mt-2" type="button">View Service Provider's details</button> --}}
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-outline-primary btn-sm mt-2 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    View Service Provider's details
+                                                </button>
+                                                <ul class="dropdown-menu px-2">
+                                                    <li>
+                                                        <label style="font-weight: bold">Business Name:</label><br/> 
+                                                        <span class="mx-3">{{$service->serviceProviders->business_name}}</span>
+                                                    </li>
+                                                    <li class="mt-2">
+                                                        <label style="font-weight: bold">Business Address:</label><br/>  
+                                                       <span class="mx-3"> {{$service->serviceProviders->business_address}}</span>
+                                                    </li>
+                                                    <li class="mt-2">
+                                                        <label style="font-weight: bold">Business Owner's Name:</label><br/>  
+                                                        <span class="mx-3">{{$service->serviceProviders->firstname}} {{$service->serviceProviders->lastname}}</span>
+                                                    </li>
+                                                    <li class="mt-2">
+                                                        <label style="font-weight: bold">Contact Number:</label><br/> 
+                                                        <span class="mx-3">{{$service->serviceProviders->mobile_number}}</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

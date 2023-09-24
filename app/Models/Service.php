@@ -16,10 +16,10 @@ class Service extends Model
         'service_title',
         'service_description',
         'service_rate',
-        'service_time'
+        'slot'
     ];
 
     public function serviceProviders(){
-        return  $this->belongsTo(ServiceProvider::class, 'service_provider_id', 'id');
+        return  $this->belongsTo(ServiceProvider::class, 'service_provider_id', 'user_id');
     }
 }

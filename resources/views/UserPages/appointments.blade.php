@@ -15,6 +15,8 @@
     </div>
     <hr class="bg-dark mx-3"/>
     
+    <livewire:user.appointments/>
+    
 </main
 
 @include('UserPages.partials.footer')

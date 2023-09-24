@@ -12,8 +12,9 @@
 </footer>
 </div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="js/scripts.js"></script>
+<script src="/js/scripts.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -33,5 +34,35 @@
         $(".alert-dismissible").alert('close');
     });
 </script>
+@if(session()->has('success'))
+    <script type="text/javascript">
+        Swal.fire({
+            title: "Success!",
+            text: "{{session('success')}}",
+            icon: 'success',
+            showConfirmButton: true
+        })
+    </script>
+@endif
+@if(session()->has('error'))
+    <script type="text/javascript">
+        Swal.fire({
+            title: "Error!",
+            text: "{{session('error')}}",
+            icon: 'error',
+            showConfirmButton: true
+        })
+    </script>
+@endif
+@if(session()->has('info'))
+    <script type="text/javascript">
+        Swal.fire({
+            title: "Ooops!",
+            text: "{{session('info')}}",
+            icon: 'info',
+            showConfirmButton: true
+        })
+    </script>
+@endif
 </body>
 </html>

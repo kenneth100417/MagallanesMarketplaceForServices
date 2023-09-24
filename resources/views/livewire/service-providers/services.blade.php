@@ -17,7 +17,7 @@
                         <th scope="col">Service Title</th>
                         <th scope="col">Description</th>
                         <th scope="col">Price</th>
-                        <th scope="col" style="max-width: 100px;">Service Time</th>
+                        <th scope="col" style="max-width: 100px;">Slot per day</th>
                         <th scope="col">Status</th>
                         <th scope="col"></th>
                     </tr>
@@ -30,7 +30,7 @@
                         <td style="max-width: 150px;">{{$service->service_description}}</td>
                         <td>&#8369;{{number_format($service->service_rate,2)}}</td>
                         <td style="max-width: 100px;">
-                            {{$service->service_time}} hours
+                            {{$service->slot}}
                         </td>
                         <td class="{{$service->status == '1' ? 'text-success':'text-danger'}}" style="min-width: 98px;">{{$service->status == '1' ? 'Available':'Unavailable'}}</td>
                         <td style="max-width: 150px;">

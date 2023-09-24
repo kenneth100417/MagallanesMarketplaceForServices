@@ -39,7 +39,8 @@ Route::middleware(['auth','isCustomer'])->group(function() {
     })->middleware('auth');
 
     Route::controller(App\Http\Controllers\User\AppointmentController::class)->group(function(){
-
+        Route::get('/set_appointment/{service_id}','setAppointment');
+        Route::post('/add_appointment','storeAppointment')->name('appointment.store');
         
     })->middleware('auth');
 

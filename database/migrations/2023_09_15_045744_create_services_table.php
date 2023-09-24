@@ -17,10 +17,10 @@ return new class extends Migration
             $table->string('service_title');
             $table->longText('service_description');
             $table->integer('service_rate');
-            $table->integer('service_time');
+            $table->integer('slot');
             $table->integer('status')->default('1'); //1-available 2-unavailable
 
-            $table->foreign('service_provider_id')->references('id')->on('service_providers')->onDelete('cascade');
+            $table->foreign('service_provider_id')->references('user_id')->on('service_providers')->onDelete('cascade');
             $table->timestamps();
         });
     }

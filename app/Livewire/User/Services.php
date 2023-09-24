@@ -4,6 +4,7 @@ namespace App\Livewire\User;
 
 use App\Models\Service;
 use Livewire\Component;
+use App\Models\Appointment;
 use Livewire\WithPagination;
 
 class Services extends Component

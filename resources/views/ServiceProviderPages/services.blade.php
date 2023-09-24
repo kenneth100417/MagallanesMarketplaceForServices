@@ -53,31 +53,8 @@
                                         <input name="service_rate" type="number" class="form-control" id="service" placeholder="Enter service rate">
                                     </div>
                                     <div class="form-group mt-3">
-                                        <label for="description">Service Time</label>
-                                    </div>
-                                    <div class="d-flex justify-content-center">
-                                        <select name="service_time" class="form-select" aria-label="Default select example">
-                                            <option selected>Select Service Time</option>
-                                            <option value="1">1 Hour</option>
-                                            <option value="2">2 Hours</option>
-                                            <option value="3">3 Hours</option>
-                                            <option value="4">4 Hours</option>
-                                            <option value="5">5 Hours</option>
-                                            <option value="6">6 Hours</option>
-                                            <option value="7">7 Hours</option>
-                                            <option value="8">8 Hours</option>
-                                        </select>
-                                        {{-- <div class="input-group input-group-outline mb-2 date" id="datepicker">
-                                            <input placeholder="Date" data-format="dd/mm/yy hh/mm" name="date" id="date" type="text" class="form-control" value="" required>
-                                            <span class="input-group-append">
-                                            <span class="input-group-text mx-2">
-                                                <i class="fa fa-calendar"></i>
-                                            </span>
-                                            </span>
-                                        </div>
-                                        <div>
-                                            <input type="time">
-                                        </div> --}}
+                                        <label for="service">Slot per day</label>
+                                        <input name="slot" type="number" class="form-control" id="service" placeholder="Enter maximum slot per day">
                                     </div>
                                 </div>
 

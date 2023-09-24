@@ -15,39 +15,7 @@
     </div>
     <hr class="bg-dark mx-3"/>
     
-    <div class="card mb-4 mx-3">
-        <div class="card-header d-flex justify-content-between">
-            <div>
-                <i class="fas fa-table me-1"></i>
-            List of Services
-            </div>
-            {{-- <div>
-                <a class="align items-center"><i class="fas fa-plus-square text-success" style="cursor: pointer; font-size: 24px"></i> </a>
-            </div> --}}
-        </div>
-        <div class="card-body table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Appointment ID</th>
-                        <th scope="col">Client's Name</th>
-                        <th scope="col">Service</th>
-                        <th scope="col">Schedule</th>
-                        <th scope="col">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>MMS-APT_1</td>
-                        <td>Juan de La Crus</td>
-                        <td style="max-width: 200px;">Coputer Repair</td>
-                        <td>15/10/2023 4pm</td>
-                        <td class="text-danger">To Serve</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+    <livewire:service-providerS.appointments/>
 </main
 
 @include('ServiceProviderPages.partials.footer'),

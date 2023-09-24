@@ -15,18 +15,18 @@ class ServiceController extends Controller
             'service_title' => ['required'],
             'service_description' => ['required'],
             'service_rate' => ['required'],
-            'service_time' => ['required']
+            'slot' => ['required']
         ]);
         
         if($validated){
             $user = ServiceProvider::where('user_id',auth()->user()->id)->first();
             if($user){
                 Service::create([
-                    'service_provider_id' => $user->id,
+                    'service_provider_id' => auth()->user()->id,
                     'service_title' => $validated['service_title'],
                     'service_description' => $validated['service_description'],
                     'service_rate' => $validated['service_rate'],
-                    'service_time' => $validated['service_time']
+                    'slot' => $validated['slot']
                 ]);
                 return redirect()->back()->with('success','Service added successfully.');
             }else{
