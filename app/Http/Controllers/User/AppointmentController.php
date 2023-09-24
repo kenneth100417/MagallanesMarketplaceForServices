@@ -53,7 +53,7 @@ class AppointmentController extends Controller
        
         $appointmentExists = Appointment::where('service_id',$request->service_id)->where('customer_id',auth()->user()->id)->exists();
         $service = Service::where('id',$request->service_id)->first();
-        $serviceProvider = ServiceProvider::where('id', $service->service_provider_id)->first();
+        $serviceProvider = ServiceProvider::where('user_id', $service->service_provider_id)->first();
         $appointments = Appointment::where('start_date',$request->start_date)->get();
         $appointmentCount = $appointments->count();
 

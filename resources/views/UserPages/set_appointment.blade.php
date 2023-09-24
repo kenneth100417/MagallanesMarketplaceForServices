@@ -144,6 +144,7 @@
                                     <input type="hidden" name="start_date" id="start_date">
                                     <input type="hidden" name="end_date" id="end_date">
                                     <input type="hidden" name="service_id" value="{{$service->id}}">
+                                    <input type="hidden" name="service_provider_id" value="{{$service->service_provider_id}}">
                                 </div>
                                 
                             </div>

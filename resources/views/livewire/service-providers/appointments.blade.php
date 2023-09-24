@@ -3,11 +3,9 @@
         <div class="card-header d-flex justify-content-between">
             <div>
                 <i class="fas fa-table me-1"></i>
-            List of Services
+            List of Appointments
             </div>
-            <div>
-                <a  class="align items-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-plus-square text-success" style="cursor: pointer; font-size: 24px"></i> </a>
-            </div>
+            
         </div>
         <div class="card-body table-responsive">
             <table class="table">
@@ -18,7 +16,7 @@
                         <th scope="col">Appointment Date</th>
                         <th scope="col">Service Rate</th>
                         <th scope="col">Status</th>
-                        <th scope="col"></th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,7 +30,7 @@
                         <td style="max-width: 150px;">
                             <div class="d-flex align-items-center">
 
-                                <button class="btn btn-success btn-sm py-1 px-3 mx-1 my-auto" style="min-width: 90px !important" onclick="location.href='{{url('/set_appointment/'.$appointment->service_id)}}'">Edit</button>
+                                <button class="btn btn-success btn-sm py-1 px-3 mx-1 my-auto" style="min-width: 90px !important">Completed</button>
                                 
                             </div>
                         </td>

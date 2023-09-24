@@ -18,7 +18,7 @@ class Services extends Component
     public function render()
     {
         $user = ServiceProvider::where('user_id',auth()->user()->id)->first();
-        $services = Service::orderBy('id','DESC')->where('service_provider_id', $user->id)->paginate(5);
+        $services = Service::orderBy('id','DESC')->where('service_provider_id', $user->user_id)->paginate(5);
         return view('livewire.service-providers.services',['services' => $services]);
     }
 

@@ -3,11 +3,9 @@
         <div class="card-header d-flex justify-content-between">
             <div>
                 <i class="fas fa-table me-1"></i>
-            List of Services
+            List of Appointments
             </div>
-            <div>
-                <a  class="align items-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-plus-square text-success" style="cursor: pointer; font-size: 24px"></i> </a>
-            </div>
+            
         </div>
         <div class="card-body table-responsive">
             <table class="table">
