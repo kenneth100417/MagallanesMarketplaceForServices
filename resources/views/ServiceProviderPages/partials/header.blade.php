@@ -17,7 +17,31 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>  
         
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
         
+        <style>
+            .fc-event{
+                max-height: 40px;
+                overflow: hidden;
+                text-align: center;
+            }
+            .fc-body tr td{
+                cursor: pointer;
+            }
+            .fc-title{
+                white-space: normal;
+            }
+            .fc-time{
+                display: none;
+            }
+            .fc-content{
+                padding: 10 0px;
+            }
+        </style>
+
         @livewireStyles
     </head>
     <body class="sb-nav-fixed">

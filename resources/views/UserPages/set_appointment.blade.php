@@ -199,6 +199,7 @@
         $('.fc-event').css('height','80px');
         $('.fc-body tr td').css('cursor','pointer');
         $('.fc-event').css('text-align','center');
+        $('.fc-event').css('height','80px');
         $('.fc-title').css('white-space','normal');
         $('.fc-time').css('display','none');
         $('.fc-content').css('padding','10px 0px');

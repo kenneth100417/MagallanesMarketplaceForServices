@@ -2,7 +2,7 @@
        
         <!-- home section-->
         <section id="home" style=" background-color:rgb(255, 255, 255); !important; background-repeat: no-repeat; min-height: 120vh;">
-            <div class="container-fluid px-4" style="background-image: url('assets/img/wave.png');background-position: bottom; margin: 0 0; height: 100vh; background-repeat: no-repeat; width: vw100">
+            <div class="container-fluid px-4" style="background-image: url('assets/img/wave.png');background-position: bottom; margin: 0 0; height: 100vh; background-repeat: no-repeat; width: vw100; background-size:;">
                 <div class="row" >
                     <div class="text-center position-relative">
                         <img class="p-0" src="assets/img/logo.png" alt="Marketplace Services" style="width: 700px; !important;">
