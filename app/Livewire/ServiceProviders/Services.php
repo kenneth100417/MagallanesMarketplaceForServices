@@ -19,7 +19,7 @@ class Services extends Component
     {
         $user = ServiceProvider::where('user_id',auth()->user()->id)->first();
         $services = Service::orderBy('id','DESC')->where('service_provider_id', $user->user_id)->paginate(5);
-        return view('livewire.service-providers.services',['services' => $services]);
+        return view('livewire.service-providers.services',['services' => $services,'user' => $user]);
     }
 
     public function disable($id){

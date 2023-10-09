@@ -28,10 +28,10 @@
                             <td>{{$serviceProvider->firstname}} {{$serviceProvider->lastname}}</td>
                             <td>{{$serviceProvider->business_name}}</td>
                             <td style="max-width: 200px;">{{$serviceProvider->business_address}}</td>
-                            <td class="{{$serviceProvider->status == '1' ? 'text-success':'text-danger'}}">{{$serviceProvider->status == '1' ? 'Active':'Inactive'}}</td>
+                            <td class="{{$serviceProvider->status == '1' ? 'text-success':'text-danger'}}">{{$serviceProvider->status == '1' ? 'Verified':'Unverified'}}</td>
                             <td class="text-danger d-flex" style="max-width: 120px;">
-                                <button class="btn btn-danger btn-sm py-1 px-3 mx-1" {{$serviceProvider->status == '1' ? '':'disabled'}} wire:click.prevent = 'block({{$serviceProvider->id}})'>Block</button>
-                                <button class="btn btn-success btn-sm py-1 px-3 mx-1" {{$serviceProvider->status == '1' ? 'disabled':''}} wire:click.prevent = 'activate({{$serviceProvider->id}})'>Activate</button>
+                                <button class="btn btn-danger btn-sm py-1 px-3 mx-1"  style="display:{{$serviceProvider->status == '1' ? 'block':'none'}}" wire:click.prevent = 'block({{$serviceProvider->id}})'>Deactivate</button>
+                                <button class="btn btn-success btn-sm py-1 px-3 mx-1" style="display:{{$serviceProvider->status == '0' ? 'block':'none'}}" wire:click.prevent = 'activate({{$serviceProvider->id}})'>Activate</button>
                             </td>
                         </tr>
                     @empty

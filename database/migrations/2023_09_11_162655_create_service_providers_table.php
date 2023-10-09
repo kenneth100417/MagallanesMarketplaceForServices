@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('mobile_number')->unique();
             $table->string('photo')->default('/uploads/profile/profile_temp');
 
+
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

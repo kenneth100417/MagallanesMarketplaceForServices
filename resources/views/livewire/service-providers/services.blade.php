@@ -6,7 +6,7 @@
             List of Services
             </div>
             <div>
-                <a  class="align items-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-plus-square text-success" style="cursor: pointer; font-size: 24px"></i> </a>
+                <button  class="align items-center px-3 py-1 btn btn-sm btn-success  rounded" data-bs-toggle="modal" data-bs-target="#staticBackdrop" {{$user->status == '0' ? 'disabled':''}} ><span class="px-2" style="font-size: 16px">Add Service</span><i class="fa fa-plus text-white text-sm" style="cursor: pointer; font-size: 18px;"  ></i> </button>
             </div>
         </div>
         <div class="card-body table-responsive">

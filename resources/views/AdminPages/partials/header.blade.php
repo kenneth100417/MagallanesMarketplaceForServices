@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Home</title>
+        <title>Magallanes Marketplace for Services</title>
         <link rel="icon" type="image/x-icon" href="assets/img/logo.png" />
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/dashboard-styles.css" rel="stylesheet" />
@@ -65,7 +65,7 @@
             <div id="layoutSidenav_content">
                 
                 @if (session()->has('message'))
-                    <div class="alert alert-info alert-dismissible fade show position-absolute top-0 end-0 mt-1" role="alert" style="z-index: 100;">
+                    <div class="alert alert-info bg-info alert-dismissible fade show position-absolute top-0 end-0 mt-1" role="alert" style="z-index: 100;">
                         {{session('message')}}
                     </div>
                 @endif

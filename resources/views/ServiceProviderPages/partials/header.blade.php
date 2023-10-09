@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Home</title>
+        <title>Magallanes Marketplace for Services</title>
         <link rel="icon" type="image/x-icon" href="assets/img/logo.png" />
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/dashboard-styles.css" rel="stylesheet" />
@@ -53,6 +53,7 @@
             
             <!-- Navbar-->
             <div class=" form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <span><small class="{{$user->status == '0' ? 'text-danger':'text-success'}}">{{$user->status == '0' ? 'Unverified User':'Verified User'}}</small></span>
                 <ul class="d-none d-md-inline-block navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
@@ -96,7 +97,7 @@
             <div id="layoutSidenav_content">
                 
                 @if (session()->has('message'))
-                    <div class="alert alert-info alert-dismissible fade show position-absolute top-0 end-0 mt-1" role="alert" style="z-index: 100;">
+                    <div class="alert alert-info bg-info alert-dismissible fade show position-absolute top-0 end-0 mt-1" role="alert" style="z-index: 100;">
                         {{session('message')}}
                     </div>
                 @endif

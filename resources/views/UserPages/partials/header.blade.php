@@ -7,7 +7,7 @@
         {{-- <meta name="description" content="" />
         <meta name="author" content="" /> --}}
         
-        <title>Home</title>
+        <title>Magallanes Marketplace for Services</title>
         <link href="/css/dashboard-styles.css" rel="stylesheet" />
         <link rel="icon" type="image/x-icon" href="/assets/img/logo.png" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -51,10 +51,6 @@
                                 <div class="sb-nav-link-icon mx-3 " style="width: 20px !important"><i class="fas fa-hands-helping"></i></div>
                                 Services
                             </a>
-                            <a class="nav-link {{ 'user_service_providers' == request()->path() ? 'active' : ''}}" href="{{url('/user_service_providers')}}">
-                                <div class="sb-nav-link-icon mx-3  " style="width: 20px !important"><i class="fas fa-user-friends"></i></div>
-                                Service Providers
-                            </a>
                             <a class="nav-link {{ 'user_appointments' == request()->path() ? 'active' : ''}}" href="{{url('/user_appointments')}}">
                                 <div class="sb-nav-link-icon mx-3  " style="width: 20px !important"><i class="fas fa-calendar-alt"></i></div>
                                 Appointments
@@ -76,7 +72,7 @@
             <div id="layoutSidenav_content">
                 
                 @if (session()->has('message'))
-                    <div class="alert alert-info alert-dismissible fade show position-absolute top-0 end-0 mt-1" role="alert" style="z-index: 100;">
+                    <div class="alert alert-info bg-info alert-dismissible fade show position-absolute top-0 end-0 mt-1" role="alert" style="z-index: 100;">
                         {{session('message')}}
                     </div>
                 @endif

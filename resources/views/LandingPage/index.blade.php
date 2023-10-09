@@ -1,16 +1,35 @@
 @include('LandingPage.partials.header')
        
         <!-- home section-->
-        <section id="home" style=" background-color:rgb(255, 255, 255); !important; background-repeat: no-repeat; min-height: 120vh;">
-            <div class="container-fluid px-4" style="background-image: url('assets/img/wave.png');background-position: bottom; margin: 0 0; height: 100vh; background-repeat: no-repeat; width: vw100; background-size:;">
-                <div class="row" >
-                    <div class="text-center position-relative">
-                        <img class="p-0" src="assets/img/logo.png" alt="Marketplace Services" style="width: 700px; !important;">
+        <section id="home" class="wavy-section" >
+            <img src="assets/img/background.png" alt="" class="img-background">
+            <div class="content">
+                <div class="container-fluid px-4">
+                    <div class="row" >
+                        <div class="text-center position-relative">
+                            <img class="p-0 logo" src="assets/img/logo.png" alt="Marketplace Services" style="width: 700px; !important;">
+                        </div>
                     </div>
+                    <div class="row gx-4 justify-content-center align-items-center mt-2 ">
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#login" style="width: 120px">Log In</button>
+                        <div class="btn-group signup-btn-mobile mt-3 text-center">
+                            <button type="button" class="btn dropdown-toggle text-light" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #2c64ac; width: 120px !important">
+                              Sign Up
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#customerRegistration" style="cursor: pointer;">Customer</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#serviceProviderRegistration" style="cursor: pointer">Service Provider</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
                 </div>
-                <div class="row gx-4 justify-content-center align-items-center mt-2">
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#login" style="width: 120px">Log In</button>
-                </div>
+            </div>
+            <div class="wavy-shape">
             </div>
         </section> 
 
