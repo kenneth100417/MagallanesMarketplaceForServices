@@ -30,8 +30,8 @@
                       <li><a class="dropdown-item text-center" wire:click.prevent = "showAll()">Show All</a></li>
                     </ul>
                 </div>
-                <button class="btn btn-success btn-sm mx-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-calendar-alt"></i> Calendar</button>
-                <button class="btn btn-info btn-sm " wire:click.prevent = "showToday()">Today's Schedule</button>
+                <button class="btn btn-success btn-sm mx-2" onclick="alert('This feature is under development.')"><i class="fas fa-calendar-alt"></i> Calendar</button>
+                <button class="btn btn-info btn-sm" wire:click.prevent = "showToday()">Today's Schedule</button>
                
             </div>
             

@@ -18,7 +18,7 @@
         <div class="container-fluid px-4 d-flex flex-column justify-content-between">
             <div class="row">
                 <div class="text-center">
-                    <img class="p-0" src="assets/img/logo.png" alt="Marketplace Services" style="width: 800px; filter: drop-shadow(2px 2px 2px white) !important;">
+                    <img class="p-0" src="assets/img/logo.png" alt="Marketplace Services" style="width: 750px; filter: drop-shadow(2px 2px 2px white) !important;">
                 </div>
             </div>
             <div class="row">

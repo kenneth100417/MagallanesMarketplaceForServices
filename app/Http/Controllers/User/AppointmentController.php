@@ -18,23 +18,35 @@ class AppointmentController extends Controller
     public function setAppointment($service_id){
         $user = Customer::where('user_id',auth()->user()->id)->first();
         $service = Service::where('id',$service_id)->first();
-        $appointments = Appointment::where('customer_id',auth()->user()->id)->where('service_id',$service_id)->get();
-        $appointmentCount = Appointment::where('start_date',Date('Y-m-d'))->count();
+        $appointments = Appointment::where('service_id',$service_id)->where('status','pending')->get();
+        $appointmentCount = Appointment::where('service_id',$service->id)->where('status','pending')->groupBy('start_date')->count();
         $remainingSlot = $service->slot - $appointmentCount;
         $events = array();
+        $title = '';
+        $color = '';
 
-
+        //dd($remainingSlot);
         foreach($appointments as $appointment){
             
            
             $customer = Customer::where('user_id',$appointment->customer_id)->first();
             $service = Service::where('id',$appointment->service_id)->first();
+            
+            if(auth()->user()->id == $customer->user_id){
+                $title = 'You';
+                $color = ' #28a745';
+            }else{
+                $title = $customer->firstname.' '.$customer->lastname;
+                $color = '#66c2ff';
+            }
+
+
 
             $events[] = [
-                'title' => $service->service_title,
+                'title' => $title,
                 'start' => $appointment->start_date,
                 'end' => $appointment->end_date,
-                'color' => '#66c2ff'
+                'color' => $color
             ];
         }
         
@@ -51,19 +63,25 @@ class AppointmentController extends Controller
         // $date->format('Y-m-d H:i:s');
         // //dd($request->customer_id);
        
-        $appointmentExists = Appointment::where('service_id',$request->service_id)->where('customer_id',auth()->user()->id)->exists();
+        $appointmentExists = Appointment::where('service_id',$request->service_id)->where('customer_id',auth()->user()->id)->where('status','pending')->exists();
         $service = Service::where('id',$request->service_id)->first();
         $serviceProvider = ServiceProvider::where('user_id', $service->service_provider_id)->first();
-        $appointments = Appointment::where('start_date',$request->start_date)->get();
+        $appointments = Appointment::where('start_date',$request->start_date)->where('status','pending')->get();
         $appointmentCount = $appointments->count();
-
+       
         if($appointmentExists){
-            $appt =  Appointment::where('service_id',$request->service_id)->where('customer_id',auth()->user()->id)->first();
-            $appt->update([
-                'start_date' => $request->start_date,
-                'end_date' => $request->end_date
-            ]);
-            return redirect()->back()->with('success','Your appointment has been updated.');
+            if($appointmentCount >= $service->slot){
+                return redirect()->back()->with('info','This schedule is fully booked. Please choose another date.');
+            }else{
+                $appt =  Appointment::where('service_id',$request->service_id)->where('customer_id',auth()->user()->id)->where('status','pending')->first();
+                $appt->update([
+                    'start_date' => $request->start_date,
+                    'end_date' => $request->end_date
+                ]);
+            
+                return redirect()->back()->with('success','Your appointment has been updated.');
+            }
+            
         }else{
             if($appointmentCount >= $service->slot){
                 return redirect()->back()->with('info','This schedule is fully booked. Please choose another date.');

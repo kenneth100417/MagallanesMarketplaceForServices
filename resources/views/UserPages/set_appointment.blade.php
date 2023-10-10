@@ -38,19 +38,30 @@
                                             <span>310</span>
                                         </div>
                                     </div>
-                                    
-                                    <h6 class="text-dark">{{$service->serviceProviders->business_name}}</h6>
-                                    <h6 class="text-success mt-3">Service Description</h6>
-                                    <div class="mb-2 text-muted small">
-                                        <p class="mb-4 mb-md-0">
-                                        {{$service->service_description}}
-                                        </p>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="d-flex">
+                                                <h6 class="text-success">Service Provder:</h6>
+                                                <h6 class="text-dark mx-2">{{$service->serviceProviders->business_name}}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h6 class="text-success mt-3">Service Description</h6>
+                                            <div class="mb-2 text-muted small">
+                                                <p class="mb-4 mb-md-0">
+                                                {{$service->service_description}}
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
                                     
                                 </div>
                                 <div class="col-md-6 col-lg-4 col-xl-4 border-sm-start-none border-start">
                                     <div class="d-flex flex-row align-items-center mb-1">
-                                        <h4 class="mb-1 me-1">&#8369;{{number_format($service->service_rate,2)}} <span class="text-primary">|</span> <small style="font-size: 16px">{{$remainingSlot}}/{{$service->slot}} {{$remainingSlot > 1 ? 'Slots Available':'Slot Available'}}</small></h4>
+                                        <h4 class="mb-1 me-1">&#8369;{{number_format($service->service_rate,2)}} <span class="text-primary">|</span> <small style="font-size: 16px">{{$service->slot}} {{$remainingSlot > 1 ? 'Slots per day':'Slot per day'}}</small></h4>
                                     </div>
                                     <h6 class="text-success">Rate per Service</h6>
                                     <div class="d-flex flex-column mt-4">
@@ -58,30 +69,8 @@
                                             @csrf
                                             <button type="submit" class="btn btn-primary btn-sm w-100" >Set Appointment</button>
                                         </form> --}}
-                                        {{-- <button class="btn btn-outline-primary btn-sm mt-2" type="button">View Service Provider's details</button> --}}
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-outline-primary btn-sm mt-2 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                View Service Provider's details
-                                            </button>
-                                            <ul class="dropdown-menu px-2">
-                                                <li>
-                                                    <label style="font-weight: bold">Business Name:</label><br/> 
-                                                    <span class="mx-3">{{$service->serviceProviders->business_name}}</span>
-                                                </li>
-                                                <li class="mt-2">
-                                                    <label style="font-weight: bold">Business Address:</label><br/>  
-                                                    <span class="mx-3"> {{$service->serviceProviders->business_address}}</span>
-                                                </li>
-                                                <li class="mt-2">
-                                                    <label style="font-weight: bold">Business Owner's Name:</label><br/>  
-                                                    <span class="mx-3">{{$service->serviceProviders->firstname}} {{$service->serviceProviders->lastname}}</span>
-                                                </li>
-                                                <li class="mt-2">
-                                                    <label style="font-weight: bold">Contact Number:</label><br/> 
-                                                    <span class="mx-3">{{$service->serviceProviders->mobile_number}}</span>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                        <button class="btn btn-outline-primary btn-sm mt-2" type="button">View Service Provider's Profile</button>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -196,13 +185,15 @@
             },
         });
 
-        $('.fc-event').css('height','80px');
         $('.fc-body tr td').css('cursor','pointer');
+        $('.fc-content-skeleton table tbody').css('overflow-y','scroll');
         $('.fc-event').css('text-align','center');
-        $('.fc-event').css('height','80px');
-        $('.fc-title').css('white-space','normal');
+        $('.fc-event').css('height','20px');
+        $('.fc-title').css('white-space','nowrap');
+        $('.fc-content').css('align-items','center');
         $('.fc-time').css('display','none');
-        $('.fc-content').css('padding','10px 0px');
+        $('.fc-content').css('padding','0px 3px');
+        $('.fc-content').css('text-align','left');
    
     </script>
 </main

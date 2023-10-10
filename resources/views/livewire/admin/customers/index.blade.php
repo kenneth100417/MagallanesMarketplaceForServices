@@ -28,10 +28,10 @@
                             <td>{{$customer->firstname}} {{$customer->lastname}}</td>
                             <td>{{$customer->address}}</td>
                             <td style="max-width: 200px;">{{$customer->mobile_number}}</td>
-                            <td class="{{$customer->status == '1' ? 'text-success':'text-danger'}}">{{$customer->status == '1' ? 'Active':'Inactive'}}</td>
-                            <td class="text-danger d-flex" style="max-width: 120px;">
-                                <button class="btn btn-danger btn-sm py-1 px-3 mx-1" {{$customer->status == '1' ? '':'disabled'}} wire:click.prevent = 'block({{$customer->id}})'>Block</button>
-                                <button class="btn btn-success btn-sm py-1 px-3 mx-1" {{$customer->status == '1' ? 'disabled':''}} wire:click.prevent = 'activate({{$customer->id}})'>Activate</button>
+                            <td class="{{$customer->status == '1' ? 'text-success':'text-danger'}}" style="width: 100px">{{$customer->status == '1' ? 'Active':'Inactive'}}</td>
+                            <td class="text-danger d-flex" style="width: 120px">
+                                <button class="btn btn-danger btn-sm py-1 px-3 mx-1 w-100" style="display:{{$customer->status == '1' ? '':'none'}}"  wire:click.prevent = 'block({{$customer->id}})'>Block</button>
+                                <button class="btn btn-success btn-sm py-1 px-3 mx-1 w-100" style="display:{{$customer->status == '1' ? 'none':''}}"  wire:click.prevent = 'activate({{$customer->id}})'>Activate</button>
                             </td>
                         </tr>
                     @empty

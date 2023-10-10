@@ -45,15 +45,15 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="d-flex">
-                                                        <h6 class="text-success">Service Provder:</h6>
-                                                        <h6 class="text-dark">{{$service->serviceProviders->business_name}}</h6>
+                                                        <h6 class="text-success">Service Provider:</h6>
+                                                        <h6 class="text-dark mx-2">{{$service->serviceProviders->business_name}}</h6>
                                                     </div>
                                                 </div>
                                             </div>
                                         
                                         <div class="row">
                                             <div class="col-12">
-                                                <h6 class="text-success mt-3">Service Description</h6>
+                                                <h6 class="text-success">Service Description</h6>
                                                 <div class="mb-2 text-muted small">
                                                     <p class="mb-4 mb-md-0">
                                                     {{$service->service_description}}

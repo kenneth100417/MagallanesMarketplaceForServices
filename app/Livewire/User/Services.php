@@ -22,7 +22,10 @@ class Services extends Component
    
     public function render()
     {    
-        $services = Service::orderBy('id','DESC')->where('status', '1')->where('service_title','like','%'.$this->term.'%')->paginate(10);
+        $services = Service::orderBy('id','DESC')
+                            ->where('status', '1')
+                            ->where('service_title','like','%'.$this->term.'%')
+                            ->paginate(10);
         return view('livewire.user.services',['services' => $services]);
     }
 }

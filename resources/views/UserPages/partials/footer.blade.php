@@ -33,6 +33,29 @@
     $(".alert-dismissible").fadeTo(5000, 500).slideUp(500, function(){
         $(".alert-dismissible").alert('close');
     });
+
+    window.addEventListener('confirm-cancel', event=>{
+        Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, Cancel!'
+        }).then((result) => {
+            Livewire.dispatch('cancel-confirmed')
+        })
+    });
+
+    window.addEventListener('cancelled-successfully', event=>{
+        Swal.fire({
+            title: "Success!",
+            text: "Appointment cancelled successfully",
+            icon: 'success',
+            showConfirmButton: true
+        })
+    });
 </script>
 @if(session()->has('success'))
     <script type="text/javascript">

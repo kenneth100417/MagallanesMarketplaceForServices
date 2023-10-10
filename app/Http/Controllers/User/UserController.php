@@ -169,14 +169,21 @@ class UserController extends Controller
         ]);
         
         $user = User::where('email',$validated['email'])->first();
-
+       
         if($validated){
             if(User::where('email',$validated['email'])->exists()){
                 if(Hash::check($validated['password'], $user->password)){
                     if($user->access == "customer"){
-                        $user_info = Customer::where('user_id',$user->id)->where('status','1')->first();
-                        auth()->login($user);
-                        return redirect('user_dashboard')->with('message', 'Welcome back '.$user_info->firstname.' !');
+                        
+                        $user_info = Customer::where('user_id',$user->id)->first();
+                        if($user_info->status == '0'){
+                            return redirect()->back()->with('message', 'You are not allowed to log in. Please Contact the Administrator for further information. Thank You!');
+                        }else{
+                            auth()->login($user);
+                            return redirect('user_dashboard')->with('message', 'Welcome back '.$user_info->firstname.' !');
+                        }
+                        
+                        
                         
                     }else if($user->access == "service_provider"){
                         

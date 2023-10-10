@@ -8,8 +8,7 @@
         </div>
         <div>
             <div class="input-group mt-4 px-4">
-                <input class="form-control " type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                <a href="{{url('/user_services')}}" style="cursor: pointer;text-decoration: none"><h5 class="text-success">Discover Services<i class="fa fa-arrow-right mx-2 text-warning" aria-hidden="true"></i></h5></a>
             </div>
         </div>
     </div>

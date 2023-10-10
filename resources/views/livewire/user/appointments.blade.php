@@ -11,7 +11,6 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Appointment ID</th>
                         <th scope="col">Service Title</th>
                         <th scope="col">Appointment Date</th>
                         <th scope="col">Service Rate</th>
@@ -22,7 +21,6 @@
                 <tbody>
                     @forelse ($appointments as $appointment)
                     <tr>
-                        <td>MMS_APPT{{$appointment->id}}</td>
                         <td class="overflow-auto" style="max-width: 150px;" >{{$appointment->service->service_title}}</td>
                         <td style="max-width: 150px;">{{date("F d, Y",strtotime($appointment->start_date))}}</td>
                         <td>&#8369;{{number_format($appointment->service->service_rate,2)}}</td>
@@ -30,7 +28,9 @@
                         <td style="max-width: 150px;">
                             <div class="d-flex align-items-center">
 
-                                <button class="btn btn-success btn-sm py-1 px-3 mx-1 my-auto" style="min-width: 90px !important" onclick="location.href='{{url('/set_appointment/'.$appointment->service_id)}}'">Edit</button>
+                                <button class="btn btn-success btn-sm py-1 px-3 mx-1 " style="min-width: 90px !important; display:{{$appointment->status == 'served' ? 'none !important':''}}" onclick="location.href='{{url('/set_appointment/'.$appointment->service_id)}}'" >Edit</button>
+                                <button class="btn btn-danger btn-sm py-1 px-3 mx-1" wire:click = 'Cancel({{$appointment->id}})' style="display:{{$appointment->status == 'served' ? 'none':''}}">Cancel</button>
+                                <button class="btn btn-warning btn-sm py-1 px-3 mx-1" style="display:{{$appointment->status == 'served' ? 'block':'none'}}">Rate Service</button>
                                 
                             </div>
                         </td>
