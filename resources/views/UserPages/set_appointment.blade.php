@@ -154,9 +154,9 @@
         var appointment = @json($events);
         $('#calendar').fullCalendar({
             header: {
-                left: 'prev, next today',
+                right: 'prev, next today',
                 center: 'title',
-                right: 'month, agendaWeek, agendaDay',
+                left: 'none', //month, agendaWeek, agendaDay
             },
             events: appointment,
             selectable: true,

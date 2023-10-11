@@ -102,4 +102,30 @@ class AppointmentController extends Controller
         return redirect()->back()->with('error','An error occured during appointment processing.');
         
     }
+
+    public function viewAppointmentCalendar(){
+        $user = ServiceProvider::where('user_id',Auth()->user()->id)->first();
+
+
+        $appointments = Appointment::where('service_provider_id',$user->id)->where('status','pending')->get();
+        
+        $events = array();
+
+        //dd($remainingSlot);
+        foreach($appointments as $appointment){
+            
+           
+            $customer = Customer::where('user_id',$appointment->customer_id)->first();
+
+            $events[] = [
+                'title' =>  $customer->firstname.' '.$customer->lastname,
+                'start' => $appointment->start_date,
+                'end' => $appointment->end_date,
+                'color' => '#66c2ff'
+            ];
+        }
+
+        return view('ServiceProviderPages.appointment_calendar',['user'=>$user,'events'=>$events]);
+
+    }
 }

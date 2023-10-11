@@ -21,6 +21,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         
         <style>
             .fc-event{
@@ -73,11 +75,11 @@
                                 <div class="sb-nav-link-icon mx-3" style="width: 20px !important"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            <a class="nav-link {{ 'service_provider_services' == request()->path() ? 'active' : ''}}" href="{{url('/service_provider_services')}}">
+                            <a class="nav-link {{ 'service_provider_services' == request()->path() ? 'active' : ''}}" href="{{url('/service_provider_services')}} ">
                                 <div class="sb-nav-link-icon mx-3" style="width: 20px !important"><i class="fas fa-hands-helping"></i></div>
                                 Services
                             </a>
-                            <a class="nav-link {{ 'service_provider_appointments' == request()->path() ? 'active' : ''}}" href="{{url('/service_provider_appointments')}}">
+                            <a class="nav-link {{ 'service_provider_appointments' == request()->path() ? 'active' : ''}}{{ 'view_appointment_calendar' == request()->path() ? 'active' : ''}}" href="{{url('/service_provider_appointments')}}">
                                 <div class="sb-nav-link-icon mx-3 " style="width: 20px !important"><i class="fas fa-calendar-alt"></i></div>
                                 Appointments
                             </a>

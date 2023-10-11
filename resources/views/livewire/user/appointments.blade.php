@@ -3,9 +3,8 @@
         <div class="card-header d-flex justify-content-between">
             <div>
                 <i class="fas fa-table me-1"></i>
-            List of Appointments
+                List of Appointments
             </div>
-            
         </div>
         <div class="card-body table-responsive">
             <table class="table">
@@ -20,21 +19,19 @@
                 </thead>
                 <tbody>
                     @forelse ($appointments as $appointment)
-                    <tr>
-                        <td class="overflow-auto" style="max-width: 150px;" >{{$appointment->service->service_title}}</td>
-                        <td style="max-width: 150px;">{{date("F d, Y",strtotime($appointment->start_date))}}</td>
-                        <td>&#8369;{{number_format($appointment->service->service_rate,2)}}</td>
-                        <td class="{{$appointment->status == 'pending' ? 'text-success':'text-warning'}}" style="min-width: 98px;">{{$appointment->status == 'pending' ? 'pending':'completed'}}</td>
-                        <td style="max-width: 150px;">
-                            <div class="d-flex align-items-center">
-
-                                <button class="btn btn-success btn-sm py-1 px-3 mx-1 " style="min-width: 90px !important; display:{{$appointment->status == 'served' ? 'none !important':''}}" onclick="location.href='{{url('/set_appointment/'.$appointment->service_id)}}'" >Edit</button>
-                                <button class="btn btn-danger btn-sm py-1 px-3 mx-1" wire:click = 'Cancel({{$appointment->id}})' style="display:{{$appointment->status == 'served' ? 'none':''}}">Cancel</button>
-                                <button class="btn btn-warning btn-sm py-1 px-3 mx-1" style="display:{{$appointment->status == 'served' ? 'block':'none'}}">Rate Service</button>
-                                
-                            </div>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td class="overflow-auto" style="max-width: 150px;" >{{$appointment->service->service_title}}</td>
+                            <td style="max-width: 150px;">{{date("F d, Y",strtotime($appointment->start_date))}}</td>
+                            <td>&#8369;{{number_format($appointment->service->service_rate,2)}}</td>
+                            <td class="{{$appointment->status == 'pending' ? 'text-success':'text-warning'}}" style="min-width: 98px;">{{$appointment->status == 'pending' ? 'pending':'completed'}}</td>
+                            <td style="max-width: 150px;">
+                                <div class="d-flex align-items-center">
+                                    <button class="btn btn-success btn-sm py-1 px-3 mx-1 " style="min-width: 90px !important; display:{{$appointment->status == 'served' ? 'none !important':''}}" onclick="location.href='{{url('/set_appointment/'.$appointment->service_id)}}'" >Edit</button>
+                                    <button class="btn btn-danger btn-sm py-1 px-3 mx-1" wire:click = 'Cancel({{$appointment->id}})' style="display:{{$appointment->status == 'served' ? 'none':''}}">Cancel</button>
+                                    <button class="btn btn-warning btn-sm py-1 px-3 mx-1" style="display:{{$appointment->status == 'served' ? 'block':'none'}}">Rate Service</button>
+                                </div>
+                            </td>
+                        </tr>
                     @empty
                         <div class="text-center mt-5">You don't have an appointment yet.</div>
                     @endforelse
@@ -44,7 +41,6 @@
             <div class="d-flex justify-content-center">
                 {{$appointments->links()}}
             </div>
-            
         </div>
     </div>
 </div>

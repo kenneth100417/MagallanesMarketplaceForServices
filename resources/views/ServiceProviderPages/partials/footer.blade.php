@@ -67,5 +67,17 @@
     </script>
 @endif
 
+
+@if(session()->has('error'))
+    <script type="text/javascript">
+        Swal.fire({
+            title: "Error!",
+            text: "{{session('error')}}",
+            icon: 'error',
+            showConfirmButton: true
+        })
+    </script>
+@endif
+
 </body>
 </html>

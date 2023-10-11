@@ -52,6 +52,67 @@ class UserController extends Controller
         $user = ServiceProvider::where('user_id',Auth()->user()->id)->first();
         return view('ServiceProviderPages.profile',compact('user'));
     }
+    //edit Profile
+    public function editProfile(Request $request){
+        $validated = $request->validate([
+            'business_name' => 'required',
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'mobile_number' => 'required',
+            'business_address' => 'required'
+        ]);
+
+        if($validated){
+            $user = ServiceProvider::where('user_id',auth()->user()->id)->first();
+            if($user){
+                $user->update([
+                    'business_name' => $validated['business_name'],
+                    'firstname' => $validated['firstname'],
+                    'lastname' => $validated['lastname'],
+                    'mobile_number' => $validated['mobile_number'],
+                    'business_address' => $validated['business_address'],
+                ]);
+                return redirect()->back()->with('success','Profile updated successfully!');
+            }
+            else{
+                return redirect()->back()->with('error','User not Found!');
+            }
+        }
+    }
+
+    //chnage profile pic
+    public function changeProfilePic(Request $request) {
+        $validated = $request->validate([
+            'photo' => 'required|mimes:jpeg,png,jpg,gif'
+        ]);
+
+        $user = ServiceProvider::where('user_id',Auth()->user()->id)->first();
+
+        if($validated){
+            if($request->hasFile('photo')){
+                $filename = time().$request->file('photo')->getClientOriginalName();
+                $img = $request->file('photo');
+                $img->move('uploads/profile/',$filename);
+                
+                $photo = 'uploads/profile/'.$filename;
+            }else{
+                $photo = $user->photo;
+                
+            }
+
+            $user->update([
+                'photo' => $photo
+            ]);
+
+            return redirect()->back()->with('success','Profile picture uploaded successfully!.');
+        
+        }else{
+            return redirect()->back()->with('error','Ann error occured while uploading your profile picture.');
+        }
+
+
+        
+    }
 
     //Admin Pages
     public function AdminDashboard(){
@@ -203,7 +264,7 @@ class UserController extends Controller
                     return redirect()->back()->with('message', 'Email and Password does not match.');
                 }
             }else{
-                return redirect()->back()->with('message', 'User not found.');
+                return redirect()->back()->with('message', 'Email and Password does not match.');
             }
         }
         return redirect()->back()->with('message', 'An error occured.');

@@ -30,7 +30,7 @@
                       <li><a class="dropdown-item text-center" wire:click.prevent = "showAll()">Show All</a></li>
                     </ul>
                 </div>
-                <button class="btn btn-success btn-sm mx-2" onclick="alert('This feature is under development.')"><i class="fas fa-calendar-alt"></i> Calendar</button>
+                <a class="btn btn-success btn-sm mx-2"  href='/view_appointment_calendar'><i class="fas fa-calendar-alt"></i> Calendar</a>
                 <button class="btn btn-info btn-sm" wire:click.prevent = "showToday()">Today's Schedule</button>
                
             </div>

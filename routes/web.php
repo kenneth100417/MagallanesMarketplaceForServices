@@ -57,11 +57,20 @@ Route::middleware(['auth','isServiceProvider'])->group(function() {
         Route::get('/service_provider_services', 'ProviderServices');
         Route::get('/service_provider_appointments', 'ProviderAppointments');
         Route::get('/service_provider_profile', 'ProviderProfile');
+
+        //edit Profile
+        Route::post('/edit_profile', 'editProfile');
+        //change profile puc
+        Route::post('/change_profile_pic', 'changeProfilePic');
     });
 
     Route::controller(App\Http\Controllers\User\ServiceController::class)->group(function() {
        Route::post('/addService','create');
     });
+
+    Route::controller(App\Http\Controllers\User\AppointmentController::class)->group(function() {
+        Route::get('/view_appointment_calendar','viewAppointmentCalendar');
+     });
    
     
 });
