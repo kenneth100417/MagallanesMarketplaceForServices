@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Models\Rating;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Models\ServiceProvider;
@@ -35,5 +36,26 @@ class ServiceController extends Controller
         }else{
             return redirect()->back()->with('error','An error occured.');
         }
+    }
+
+    public function rateService(Request $request, $service_id){
+        if(request('rating') != null){
+            $service = Rating::where('service_id',$service_id);
+            if(Rating::where('service_id',$service_id)->where('user_id',auth()->user()->id)->exists()){
+                $service->update([
+                    'rating' => request('rating')
+                ]);
+                return redirect()->back()->with('success', 'Rating Successfully Updated!');
+            }else{
+                $service->create([
+                    'user_id' => auth()->user()->id,
+                    'service_id' => $service_id,
+                    'rating' => request('rating')
+                ]);
+                return redirect()->back()->with('success', 'Thank you for your feedback! Your rating has been successfully submitted.');
+            }
+        }
+        return redirect()->back()->with('error', 'Rating cannot be empty.');
+
     }
 }

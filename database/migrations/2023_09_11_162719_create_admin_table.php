@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('firstname');
             $table->string('lastname');
-            $table->string('photo')->default('/uploads/profile/profile_temp');
+            $table->string('photo')->default('uploads/profile/profile_temp.png');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

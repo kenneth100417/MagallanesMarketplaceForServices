@@ -26,18 +26,20 @@
                                         <div class="container">
                                             <div class="row">
                                                 
-                                                    <div class="col-sm-12 col-md-12 col-lg-8">
+                                                    <div class="col-sm-12 col-md-12 col-lg-7">
                                                         <h5>{{$service->service_title}}</h5>
                                                     </div>
-                                                    <div class="d-flex justify-content-end flex-row col-sm-12 col-md-12 col-lg-4">
-                                                        <div class="text-warning mb-1 me-2">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
+                                                    <div class="d-flex justify-content-end flex-row col-sm-12 col-md-12 col-lg-5">
+                                                        <span>{{$service->rating_count}} ratings | </span>
+                                                        <div class=" mb-1 ms-2">
+                                                            @for($i = 1; $i <= number_format($service->avg_rating); $i++)
+                                                                <i class="fa fa-star checked"></i>
+                                                            @endfor
+                                                            @for($i = number_format($service->avg_rating)+1; $i <= 5; $i++)
+                                                                <i class="fa fa-star"></i>
+                                                            @endfor
                                                         </div>
-                                                        <span>310</span>
+                                                        
                                                     </div>
                                                 
                                             </div>
@@ -73,33 +75,8 @@
                                                 @csrf
                                                 <button type="submit" class="btn btn-primary btn-sm w-100" >Set Appointment</button>
                                             </form>
-                                            <form action="/view_service_provider_profile/{{$service->serviceProviders->user_id}}">
-                                                <button class="btn btn-outline-primary btn-sm mt-2 w-100" type="submit">View Service Provider's Profile</button>
-                                            </form>
-                                            
-                                            {{-- <div class="btn-group">
-                                                <button type="button" class="btn btn-outline-primary btn-sm mt-2 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    View Service Provider's details
-                                                </button>
-                                                <ul class="dropdown-menu px-2">
-                                                    <li>
-                                                        <label style="font-weight: bold">Business Name:</label><br/> 
-                                                        <span class="mx-3">{{$service->serviceProviders->business_name}}</span>
-                                                    </li>
-                                                    <li class="mt-2">
-                                                        <label style="font-weight: bold">Business Address:</label><br/>  
-                                                       <span class="mx-3"> {{$service->serviceProviders->business_address}}</span>
-                                                    </li>
-                                                    <li class="mt-2">
-                                                        <label style="font-weight: bold">Business Owner's Name:</label><br/>  
-                                                        <span class="mx-3">{{$service->serviceProviders->firstname}} {{$service->serviceProviders->lastname}}</span>
-                                                    </li>
-                                                    <li class="mt-2">
-                                                        <label style="font-weight: bold">Contact Number:</label><br/> 
-                                                        <span class="mx-3">{{$service->serviceProviders->mobile_number}}</span>
-                                                    </li>
-                                                </ul>
-                                            </div> --}}
+                                                <a class="btn btn-outline-primary btn-sm mt-2 w-100" href="{{url('/service_provider_profile/'.$service->serviceProviders->user_id)}}">View Service Provider's Profile</a>
+                                  
                                         </div>
                                     </div>
                                 </div>

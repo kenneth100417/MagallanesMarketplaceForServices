@@ -17,7 +17,7 @@ class AdminSeeder extends Seeder
             'user_id' => '1',
             'firstname' => 'Admin',
             'lastname' => 'Admin',
-            'photo' => '/uploads/profile/profile_temp'
+            'photo' => 'uploads/profile/profile_temp.png'
         ]);
     }
 }

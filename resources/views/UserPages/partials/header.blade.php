@@ -17,7 +17,33 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
-    
+        
+        <style>
+            .checked{
+                color: #ffc107;
+            }
+
+            /* Style the container holding the stars */
+            .rating {
+            display: inline-block;
+            }
+
+            /* Style the stars */
+            .rating input {
+            display: none;
+            }
+
+            .rating label {
+            font-size: 30px;
+            color: #ccc;
+            cursor: pointer;
+            }
+
+            /* Style the selected stars */
+            .rating input:checked ~ label {
+            color: gold;
+            }
+        </style>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -47,7 +73,7 @@
                                 <div class="sb-nav-link-icon mx-3" style="width: 20px !important"><i class="fas fa-house-user"></i></div>
                                 Home
                             </a>
-                            <a class="nav-link {{ 'user_services' == request()->path() ? 'active' : ''}}" href="{{url('/user_services')}}">
+                            <a class="nav-link {{ 'user_services' == request()->path() ? 'active' : ''}}{{ 'service_provider_profile' == request()->path() ? 'active' : ''}}" href="{{url('/user_services')}}">
                                 <div class="sb-nav-link-icon mx-3 " style="width: 20px !important"><i class="fas fa-hands-helping"></i></div>
                                 Services
                             </a>

@@ -35,7 +35,16 @@ Route::middleware(['auth','isCustomer'])->group(function() {
         Route::get('/user_service_providers', 'UserServiceProviders');
         Route::get('/user_appointments', 'UserAppointments');
         Route::get('/user_profile', 'UserProfile');
-        
+
+         //edit Profile
+        Route::post('/edit_cu_profile', 'cuEditProfile');
+        //change profile puc
+        Route::post('/change_cu_profile_pic', 'cuChangeProfilePic');
+        //view service provider profile
+        Route::get('/service_provider_profile/{service_provider_id}', 'viewServiceProvider');
+        //rate Service
+        Route::get('/rate_service/{service_id}', 'rateService');
+
     })->middleware('auth');
 
     Route::controller(App\Http\Controllers\User\AppointmentController::class)->group(function(){
@@ -44,9 +53,12 @@ Route::middleware(['auth','isCustomer'])->group(function() {
         
     })->middleware('auth');
 
+    Route::controller(App\Http\Controllers\User\ServiceController::class)->group(function(){
+        
+        //rate Service
+        Route::post('/rate_service/{service_id}', 'rateService');
 
-    
-
+    })->middleware('auth');
 });
 
 
@@ -59,9 +71,9 @@ Route::middleware(['auth','isServiceProvider'])->group(function() {
         Route::get('/service_provider_profile', 'ProviderProfile');
 
         //edit Profile
-        Route::post('/edit_profile', 'editProfile');
+        Route::post('/edit_sp_profile', 'spEditProfile');
         //change profile puc
-        Route::post('/change_profile_pic', 'changeProfilePic');
+        Route::post('/change_sp_profile_pic', 'spChangeProfilePic');
     });
 
     Route::controller(App\Http\Controllers\User\ServiceController::class)->group(function() {
@@ -82,6 +94,11 @@ Route::controller(App\Http\Controllers\User\UserController::class)->middleware([
     Route::get('/admin_service_providers', 'AdminServiceProvider');
     Route::get('/admin_customers', 'AdminCustomer');
     Route::get('/admin_profile', 'AdminProfile');
+
+    //edit Profile
+    Route::post('/edit_ad_profile', 'adEditProfile');
+    //change profile puc
+    Route::post('/change_ad_profile_pic', 'adChangeProfilePic');
 
 });
 

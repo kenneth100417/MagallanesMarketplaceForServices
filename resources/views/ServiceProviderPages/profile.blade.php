@@ -14,9 +14,9 @@
                 <div class="card" >
                     <div class="card-body mt-5 mb-5" >
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="{{$user->photo}}" alt="Service Provider" class="rounded-circle"  width="180" height="180">
+                            <img src="{{$user->photo}}" alt="Service Provider" class="rounded-circle"  width="180" height="180" style="object-fit: cover">
 
-                            <form action="{{url('change_profile_pic')}}" id="change-profile-pic-form" method="POST" enctype="multipart/form-data">
+                            <form action="{{url('change_sp_profile_pic')}}" id="change-profile-pic-form" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input type="file" accept="image/png, image/gif, image/jpeg" name="photo" id="profile-pic-input" hidden>
                             </form>
@@ -134,7 +134,7 @@
                     <h5 class="modal-title" id="staticBackdropLabel">Edit Profile</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{url('/edit_profile')}}" method="POST" id="profile-update-form">
+                <form action="{{url('/edit_sp_profile')}}" method="POST" id="profile-update-form">
                     @csrf
                     <div class="modal-body">
                         <div class="container-fluid">

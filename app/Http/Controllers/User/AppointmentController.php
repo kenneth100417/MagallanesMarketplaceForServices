@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 
 use DateTime;
 use DateInterval;
+use App\Models\Rating;
 use App\Models\Service;
 use App\Models\Customer;
 use App\Models\Appointment;
@@ -17,7 +18,13 @@ class AppointmentController extends Controller
 {
     public function setAppointment($service_id){
         $user = Customer::where('user_id',auth()->user()->id)->first();
+
         $service = Service::where('id',$service_id)->first();
+        
+        $serviceReviews = Rating::where('service_id',$service_id)->get();
+        $avg_rating = Rating::where('service_id',$service_id)
+                                ->avg('rating');
+
         $appointments = Appointment::where('service_id',$service_id)->where('status','pending')->get();
         $appointmentCount = Appointment::where('service_id',$service->id)->where('status','pending')->groupBy('start_date')->count();
         $remainingSlot = $service->slot - $appointmentCount;
@@ -50,7 +57,7 @@ class AppointmentController extends Controller
             ];
         }
         
-        return view('UserPages.set_appointment',compact('user','service','events','remainingSlot'));
+        return view('UserPages.set_appointment',compact('user','service','events','remainingSlot','serviceReviews','avg_rating'));
     }
 
     public function storeAppointment(Request $request){

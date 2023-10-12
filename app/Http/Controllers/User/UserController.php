@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\User;
+use App\Models\Admin;
+use App\Models\Rating;
+use App\Models\Service;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use App\Models\ServiceProvider;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
-use App\Models\Admin;
-use App\Models\ServiceProvider;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -34,6 +36,81 @@ class UserController extends Controller
         $user = Customer::where('user_id',Auth()->user()->id)->first();
         return view('UserPages.profile',compact('user'));
     }
+     //edit Profile
+     public function cuEditProfile(Request $request){
+        $validated = $request->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'mobile_number' => 'required',
+            'address' => 'required'
+        ]);
+
+        if($validated){
+            $user = Customer::where('user_id',auth()->user()->id)->first();
+            if($user){
+                $user->update([
+                    'firstname' => $validated['firstname'],
+                    'lastname' => $validated['lastname'],
+                    'mobile_number' => $validated['mobile_number'],
+                    'address' => $validated['address'],
+                ]);
+                return redirect()->back()->with('success','Profile updated successfully!');
+            }
+            else{
+                return redirect()->back()->with('error','User not Found!');
+            }
+        }
+    }
+    //change profile pic
+    public function cuChangeProfilePic(Request $request) {
+        $validated = $request->validate([
+            'photo' => 'required|mimes:jpeg,png,jpg,gif'
+        ]);
+
+        $user = Customer::where('user_id',Auth()->user()->id)->first();
+        if($validated){
+            if($request->hasFile('photo')){
+                $filename = time().$request->file('photo')->getClientOriginalName();
+                $img = $request->file('photo');
+                $img->move('uploads/profile/',$filename);
+                
+                $photo = 'uploads/profile/'.$filename;
+            }else{
+                $photo = $user->photo;
+            }
+            $user->update([
+                'photo' => $photo
+            ]);
+
+            return redirect()->back()->with('success','Profile picture uploaded successfully!.');
+        
+        }else{
+            return redirect()->back()->with('error','Ann error occured while uploading your profile picture.');
+        }
+
+
+        
+    }
+    //view service provider profile
+    public function viewServiceProvider($sp_user_id){
+        $user = ServiceProvider::where('user_id',$sp_user_id)->where('status','1')->first();
+        //$services = Service::where('service_provider_id',$sp_user_id)->where('status', '1')->get();
+
+        $services = Service::select('services.*')
+            ->selectRaw('COUNT(ratings.id) as rating_count')
+            ->selectRaw('IFNULL(AVG(ratings.rating), 0) as avg_rating')
+            ->leftJoin('ratings', 'services.id', '=', 'ratings.service_id')
+            ->orderBy('services.id', 'DESC')
+            ->where('services.status', '1')
+            ->where('services.service_provider_id', $sp_user_id)
+            ->groupBy('services.id','services.service_title','services.service_provider_id','services.service_description','services.service_rate','services.slot','services.status','services.created_at','services.updated_at')
+            ->paginate(10);
+
+        return view('UserPages.service_provider_profile', ['user' => $user, 'services' => $services]);
+    }
+
+
+
 
      //Service Provider Pages
     public function ProviderDashboard(){
@@ -53,7 +130,7 @@ class UserController extends Controller
         return view('ServiceProviderPages.profile',compact('user'));
     }
     //edit Profile
-    public function editProfile(Request $request){
+    public function spEditProfile(Request $request){
         $validated = $request->validate([
             'business_name' => 'required',
             'firstname' => 'required',
@@ -79,9 +156,8 @@ class UserController extends Controller
             }
         }
     }
-
-    //chnage profile pic
-    public function changeProfilePic(Request $request) {
+    //change profile pic
+    public function spChangeProfilePic(Request $request) {
         $validated = $request->validate([
             'photo' => 'required|mimes:jpeg,png,jpg,gif'
         ]);
@@ -139,7 +215,63 @@ class UserController extends Controller
         $user = Admin::where('user_id',Auth()->user()->id)->first();
         return view('AdminPages.profile',compact('user'));
     }
+    //edit Profile
+    public function adEditProfile(Request $request){
+        $validated = $request->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+        ]);
+
+        if($validated){
+            $user = Admin::where('user_id',auth()->user()->id)->first();
+            if($user){
+                $user->update([
+                    'firstname' => $validated['firstname'],
+                    'lastname' => $validated['lastname']
+                ]);
+                return redirect()->back()->with('success','Profile updated successfully!');
+            }
+            else{
+                return redirect()->back()->with('error','User not Found!');
+            }
+        }
+    }
+
+    //change profile pic
+    public function adChangeProfilePic(Request $request) {
+        $validated = $request->validate([
+            'photo' => 'required|mimes:jpeg,png,jpg,gif'
+        ]);
+
+        $user = Admin::where('user_id',Auth()->user()->id)->first();
+
+        if($validated){
+            if($request->hasFile('photo')){
+                $filename = time().$request->file('photo')->getClientOriginalName();
+                $img = $request->file('photo');
+                $img->move('uploads/profile/',$filename);
+                
+                $photo = 'uploads/profile/'.$filename;
+            }else{
+                $photo = $user->photo;
+                
+            }
+
+            $user->update([
+                'photo' => $photo
+            ]);
+
+            return redirect()->back()->with('success','Profile picture uploaded successfully!.');
+        
+        }else{
+            return redirect()->back()->with('error','Ann error occured while uploading your profile picture.');
+        }
+
+
+        
+    }
     
+
 
     public function addCustomer(Request $request){
         
