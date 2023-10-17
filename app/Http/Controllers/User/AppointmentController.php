@@ -25,7 +25,7 @@ class AppointmentController extends Controller
         $avg_rating = Rating::where('service_id',$service_id)
                                 ->avg('rating');
 
-        $appointments = Appointment::where('service_id',$service_id)->where('status','pending')->get();
+        $appointments = Appointment::where('service_id',$service_id)->where('status','pending')->whereDate('start_date', '>=', now())->get();
         $appointmentCount = Appointment::where('service_id',$service->id)->where('status','pending')->groupBy('start_date')->count();
         $remainingSlot = $service->slot - $appointmentCount;
         $events = array();

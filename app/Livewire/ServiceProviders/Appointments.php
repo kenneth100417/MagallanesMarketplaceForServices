@@ -44,10 +44,12 @@ class Appointments extends Component
                                             
         foreach($this->appointments as $appointment){
             if($appointment->start_date < date('Y-m-d')){
-                $appt = Appointment::where('id',$appointment->id)->first();
-                $appt->update([
-                    'status' => 'expired'
-                ]);
+                $appt = Appointment::where('id',$appointment->id)->where('status','pending')->first();
+                if($appt){
+                    $appt->update([
+                        'status' => 'expired'
+                    ]);
+                }
             }
         }
 

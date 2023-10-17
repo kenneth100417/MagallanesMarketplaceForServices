@@ -7,13 +7,14 @@
                 <div class="container-fluid px-4">
                     <div class="row" >
                         <div class="text-center position-relative">
-                            <img class="p-0 logo" src="assets/img/logo.png" alt="Marketplace Services" style="width: 700px; !important;">
+                            <img class="p-0 logo" src="assets/img/logo.png" alt="Marketplace Services" style="width: 60vw; !important;filter: drop-shadow(10px 0px 5px white) !important;">
                         </div>
                     </div>
-                    <div class="row gx-4 justify-content-center align-items-center mt-2 ">
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#login" style="width: 120px">Log In</button>
+                    <div class="row gx-4 justify-content-center align-items-center ">
+                        <button type="button" class="btn btn-lg btn-success mx-1" data-bs-toggle="modal" data-bs-target="#login" style="width: 120px;">Log In</button>
+                        <a type="button" class="btn btn-lg btn-warning mx-1"  style="width: 140px;background-color: #e4af03" href="#about">Explore <i class="fa fa-arrow-right ms-2" aria-hidden="true"></i></a>
                         <div class="btn-group signup-btn-mobile mt-3 text-center">
-                            <button type="button" class="btn dropdown-toggle text-light" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #2c64ac; width: 120px !important">
+                            <button type="button" class="btn btn-lg dropdown-toggle text-light" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #2c64ac; width: 120px !important">
                               Sign Up
                             </button>
                             <ul class="dropdown-menu">
@@ -26,11 +27,9 @@
                             </ul>
                         </div>
                     </div>
-                    
                 </div>
             </div>
-            <div class="wavy-shape">
-            </div>
+            <div class="wavy-shape"></div>
         </section> 
 
         <!-- LogIn Modal -->

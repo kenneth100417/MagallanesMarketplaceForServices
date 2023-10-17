@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Models\ServiceProvider;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -70,10 +71,13 @@ class UserController extends Controller
         $user = Customer::where('user_id',Auth()->user()->id)->first();
         if($validated){
             if($request->hasFile('photo')){
-                $filename = time().$request->file('photo')->getClientOriginalName();
+                $filename = 'Customer_profile_'.auth()->user()->id.'.png';
+                if (File::exists(public_path('uploads/profile/' . $filename))) {
+                    // If it exists, delete the old file
+                    File::delete(public_path('uploads/profile/' . $filename));
+                }
                 $img = $request->file('photo');
                 $img->move('uploads/profile/',$filename);
-                
                 $photo = 'uploads/profile/'.$filename;
             }else{
                 $photo = $user->photo;
@@ -85,7 +89,7 @@ class UserController extends Controller
             return redirect()->back()->with('success','Profile picture uploaded successfully!.');
         
         }else{
-            return redirect()->back()->with('error','Ann error occured while uploading your profile picture.');
+            return redirect()->back()->with('error','Ann error occured while uploading your picture.');
         }
 
 
@@ -166,7 +170,11 @@ class UserController extends Controller
 
         if($validated){
             if($request->hasFile('photo')){
-                $filename = time().$request->file('photo')->getClientOriginalName();
+                $filename = 'ServiceProvider_profile_'.auth()->user()->id.'.png';
+                if (File::exists(public_path('uploads/profile/' . $filename))) {
+                    // If it exists, delete the old file
+                    File::delete(public_path('uploads/profile/' . $filename));
+                }
                 $img = $request->file('photo');
                 $img->move('uploads/profile/',$filename);
                 
@@ -247,7 +255,11 @@ class UserController extends Controller
 
         if($validated){
             if($request->hasFile('photo')){
-                $filename = time().$request->file('photo')->getClientOriginalName();
+                $filename = 'Admin_profile_'.auth()->user()->id.'.png';
+                if (File::exists(public_path('uploads/profile/' . $filename))) {
+                    // If it exists, delete the old file
+                    File::delete(public_path('uploads/profile/' . $filename));
+                }
                 $img = $request->file('photo');
                 $img->move('uploads/profile/',$filename);
                 

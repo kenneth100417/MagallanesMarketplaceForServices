@@ -11,6 +11,7 @@
         <link href="css/styles.css" rel="stylesheet" />
         <link href="css/custom-styles.css" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
         <style>
             /* Style for the section */
@@ -21,7 +22,7 @@
                 position: relative;
             }
             .img-background{
-                opacity: 0.4;
+                opacity: 0.8;
                 position: absolute;
                 left: 0;
                 top: 0;
@@ -40,7 +41,7 @@
                 left: 0;
                 width: 100%;
                 height: 300px; 
-                background-image: url('assets/img/wave.png');
+                background-image: url('assets/img/wave3.png');
                 background-repeat: no-repeat;
                 background-size: cover;
             }
