@@ -14,6 +14,12 @@ class Appointments extends Component
     protected $listeners = ['cancel-confirmed' => 'cancelAppointment'];
 
     public $cancelId;
+    public $rateID;
+
+    public function setRateID($id){
+        $this->rateID = $id;
+        $this->dispatch('open-rating-modal');
+    }
 
     public function Cancel($id){
         $this->cancelId = $id;

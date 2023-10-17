@@ -56,6 +56,10 @@
             showConfirmButton: true
         })
     });
+
+    window.addEventListener('open-rating-modal', event=>{
+        $("#staticBackdrop").modal('show');
+    });
 </script>
 @if(session()->has('success'))
     <script type="text/javascript">

@@ -1,6 +1,6 @@
 @include('LandingPage.partials.header')
 
-<!-- About section-->
+<!-- home section-->
 <section id="home" style="background-image: url('assets/img/background.png'); min-height: 100vh !important;background-repeat: no-repeat;background-size: cover;">
     <div class="container px-4">
         <div class="row gx-4 justify-content-center align-items-center">

@@ -22,12 +22,13 @@
                 position: relative;
             }
             .img-background{
-                opacity: 0.8;
+                opacity: 0.7;
                 position: absolute;
                 left: 0;
                 top: 0;
                 width: 100vw;
                 height: auto;
+                object-fit: cover;
             }
             .content{
                 position: relative;
@@ -96,7 +97,7 @@
                                 <button type="button" class="btn dropdown-toggle text-light" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #2c64ac;">
                                   Sign Up
                                 </button>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu dropdown-menu-end">
                                     <li>
                                         <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#customerRegistration" style="cursor: pointer;">Customer</a>
                                     </li>

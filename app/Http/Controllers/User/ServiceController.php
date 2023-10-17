@@ -40,14 +40,15 @@ class ServiceController extends Controller
 
     public function rateService(Request $request, $service_id){
         if(request('rating') != null){
-            $service = Rating::where('service_id',$service_id);
-            if(Rating::where('service_id',$service_id)->where('user_id',auth()->user()->id)->exists()){
+           //dd($service_id);
+            $service = Rating::where('service_id',$service_id)->where('user_id',auth()->user()->id)->first();
+            if($service){
                 $service->update([
                     'rating' => request('rating')
                 ]);
                 return redirect()->back()->with('success', 'Rating Successfully Updated!');
             }else{
-                $service->create([
+                Rating::create([
                     'user_id' => auth()->user()->id,
                     'service_id' => $service_id,
                     'rating' => request('rating')

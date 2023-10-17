@@ -28,7 +28,7 @@
                                 <div class="d-flex align-items-center">
                                     <button class="btn btn-success btn-sm py-1 px-3 mx-1 " style="min-width: 90px !important; display:{{$appointment->status == 'served' ? 'none !important':''}}" onclick="location.href='{{url('/set_appointment/'.$appointment->service_id)}}'" >Edit</button>
                                     <button class="btn btn-danger btn-sm py-1 px-3 mx-1" wire:click = 'Cancel({{$appointment->id}})' style="display:{{$appointment->status == 'served' ? 'none':''}}">Cancel</button>
-                                    <button class="btn btn-warning btn-sm py-1 px-3 mx-1" style="display:{{$appointment->status == 'served' ? 'block':'none'}}" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Rate Service</button>
+                                    <button class="btn btn-warning btn-sm py-1 px-3 mx-1" style="display:{{$appointment->status == 'served' ? 'block':'none'}}" wire:click="setRateID({{$appointment->service_id}})">Rate Service</button>
 
                                     
                                 </div>
@@ -38,7 +38,7 @@
                         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog">
                             <div class="modal-content">
-                                <form action="/rate_service/{{$appointment->service->id}}" method="POST">
+                                <form action="/rate_service/{{$rateID}}" method="POST">
                                     @csrf
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="staticBackdropLabel">Rate Service</h5>
@@ -54,7 +54,7 @@
                                             <label for="star3"><i class="fa fa-star fa-lg"></i></label>
                                             <input type=radio id="star2" name="rating" value="2">
                                             <label for="star2"><i class="fa fa-star fa-lg"></i></label>
-                                            <input type=radio id="star1" name="rating" value="1">
+                                            <input type=radio id="star1" name="rating" value="1" checked>
                                             <label for="star1"><i class="fa fa-star fa-lg"></i></label>
                                         </div>
                                     </div>
