@@ -30,8 +30,10 @@ class Services extends Component
             ->selectRaw('COUNT(ratings.id) as rating_count')
             ->selectRaw('IFNULL(AVG(ratings.rating), 0) as avg_rating')
             ->leftJoin('ratings', 'services.id', '=', 'ratings.service_id')
+            ->leftJoin('service_providers', 'services.service_provider_id', '=', 'service_providers.user_id')
             ->orderBy('services.id', 'DESC')
             ->where('services.status', '1')
+            ->where('service_providers.status','1')
             ->where('services.service_title', 'like', '%' . $this->term . '%')
             ->groupBy('services.id','services.service_title','services.service_provider_id','services.service_description','services.service_rate','services.slot','services.status','services.created_at','services.updated_at')
             ->paginate(10);

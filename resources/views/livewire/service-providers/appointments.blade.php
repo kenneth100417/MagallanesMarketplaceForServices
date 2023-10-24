@@ -5,8 +5,8 @@
         </div>
         <div>
             <div class="input-group mt-4 px-4">
-                <input class="form-control " type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                <input class="form-control " type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" wire:model.live="search" id="search" name="search"/>
+                <button class="btn btn-primary" id="btnNavbarSearch" type="button" x-on:click="$dispatch('search')"><i class="fas fa-search"></i></button>
             </div>
         </div>
     </div>
@@ -40,7 +40,6 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Appointment ID</th>
                         <th scope="col">Customer's Name</th>
                         <th scope="col">Service Title</th>
                         <th scope="col">Appointment Date</th>
@@ -52,25 +51,23 @@
                 <tbody>
                     @forelse ($appointments as $appointment)
                     <tr>
-                        <td>MMS_APPT{{$appointment->id}}</td>
-                        <td class="overflow-auto" style="max-width: 150px;" >{{$appointment->customer->firstname}} {{$appointment->customer->lastname}}</td>
-                        <td class="overflow-auto" style="max-width: 150px;" >{{$appointment->service->service_title}}</td>
-                        <td style="max-width: 150px;">{{date("F d, Y",strtotime($appointment->start_date))}}</td>
-                        <td>&#8369;{{number_format($appointment->service->service_rate,2)}}</td>
+                        <td class="overflow-auto" style="max-width: 150px;" >{{$appointment->firstname}} {{$appointment->lastname}}</td>
+                        <td class="overflow-auto" style="max-width: 150px;" >{{$appointment->service_title}}</td>
+                        <td style="max-width: 150px;">{{date("F d, Y",strtotime($appointment->appointmentDate))}}</td>
+                        <td>&#8369;{{number_format($appointment->service_rate,2)}}</td>
                         <td class="
-                        {{$appointment->status == 'pending' ? 'text-success':''}}
-                        {{$appointment->status == 'served' ? 'text-primary':''}}
-                        {{$appointment->status == 'expired' ? 'text-danger':''}}
+                        {{$appointment->apptStatus == 'pending' ? 'text-success':''}}
+                        {{$appointment->apptStatus == 'served' ? 'text-primary':''}}
+                        {{$appointment->apptStatus == 'expired' ? 'text-danger':''}}
                         " style="min-width: 98px;">
-                            {{$appointment->status == 'pending' ? 'Pending':''}}
-                            {{$appointment->status == 'served' ? 'Served':''}}
-                            {{$appointment->status == 'expired' ? 'Expired':''}}
+                            {{$appointment->apptStatus == 'pending' ? 'Pending':''}}
+                            {{$appointment->apptStatus == 'served' ? 'Served':''}}
+                            {{$appointment->apptStatus == 'expired' ? 'Expired':''}}
                         </td>
                         <td style="max-width: 150px;">
                             <div class="d-flex align-items-center">
-
-                                <button class="btn btn-success btn-sm py-1 px-3 mx-1 my-auto" style="min-width: 90px !important;{{$appointment->status == 'pending' ? '':'display:none'}}" wire:click.prevent = "completed({{$appointment->id}})">Served</button>
-                                <small>{{$appointment->status == 'pending' ? '':'No action needed'}}</small>
+                                <button class="btn btn-success btn-sm py-1 px-3 mx-1 my-auto" style="min-width: 90px !important;{{$appointment->apptStatus == 'pending' ? '':'display:none !important;'}}" wire:click.prevent = "completed({{$appointment->appointmentId}})">Served</button>
+                                <small>{{$appointment->apptStatus == 'pending' ? ' ':'No action needed'}}</small>
                                 
                             </div>
                         </td>

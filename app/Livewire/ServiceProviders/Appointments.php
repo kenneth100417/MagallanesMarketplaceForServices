@@ -12,10 +12,19 @@ use App\Models\ServiceProvider;
 class Appointments extends Component
 {
     use WithPagination;
+
+    protected $listeners = ['search' => 'searchTerm'];
     protected $paginationTheme = 'bootstrap';
     protected $appointments;
     public $sort = '';
     public $sortDate = '';
+    public $search;
+    public $term;
+
+    public function searchTerm(){
+        $this->term = $this->search;
+    }
+   
 
     public function showPending(){
         $this->sort = 'pending';
@@ -37,11 +46,20 @@ class Appointments extends Component
     public function render()
     {
         $user = ServiceProvider::where('user_id',auth()->user()->id)->first();
-        $this->appointments = Appointment::where('service_provider_id', $user->id)
-                                            ->where('status', 'like','%'.$this->sort.'%')
-                                            ->where('start_date', 'like','%'.$this->sortDate.'%')
-                                            ->paginate(10);
+        // $this->appointments = Appointment::where('service_provider_id', $user->id)
+        //                                     ->where('status', 'like','%'.$this->sort.'%')
+        //                                     ->where('start_date', 'like','%'.$this->sortDate.'%')
+        //                                     ->where('service_title', 'like', '%' . $this->term . '%')
+        //                                     ->paginate(10);
                                             
+        $this->appointments = Appointment::join('services', 'appointments.service_id', '=', 'services.id')
+                                            ->join('customers', 'appointments.customer_id', '=', 'customers.user_id')
+                                            ->where('appointments.service_provider_id', $user->id)
+                                            ->where('appointments.status', 'like', '%' . $this->sort . '%')
+                                            ->where('appointments.start_date', 'like', '%' . $this->sortDate . '%')
+                                            ->where('services.service_title', 'like', '%' . $this->term . '%')
+                                            ->select('customers.firstname as firstname','customers.lastname as lastname','services.service_title as service_title','services.service_rate as service_rate','appointments.status as apptStatus','appointments.start_date as appointmentDate','appointments.id as appointmentId')
+                                            ->paginate(10);
         foreach($this->appointments as $appointment){
             if($appointment->start_date < date('Y-m-d')){
                 $appt = Appointment::where('id',$appointment->id)->where('status','pending')->first();

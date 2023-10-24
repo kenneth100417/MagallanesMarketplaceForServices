@@ -26,8 +26,8 @@
                 position: absolute;
                 left: 0;
                 top: 0;
-                width: 100vw;
-                height: auto;
+                width: 100%;
+                height: 100%;
                 object-fit: cover;
             }
             .content{
@@ -38,7 +38,7 @@
             /* Style for the wavy shape at the bottom */
             .wavy-shape {
                 position: absolute;
-                bottom: 0;
+                bottom: -7%;
                 left: 0;
                 width: 100%;
                 height: 300px; 
@@ -90,8 +90,9 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto text-center">
                         <li class="nav-item"><a class="nav-link mx-3" href="#home" style="font-size: 18px;">Home</a></li>
+                        <li class="nav-item"><a class="nav-link mx-3" href="#features" style="font-size: 18px;">Features</a></li>
                         <li class="nav-item"><a class="nav-link mx-3" href="#about" style="font-size: 18px;">About</a></li>
-                        <li class="nav-item"><a class="nav-link mx-3" href="#services" style="font-size: 18px;">Services</a></li>
+                        
                         <li class="nav-item ms-5">
                             <div class="btn-group signup-btn">
                                 <button type="button" class="btn dropdown-toggle text-light" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #2c64ac;">

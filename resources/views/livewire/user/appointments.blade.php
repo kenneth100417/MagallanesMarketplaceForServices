@@ -13,7 +13,8 @@
                         <th scope="col">Service Title</th>
                         <th scope="col">Appointment Date</th>
                         <th scope="col">Service Rate</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">Schedule Status</th>
+                        <th scope="col">Appointment Status</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -21,16 +22,23 @@
                     @forelse ($appointments as $appointment)
                         <tr>
                             <td class="overflow-auto" style="max-width: 150px;" >{{$appointment->service->service_title}}</td>
-                            <td style="max-width: 150px;">{{date("F d, Y",strtotime($appointment->start_date))}}</td>
+                            <td style="max-width: 150px;">{{date("F d, Y",strtotime($appointment->appointment_date))}}</td>
                             <td>&#8369;{{number_format($appointment->service->service_rate,2)}}</td>
-                            <td class="{{$appointment->status == 'pending' ? 'text-success':'text-warning'}}" style="min-width: 98px;">{{$appointment->status == 'pending' ? 'pending':'completed'}}</td>
+                            <td class="text-primary" style="max-width: 150px;">
+                                {{$appointment->other_appointed_customers_count == '0' && $appointment->appointmentStatus == 'pending' ? 'Your turn.':''}}
+                                {{$appointment->other_appointed_customers_count == '1' ? "You're next in line.":''}}
+                                {{$appointment->other_appointed_customers_count > '1' ? $appointment->other_appointed_customers_count." customers ahead.":''}}
+                            </td>
+                            <td class="{{$appointment->appointmentStatus == 'pending' ? 'text-success':''}}
+                                {{$appointment->appointmentStatus == 'served' ? 'text-warning':''}}
+                                {{$appointment->appointmentStatus == 'expired' ? 'text-danger':''}}" style="min-width: 98px;">{{$appointment->appointmentStatus == 'pending' ? 'Pending':''}}
+                                {{$appointment->appointmentStatus == 'served' ? 'Completed':''}}
+                                {{$appointment->appointmentStatus == 'expired' ? 'Expired':''}}</td>
                             <td style="max-width: 150px;">
                                 <div class="d-flex align-items-center">
-                                    <button class="btn btn-success btn-sm py-1 px-3 mx-1 " style="min-width: 90px !important; display:{{$appointment->status == 'served' ? 'none !important':''}}" onclick="location.href='{{url('/set_appointment/'.$appointment->service_id)}}'" >Edit</button>
-                                    <button class="btn btn-danger btn-sm py-1 px-3 mx-1" wire:click = 'Cancel({{$appointment->id}})' style="display:{{$appointment->status == 'served' ? 'none':''}}">Cancel</button>
-                                    <button class="btn btn-warning btn-sm py-1 px-3 mx-1" style="display:{{$appointment->status == 'served' ? 'block':'none'}}" wire:click="setRateID({{$appointment->service_id}})">Rate Service</button>
-
-                                    
+                                    <button class="btn btn-success btn-sm py-1 px-3 mx-1 " style="min-width: 90px !important; display:{{$appointment->appointmentStatus == 'served' || $appointment->appointmentStatus == 'expired' ? 'none !important':''}}" onclick="location.href='{{url('/set_appointment/'.$appointment->service_id)}}'" >Edit</button>
+                                    <button class="btn btn-danger btn-sm py-1 px-3 mx-1" wire:click = 'Cancel({{$appointment->apptId}})' style="display:{{$appointment->appointmentStatus == 'served' || $appointment->appointmentStatus == 'expired' ? 'none':''}}">Cancel</button>
+                                    <button class="btn btn-warning btn-sm py-1 px-3 mx-1" style="display:{{$appointment->appointmentStatus == 'served' ? 'block':'none'}}" wire:click="setRateID({{$appointment->service_id}})">Rate Service</button>
                                 </div>
                             </td>
                         </tr>

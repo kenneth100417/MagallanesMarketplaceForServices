@@ -110,7 +110,7 @@
                                 <h6 class="mb-0">Password</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <a class="btn btn-success btn-sm" >Change Password</a>
+                                <a class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#changePassword" >Change Password</a>
                             </div>
                         </div>
                         <hr>
@@ -142,7 +142,7 @@
                                 <div class="col-md-12">
                                     <h6 class="mb-2">Business Name</h6>
                                 <div class="d-flex justify-content-center">
-                                    <input name="business_name" type="text float-end" class="form-control" style="width: 400px !important" value="{{$user->business_name}}" required>
+                                    <input name="business_name" type="text" class="form-control" style="width: 400px !important" value="{{$user->business_name}}" required>
                                     @error('business_name')
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
@@ -154,7 +154,7 @@
                                 <div class="col-md-12">
                                     <h6 class="mb-2">Owner's Firstname</h6>
                                 <div class="d-flex justify-content-center">
-                                    <input name="firstname" type="text float-end"  class="form-control" style="width: 400px !important" value="{{$user->firstname}}" required>
+                                    <input name="firstname" type="text "  class="form-control" style="width: 400px !important" value="{{$user->firstname}}" required>
                                     @error('firstname')
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
@@ -166,7 +166,7 @@
                                 <div class="col-md-12">
                                     <h6 class="mb-2">Owner's Lastname</h6>
                                 <div class="d-flex justify-content-center">
-                                    <input name="lastname" type="text float-end"  class="form-control" style="width: 400px !important" value="{{$user->lastname}}" required>
+                                    <input name="lastname" type="text"  class="form-control" style="width: 400px !important" value="{{$user->lastname}}" required>
                                     @error('lastname')
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
@@ -178,7 +178,7 @@
                                 <div class="col-md-12">
                                     <h6 class="mb-2">Mobile Number</h6>
                                 <div class="d-flex justify-content-center">
-                                    <input name="mobile_number" type="text float-end"  class="form-control" style="width: 400px !important" value="{{$user->mobile_number}}" required>
+                                    <input name="mobile_number" type="text"  class="form-control" style="width: 400px !important" value="{{$user->mobile_number}}" required>
                                     @error('mobile_number')
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
@@ -190,7 +190,7 @@
                                 <div class="col-md-12">
                                     <h6 class="mb-2">Business Address</h6>
                                 <div class="d-flex justify-content-center">
-                                    <input name="business_address" type="text float-end"  class="form-control" style="width: 400px !important" value="{{$user->business_address}}" required>
+                                    <input name="business_address" type="text"  class="form-control" style="width: 400px !important" value="{{$user->business_address}}" required>
                                     @error('business_address')
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
@@ -202,6 +202,59 @@
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary" id="profile-update-button" disabled>Update</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+     <!-- Change Password Modal -->
+     <div class="modal fade" id="changePassword" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Edit Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{url('/sp_change_password')}}" method="POST" id="change-password-form">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <h6 class="mb-2">Current Password</h6>
+                                <div class="d-flex justify-content-center">
+                                    <input name="current_password" type="password" id="currentPass" class="form-control" style="width: 400px !important" required>
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <h6 class="mb-2">New Password</h6>
+                                <div class="d-flex justify-content-center">
+                                    <input name="password" type="password" id="newPass" class="form-control" style="width: 400px !important" required>
+                                </div>
+                                
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <h6 class="mb-2">Confirm New Password</h6>
+                                <div class="d-flex justify-content-center">
+                                    <input name="password_confirmation" type="password" id="confirmNewPass" class="form-control" style="width: 400px !important" required>
+                                </div>
+                                <p class="text-danger" id="errorMessage"></p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" id="changePassBtn" disabled>Submit</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     </div>
                 </form>
@@ -230,6 +283,32 @@
         changeProfilePicForm.addEventListener('change', function(){
             changeProfilePicForm.submit();
         });
+
+        //change password
+        var changePasswordForm = document.getElementById('change-password-form');
+        var submitButton = document.getElementById('changePassBtn');
+        var currentPass = document.getElementById('currentPass');
+        var newPass = document.getElementById('newPass');
+        var confirmNewPass = document.getElementById('confirmNewPass');
+        var errorMessage = document.getElementById('errorMessage');
+        var submitButton = document.getElementById('changePassBtn');
+
+        changePasswordForm.addEventListener('change', function(){
+            if(newPass.value != confirmNewPass.value){
+                errorMessage.innerHTML = "Password confirmation does not match."
+                submitButton.disabled = true;
+            }else{
+                if(newPass.value == currentPass.value){
+                    errorMessage.innerHTML = "Current password and new password cannot be the same."
+                    submitButton.disabled = true;
+                }else{
+                    errorMessage.innerHTML = ""
+                    submitButton.disabled = false;
+                }
+                
+            }
+        });
+
     </script>
    
 </main

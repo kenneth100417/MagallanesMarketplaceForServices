@@ -169,21 +169,18 @@
                 //currentDate.setDate(currentDate.getDate() + 1); // Set the current date to the day after the current date
                 var selectedDate = selectInfo.start;
             
-                return selectedDate >= currentDate;
+                return selectedDate >= currentDate;    
             },
             selectHelper: true,
             defaultView: 'month',
             select: function(start, end, allDays, info){
                 $('#appointmentModal').modal('toggle');
-
                 $('#saveBtn').click(function(){
-                    var start_date = moment(start).format('YYYY-MM-DD');
-                    var end_date = moment(end).format('YYYY-MM-DD');
+                    var start_date = moment(start).format('YYYY-MM-DD HH:mm:ss');
+                    var end_date = moment(end).format('YYYY-MM-DD HH:mm:ss');
                     $('#start_date').val(start_date);
                     $('#end_date').val(end_date);
-
-                    $('#form').submit();
-                    
+                    $('#form').submit(); 
                 });
             },
         });

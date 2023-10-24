@@ -38,19 +38,19 @@
                                 <div class="col-xl-12">
                                     <div class="form-group">
                                         <label for="service">Service Title</label>
-                                        <input name="service_title" type="text" class="form-control" id="service" placeholder="Enter service title">
+                                        <input name="service_title" type="text" class="form-control" placeholder="Enter service title">
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="description">Service Description</label>
-                                        <textarea name="service_description" class="form-control" id="service" placeholder="Enter service description"></textarea>
+                                        <textarea name="service_description" class="form-control" placeholder="Enter service description"></textarea>
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="service">Service Rate</label>
-                                        <input name="service_rate" type="number" class="form-control" id="service" placeholder="Enter service rate">
+                                        <input name="service_rate" type="number" class="form-control" >
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="service">Slot per day</label>
-                                        <input name="slot" type="number" class="form-control" id="service" placeholder="Enter maximum slot per day">
+                                        <input name="slot" type="number" class="form-control" id="serviceSlot" placeholder="Maximum Slot allowed: 100">
                                     </div>
                                 </div>
 
@@ -60,7 +60,7 @@
                     </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn" disabled>Submit</button>
                 </div>
                 </form>
             </div>
@@ -75,6 +75,32 @@
                 todayHighlight: true
             
            });
+
+        var slotInput = document.getElementById('serviceSlot');
+        var submitBtn = document.getElementById('submitBtn');
+
+        slotInput.addEventListener('change', function(){
+            submitBtn.disabled = true;
+
+            if(slotInput.value > 100 ){
+                Swal.fire({
+                title: 'Warning!',
+                text: "Maximum slot allowed is 100.",
+                icon: 'warning',
+                showCancelButton: false,
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Ok'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    slotInput.value = '';
+                    submitBtn.disabled = true
+                }
+                })
+            }else{
+            submitBtn.disabled = false;
+
+            }
+        });
       </script>
 
     

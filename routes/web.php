@@ -74,6 +74,8 @@ Route::middleware(['auth','isServiceProvider'])->group(function() {
         Route::post('/edit_sp_profile', 'spEditProfile');
         //change profile puc
         Route::post('/change_sp_profile_pic', 'spChangeProfilePic');
+        //change password
+        Route::post('/sp_change_password', 'spChangePassword');
     });
 
     Route::controller(App\Http\Controllers\User\ServiceController::class)->group(function() {

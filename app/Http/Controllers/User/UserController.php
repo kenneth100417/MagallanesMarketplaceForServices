@@ -197,6 +197,29 @@ class UserController extends Controller
 
         
     }
+    //change Password
+    public function spChangePassword(Request $request){
+        $validated = $request->validate([
+            'current_password' => ['required'],
+            'password' => 'required|confirmed|min:6',
+        ]);
+
+        $user = User::where('id', auth()->user()->id)->first();
+
+        if($validated){
+            $currentPasswordStatus = Hash::check($validated['current_password'], $user->password);
+            if($currentPasswordStatus){
+                $validated['password'] = Hash::make($validated['password']);
+                $user->update([
+                    'password' => $validated['password']
+                ]);
+                return redirect()->back()->with('success','Your password has been changed. You can now use your new password the next time you log in.');
+            }else{
+                return redirect()->back()->with('error','Incorrect current password.');
+            }
+    
+        }
+    }
 
     //Admin Pages
     public function AdminDashboard(){
@@ -288,8 +311,8 @@ class UserController extends Controller
     public function addCustomer(Request $request){
         
         $validated = $request->validate([
-            'firstname' => ['required'],
-            'lastname' => ['required'],
+            'firstname' => 'required|regex:/^[A-Za-z\s]+$/',
+            'lastname' => 'required|regex:/^[A-Za-z\s]+$/',
             'mobile_number' => ['required','min:11','numeric',Rule::unique('customers', 'mobile_number')],
             'address' => ['required'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
@@ -328,10 +351,10 @@ class UserController extends Controller
     public function addServiceProvider(Request $request){
         
         $validated = $request->validate([
-            'business_name' => ['required'],
-            'business_address' => ['required'],
-            'firstname' => ['required'],
-            'lastname' => ['required'],
+            'business_name' => 'required|regex:/^[A-Za-z\s]+$/',
+            'business_address' => 'required',
+            'firstname' => 'required|regex:/^[A-Za-z\s]+$/',
+            'lastname' => 'required|regex:/^[A-Za-z\s]+$/',
             'mobile_number' => ['required','min:11','numeric',Rule::unique('customers', 'mobile_number')],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => 'required|confirmed|min:6'
