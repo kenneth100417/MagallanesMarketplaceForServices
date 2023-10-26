@@ -56,9 +56,9 @@
             <div class=" form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <ul class="d-none d-md-inline-block navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img class="bg-info rounded-circle border border-info border-1" src="{{url($user->photo)}}" alt="{{$user->firstname}} {{$user->lastname}}" style="width: 35px; height: 35px;object-fit:cover;"></a>
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img class="bg-info rounded-circle border border-info border-1" src="{{url($user->photo)}}" alt="" style="width: 35px; height: 35px;object-fit:cover;"></a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{{url('/service_provider_profile')}}">Update Profile</a></li>
+                            <li><a class="dropdown-item" href="{{url('/service_provider_profile')}}">Manage Account</a></li>
                             <li><a class="dropdown-item text-info" href="{{url('/logout')}}">Logout</a></li>
                         </ul>
                     </li>
