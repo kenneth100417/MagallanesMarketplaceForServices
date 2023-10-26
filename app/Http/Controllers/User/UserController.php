@@ -311,30 +311,30 @@ class UserController extends Controller
     public function addCustomer(Request $request){
         
         $validated = $request->validate([
-            'firstname' => 'required|regex:/^[A-Za-z\s]+$/',
-            'lastname' => 'required|regex:/^[A-Za-z\s]+$/',
-            'mobile_number' => ['required','min:11','numeric',Rule::unique('customers', 'mobile_number')],
-            'address' => ['required'],
-            'email' => ['required', 'email', Rule::unique('users', 'email')],
-            'password' => 'required|confirmed|min:6'
+            'Firstname' => 'required|regex:/^[A-Za-z\s]+$/',
+            'Lastname' => 'required|regex:/^[A-Za-z\s]+$/',
+            'Mobile_number' => ['required','min:11','numeric',Rule::unique('customers', 'mobile_number')],
+            'Address' => ['required'],
+            'Email' => ['required', 'email', Rule::unique('users', 'email')],
+            'Password' => 'required|confirmed|min:6'
         ]);
         
-        $validated['password'] = Hash::make($validated['password']);
+        $validated['Password'] = Hash::make($validated['Password']);
 
         if($validated){
             $user = User::create([
-                'email' => $validated['email'],
-                'password' => $validated['password'],
+                'email' => $validated['Email'],
+                'password' => $validated['Password'],
                 'access' => 'customer'
             ]);
 
             if($user){
                 Customer::create([
                     'user_id' => $user->id,
-                    'firstname' => $validated['firstname'],
-                    'lastname' => $validated['lastname'],
-                    'mobile_number' => $validated['mobile_number'],
-                    'address' => $validated['address']
+                    'firstname' => $validated['Firstname'],
+                    'lastname' => $validated['Lastname'],
+                    'mobile_number' => $validated['Mobile_number'],
+                    'address' => $validated['Address']
                 ]);
             }else{
                 return redirect()->back()->with('message', 'An Error Occured.');

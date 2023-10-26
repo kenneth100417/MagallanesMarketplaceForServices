@@ -85,26 +85,26 @@
                                         
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input class="form-control text-dark" type="text" name="firstname" placeholder="Firstname"  value="{{old('firstname')}}">
-                                        @error('firstname')
+                                        <input class="form-control text-dark" type="text" name="Firstname" placeholder="Firstname"  value="{{old('Firstname')}}">
+                                        @error('Firstname')
                                             <small class="text-danger">{{$message}}</small>
                                         @enderror
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input class="form-control text-dark" type="text" name="lastname" placeholder="Lastname"  value="{{old('lastname')}}">
-                                        @error('lastname')
+                                        <input class="form-control text-dark" type="text" name="Lastname" placeholder="Lastname"  value="{{old('Lastname')}}">
+                                        @error('Lastname')
                                             <small class="text-danger">{{$message}}</small>
                                         @enderror
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input class="form-control text-dark" type="text" name="mobile_number" placeholder="Mobile Number"  value="{{old('mobile_number')}}">
-                                        @error('mobile_number')
+                                        <input class="form-control text-dark" type="text" name="Mobile_number" placeholder="Mobile Number"  value="{{old('Mobile_number')}}">
+                                        @error('Mobile_number')
                                             <small class="text-danger">{{$message}}</small>
                                         @enderror
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input class="form-control text-dark" type="text" name="address" placeholder="Complete Address"  value="{{old('address')}}">
-                                        @error('address')
+                                        <input class="form-control text-dark" type="text" name="Address" placeholder="Complete Address"  value="{{old('Address')}}">
+                                        @error('Address')
                                             <small class="text-danger">{{$message}}</small>
                                         @enderror
                                     </div>
@@ -112,19 +112,19 @@
                                         <h5 class="text-dark"><small>Account Details</small></h5>
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input class="form-control text-dark" type="email" name="email" placeholder="Email"  value="{{old('email')}}">
-                                        @error('email')
+                                        <input class="form-control text-dark" type="email" name="Email" placeholder="Email"  value="{{old('Email')}}">
+                                        @error('Email')
                                             <small class="text-danger">{{$message}}</small>
                                         @enderror
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input class="form-control text-dark" type="password" name="password" placeholder="Password"  value="{{old('password')}}">
-                                        @error('password')
+                                        <input class="form-control text-dark" type="password" name="Password" placeholder="Password"  value="{{old('Password')}}">
+                                        @error('Password')
                                             <small class="text-danger">{{$message}}</small>
                                         @enderror
                                     </div>
                                     <div class="form-group mt-2">
-                                        <input class="form-control text-dark" type="password" name="password_confirmation" placeholder="Confirm Password"  value="{{old('password_confirmation')}}">
+                                        <input class="form-control text-dark" type="password" name="Password_confirmation" placeholder="Confirm Password"  value="{{old('password_confirmation')}}">
                                         @error('password_confirmation')
                                             <small class="text-danger">{{$message}}</small>
                                         @enderror

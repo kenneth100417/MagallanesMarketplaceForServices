@@ -19,6 +19,128 @@
 </script>
 @endif
 
+{{-- Customer REgistration --}}
+@error('Firstname')
+<script>
+    Swal.fire(
+        'Oops!',
+        '{{$message}}',
+        'info'
+    );
+</script>
+@enderror
+
+@error('Lastname')
+<script>
+    Swal.fire(
+        'Oops!',
+        '{{$message}}',
+        'info'
+    );
+</script>
+@enderror
+
+@error('Address')
+<script>
+    Swal.fire(
+        'Oops!',
+        '{{$message}}',
+        'info'
+    );
+</script>
+@enderror
+
+@error('Mobile_number')
+<script>
+    Swal.fire(
+        'Oops!',
+        '{{$message}}',
+        'info'
+    );
+</script>
+@enderror
+
+@error('Email')
+<script>
+    Swal.fire(
+        'Oops!',
+        '{{$message}}',
+        'info'
+    );
+</script>
+@enderror
+
+@error('Password')
+<script>
+    Swal.fire(
+        'Oops!',
+        '{{$message}}',
+        'info'
+    );
+</script>
+@enderror
+
+{{-- SErvice Provider Registration --}}
+@error('business_name')
+<script>
+    Swal.fire(
+        'Oops!',
+        '{{$message}}',
+        'info'
+    );
+</script>
+@enderror
+
+@error('business_address')
+<script>
+    Swal.fire(
+        'Oops!',
+        '{{$message}}',
+        'info'
+    );
+</script>
+@enderror
+
+@error('firstname')
+<script>
+    Swal.fire(
+        'Oops!',
+        '{{$message}}',
+        'info'
+    );
+</script>
+@enderror
+
+@error('lastname')
+<script>
+    Swal.fire(
+        'Oops!',
+        '{{$message}}',
+        'info'
+    );
+</script>
+@enderror
+
+@error('address')
+<script>
+    Swal.fire(
+        'Oops!',
+        '{{$message}}',
+        'info'
+    );
+</script>
+@enderror
+
+@error('mobile_number')
+<script>
+    Swal.fire(
+        'Oops!',
+        '{{$message}}',
+        'info'
+    );
+</script>
+@enderror
+
 @error('email')
 <script>
     Swal.fire(
