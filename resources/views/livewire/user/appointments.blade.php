@@ -53,6 +53,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
+                                        <label for="">Star Rating:</label>
                                         <div class="rating d-flex flex-row-reverse justify-content-center ">
                                             <input type="radio" id="star5" name="rating" value="5">
                                             <label for="star5"><i class="fa fa-star fa-lg"></i></label>
@@ -64,6 +65,10 @@
                                             <label for="star2"><i class="fa fa-star fa-lg"></i></label>
                                             <input type=radio id="star1" name="rating" value="1" checked>
                                             <label for="star1"><i class="fa fa-star fa-lg"></i></label>
+                                        </div>
+                                        <div class="mt-3">
+                                            <label for="" class="mb-1">Comment (Optional):</label>
+                                            <textarea name="comment" cols="30" rows="5" class="form-control" placeholder="Your comment here.."></textarea>
                                         </div>
                                     </div>
                                     <div class="modal-footer">

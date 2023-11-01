@@ -44,19 +44,20 @@ class ServiceController extends Controller
             $service = Rating::where('service_id',$service_id)->where('user_id',auth()->user()->id)->first();
             if($service){
                 $service->update([
-                    'rating' => request('rating')
+                    'rating' => request('rating'),
+                    'comment' => request('comment')
                 ]);
                 return redirect()->back()->with('success', 'Rating Successfully Updated!');
             }else{
                 Rating::create([
                     'user_id' => auth()->user()->id,
                     'service_id' => $service_id,
-                    'rating' => request('rating')
+                    'rating' => request('rating'),
+                    'comment' => request('comment'),
                 ]);
                 return redirect()->back()->with('success', 'Thank you for your feedback! Your rating has been successfully submitted.');
             }
         }
         return redirect()->back()->with('error', 'Rating cannot be empty.');
-
     }
 }
