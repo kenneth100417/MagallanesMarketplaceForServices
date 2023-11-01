@@ -58,7 +58,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img class="bg-info rounded-circle border border-info border-1" src="{{url($user->photo)}}" alt="" style="width: 35px; height: 35px;object-fit:cover;"></a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{{url('/service_provider_profile')}}">Manage Account</a></li>
+                            <li><a class="dropdown-item" href="{{url('/user_profile')}}">Manage Account</a></li>
                             <li><a class="dropdown-item text-info" href="{{url('/logout')}}">Logout</a></li>
                         </ul>
                     </li>

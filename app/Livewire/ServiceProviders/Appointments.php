@@ -16,7 +16,7 @@ class Appointments extends Component
     protected $listeners = ['search' => 'searchTerm'];
     protected $paginationTheme = 'bootstrap';
     protected $appointments;
-    public $sort = '';
+    public $sort = 'pending';
     public $sortDate = '';
     public $search;
     public $term;
@@ -37,6 +37,7 @@ class Appointments extends Component
     }
     public function showToday(){
         $this->sortDate = date('Y-m-d');
+        $this->sort = '';
     }
     public function showAll(){
         $this->sort = '';
@@ -50,8 +51,7 @@ class Appointments extends Component
         //                                     ->where('status', 'like','%'.$this->sort.'%')
         //                                     ->where('start_date', 'like','%'.$this->sortDate.'%')
         //                                     ->where('service_title', 'like', '%' . $this->term . '%')
-        //                                     ->paginate(10);
-                                            
+        //                                     ->paginate(10);                             
         $this->appointments = Appointment::join('services', 'appointments.service_id', '=', 'services.id')
                                             ->join('customers', 'appointments.customer_id', '=', 'customers.user_id')
                                             ->where('appointments.service_provider_id', $user->id)
@@ -60,6 +60,7 @@ class Appointments extends Component
                                             ->where('services.service_title', 'like', '%' . $this->term . '%')
                                             ->select('customers.firstname as firstname','customers.lastname as lastname','services.service_title as service_title','services.service_rate as service_rate','appointments.status as apptStatus','appointments.start_date as appointmentDate','appointments.id as appointmentId')
                                             ->paginate(10);
+
         foreach($this->appointments as $appointment){
             if($appointment->start_date < date('Y-m-d')){
                 $appt = Appointment::where('id',$appointment->id)->where('status','pending')->first();

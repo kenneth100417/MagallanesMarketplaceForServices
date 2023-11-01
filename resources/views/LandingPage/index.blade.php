@@ -2,7 +2,7 @@
        
         <!-- home section-->
         <section id="home" class="wavy-section" >
-            <img src="assets/img/Magallanes_view.jpg" alt="" class="img-background">
+            <img src="assets/img/background.png" alt="" class="img-background">
             <div class="content">
                 <div class="container-fluid px-4">
                     <div class="row" >
@@ -19,10 +19,10 @@
                             </button>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#customerRegistration" style="cursor: pointer;">Customer</a>
+                                    <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#customerRegistration1" style="cursor: pointer;">Customer</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#serviceProviderRegistration" style="cursor: pointer">Service Provider</a>
+                                    <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#serviceProviderRegistration1" style="cursor: pointer">Service Provider</a>
                                 </li>
                             </ul>
                         </div>
@@ -41,7 +41,7 @@
                             <form action="/login" method="post" role="form" style="padding: 30px !important">
                                 @csrf
                                 <div class="position-absolute end-0 top-0">
-                                    <button type="button" class="btn-close me-2 mt-2" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close me-3 mt-3" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="d-flex justify-content-center">
                                     <img class="p-0" src="assets/img/logo.png" alt="Marketplace Services" style="width: 200px; filter: drop-shadow(2px 2px 2px white) !important;">
@@ -66,15 +66,67 @@
         </div>
 
         <!-- Customer Registration Modal -->
-        <div class="modal fade" id="customerRegistration" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        
+        <form action="/add-customer" method="post" role="form" >
+            @csrf
+        <div class="modal fade customerRegModal1" id="customerRegistration1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" >
                 <div class="modal-content" style="background: none; border:none">
                     <div class="modal-body d-flex justify-content-center">
-                        <div class="login-dark position-relative" style="width: 300px">
-                            <form action="/add-customer" method="post" role="form" style="padding: 30px !important">
-                                @csrf
+                        <div class="login-dark position-relative" style="width: 300px; padding: 30px;">
                                 <div class="position-absolute end-0 top-0">
-                                    <button type="button" class="btn-close me-2 mt-2" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close me-3 mt-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="d-flex justify-content-center mb-0 ">
+                                    <img class="p-0" src="assets/img/logo.png" alt="Marketplace Services" style="width: 200px; filter: drop-shadow(2px 2px 2px white) !important;">
+                                </div>
+                                <div class="">
+                                    <div class="form-group mt-3">
+                                        <h5 class="text-dark"><small>Account Details</small></h5>
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <input class="form-control text-dark" type="email" name="Email" placeholder="Email"  value="{{old('Email')}}">
+                                        @error('Email')
+                                            <small class="text-danger">{{$message}}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <input class="form-control text-dark" type="password" name="Password" placeholder="Password"  value="{{old('Password')}}">
+                                        @error('Password')
+                                            <small class="text-danger">{{$message}}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <input class="form-control text-dark" type="password" name="Password_confirmation" placeholder="Confirm Password"  value="{{old('password_confirmation')}}">
+                                        @error('password_confirmation')
+                                            <small class="text-danger">{{$message}}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group d-flex justify-content-center">
+                                    <button class="btn btn-primary btn-block py-1 px-4" type="button" data-bs-toggle="modal" data-bs-target="#customerRegistration2">Next</button>
+                                </div>
+                                <div class="d-flex justify-content-center mt-3">
+                                    <span class="text-dark text-sm" style="font-size: 13px;">Already have an account?<a data-bs-toggle="modal" data-bs-target="#login" class=" mx-1" style="color: #2c64ac; cursor: pointer;">Log In</a></span>
+                                </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+
+        <div class="modal fade customerRegModal2" id="customerRegistration2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" >
+                <div class="modal-content" style="background: none; border:none">
+                    <div class="modal-body d-flex justify-content-center">
+                        <div class="login-dark position-relative" style="width: 300px; padding: 30px">
+                                <div class="position-absolute end-0 top-0">
+                                    <button type="button" class="btn-close me-3 mt-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="position-absolute start-0 top-0">
+                                    <button type="button" class="btn ms-2 mt-2" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="modal" data-bs-target="#customerRegistration1">
+                                        <i class="fa fa-arrow-left fa-lg" aria-hidden="true" style="color: gray"></i>
+                                    </button>
                                 </div>
                                 <div class="d-flex justify-content-center mb-0 ">
                                     <img class="p-0" src="assets/img/logo.png" alt="Marketplace Services" style="width: 200px; filter: drop-shadow(2px 2px 2px white) !important;">
@@ -108,51 +160,85 @@
                                             <small class="text-danger">{{$message}}</small>
                                         @enderror
                                     </div>
-                                    <div class="form-group mt-3">
-                                        <h5 class="text-dark"><small>Account Details</small></h5>
-                                    </div>
-                                    <div class="form-group mt-2">
-                                        <input class="form-control text-dark" type="email" name="Email" placeholder="Email"  value="{{old('Email')}}">
-                                        @error('Email')
-                                            <small class="text-danger">{{$message}}</small>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group mt-2">
-                                        <input class="form-control text-dark" type="password" name="Password" placeholder="Password"  value="{{old('Password')}}">
-                                        @error('Password')
-                                            <small class="text-danger">{{$message}}</small>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group mt-2">
-                                        <input class="form-control text-dark" type="password" name="Password_confirmation" placeholder="Confirm Password"  value="{{old('password_confirmation')}}">
-                                        @error('password_confirmation')
-                                            <small class="text-danger">{{$message}}</small>
-                                        @enderror
-                                    </div>
                                 </div>
                                 <div class="form-group d-flex justify-content-center">
-                                    <button class="btn btn-primary btn-block py-1 px-2" type="submit">Sign Up</button>
+                                    <button class="btn btn-primary btn-block py-1 px-4" type="submit">Sign Up</button>
                                 </div>
                                 <div class="d-flex justify-content-center mt-3">
                                     <span class="text-dark text-sm" style="font-size: 13px;">Already have an account?<a data-bs-toggle="modal" data-bs-target="#login" class=" mx-1" style="color: #2c64ac; cursor: pointer;">Log In</a></span>
                                 </div>
-                            </form>
                         </div>
                     </div>
                 </div>  
             </div>
         </div>
+    </form>
+
+
+
         
          <!-- Service Provider Registration Modal -->
-         <div class="modal fade" id="serviceProviderRegistration" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+         <form method="post" action="/add-service-provider">
+            @csrf
+         <div class="modal fade" id="serviceProviderRegistration1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content" style="background: none; border:none">
                     <div class="modal-body d-flex justify-content-center">
-                        <div class="login-dark position-relative" style="width: 300px">
-                            <form method="post" action="/add-service-provider" style="padding: 30px !important">
-                                @csrf
+                        <div class="login-dark position-relative" style="width: 300px; padding: 30px !important">
                                 <div class="position-absolute end-0 top-0">
-                                    <button type="button" class="btn-close me-2 mt-2" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close me-3 mt-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="d-flex justify-content-center mb-0 mt-n5">
+                                    <img class="p-0 pt-n5" src="assets/img/logo.png" alt="Marketplace Services" style="width: 200px; filter: drop-shadow(2px 2px 2px white) !important;">
+                                </div>
+                                <div>
+                                    <div class="form-group mt-3">
+                                        <h5 class="text-dark"><small>Acount Details</small></h5>
+                                    </div>
+                                    <div class="form-group mt-1">
+                                        <input class="form-control text-dark" type="email" name="email" placeholder="Email"  value="{{old('email')}}">
+                                        @error('email')
+                                             <small class="text-danger">{{$message}}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <input class="form-control text-dark" type="password" name="password" placeholder="Password"  value="{{old('password')}}">
+                                        @error('password')
+                                             <small class="text-danger">{{$message}}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <input class="form-control text-dark" type="password" name="password_confirmation" placeholder="Confirm Password"  value="{{old('confirm_password')}}">
+                                        @error('password_confirmation')
+                                             <small class="text-danger">{{$message}}</small>
+                                        @enderror
+                                    </div>
+                                    
+                                </div>
+                                <div class="form-group d-flex justify-content-center">
+                                    <button class="btn btn-primary btn-block py-1 px-4" data-bs-toggle="modal" data-bs-target="#serviceProviderRegistration2" type="button">Next</button>
+                                </div>
+                                <div class="d-flex justify-content-center mt-3">
+                                    <span class="text-dark text-sm" style="font-size: 13px;">Already have an account?<a data-bs-toggle="modal" data-bs-target="#login" class=" mx-1" style="color: #2c64ac; cursor: pointer">Log In</a></span>
+                                </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+
+        <div class="modal fade" id="serviceProviderRegistration2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="background: none; border:none">
+                    <div class="modal-body d-flex justify-content-center">
+                        <div class="login-dark position-relative" style="width: 300px; padding: 30px">
+                                <div class="position-absolute end-0 top-0">
+                                    <button type="button" class="btn-close me-3 mt-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="position-absolute start-0 top-0">
+                                    <button type="button" class="btn ms-2 mt-2" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="modal" data-bs-target="#serviceProviderRegistration1">
+                                        <i class="fa fa-arrow-left fa-lg" aria-hidden="true" style="color: gray"></i>
+                                    </button>
                                 </div>
                                 <div class="d-flex justify-content-center mb-0 mt-n5">
                                     <img class="p-0 pt-n5" src="assets/img/logo.png" alt="Marketplace Services" style="width: 200px; filter: drop-shadow(2px 2px 2px white) !important;">
@@ -191,42 +277,19 @@
                                              <small class="text-danger">{{$message}}</small>
                                         @enderror
                                     </div>
-                                    <div class="form-group mt-3">
-                                        <h5 class="text-dark"><small>Acount Details</small></h5>
-                                    </div>
-                                    <div class="form-group mt-1">
-                                        <input class="form-control text-dark" type="email" name="email" placeholder="Email"  value="{{old('email')}}">
-                                        @error('email')
-                                             <small class="text-danger">{{$message}}</small>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group mt-2">
-                                        <input class="form-control text-dark" type="password" name="password" placeholder="Password"  value="{{old('password')}}">
-                                        @error('password')
-                                             <small class="text-danger">{{$message}}</small>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group mt-2">
-                                        <input class="form-control text-dark" type="password" name="password_confirmation" placeholder="Confirm Password"  value="{{old('confirm_password')}}">
-                                        @error('password_confirmation')
-                                             <small class="text-danger">{{$message}}</small>
-                                        @enderror
-                                    </div>
-                                    
                                 </div>
                                 <div class="form-group d-flex justify-content-center">
-                                    <button class="btn btn-primary btn-block py-1 px-2" type="submit">Sign Up</button>
+                                    <button class="btn btn-primary btn-block py-1 px-4" type="submit">Sign Up</button>
                                 </div>
                                 <div class="d-flex justify-content-center mt-3">
                                     <span class="text-dark text-sm" style="font-size: 13px;">Already have an account?<a data-bs-toggle="modal" data-bs-target="#login" class=" mx-1" style="color: #2c64ac; cursor: pointer">Log In</a></span>
                                 </div>
-                            </form>
                         </div>
                     </div>
                 </div>  
             </div>
         </div>
-       
+         </form>
        
 @include('LandingPage.partials.sections')
 

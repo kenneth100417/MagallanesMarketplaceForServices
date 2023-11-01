@@ -22,7 +22,7 @@
                 position: relative;
             }
             .img-background{
-                opacity: 0.7;
+                opacity: 0.8;
                 position: absolute;
                 left: 0;
                 top: 0;
@@ -100,10 +100,10 @@
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     <li>
-                                        <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#customerRegistration" style="cursor: pointer;">Customer</a>
+                                        <a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#customerRegistration1" style="cursor: pointer;">Customer</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#serviceProviderRegistration" style="cursor: pointer">Service Provider</a>
+                                        <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#serviceProviderRegistration1" style="cursor: pointer">Service Provider</a>
                                     </li>
                                 </ul>
                             </div>
