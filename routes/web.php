@@ -27,7 +27,7 @@ Route::controller(App\Http\Controllers\User\UserController::class)->group(functi
 });
 
 
-Route::middleware(['auth','isCustomer'])->group(function() {
+Route::middleware(['auth','isCustomer'])->name('customer')->group(function() {
 
     Route::controller(App\Http\Controllers\User\UserController::class)->group(function(){
         Route::get('/user_dashboard','UserDashboard');
@@ -62,7 +62,7 @@ Route::middleware(['auth','isCustomer'])->group(function() {
 });
 
 
-Route::middleware(['auth','isServiceProvider'])->group(function() {
+Route::middleware(['auth','isServiceProvider'])->name('service_provider')->group(function() {
     
     Route::controller(App\Http\Controllers\User\UserController::class)->group(function() {
         Route::get('/service_provider_dashboard', 'ProviderDashboard');
@@ -90,7 +90,7 @@ Route::middleware(['auth','isServiceProvider'])->group(function() {
 });
 
 
-Route::controller(App\Http\Controllers\User\UserController::class)->middleware(['auth','isAdmin'])->group(function() {
+Route::controller(App\Http\Controllers\User\UserController::class)->middleware(['auth','isAdmin'])->name('admin')->group(function() {
     
     Route::get('/admin_dashboard', 'AdminDashboard');
     Route::get('/admin_service_providers', 'AdminServiceProvider');
