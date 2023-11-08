@@ -34,6 +34,7 @@
                                 <small class="text-danger">{{$message}}</small>
                             @enderror
                         </div>
+                        
                         <div class="form-group mt-2">
                             <input class="form-control text-dark" type="text" name="Address" placeholder="Complete Address"  value="{{old('Address')}}">
                             @error('Address')

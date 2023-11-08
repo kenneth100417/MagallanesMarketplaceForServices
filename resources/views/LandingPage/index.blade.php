@@ -253,12 +253,7 @@
                                              <small class="text-danger">{{$message}}</small>
                                         @enderror
                                     </div>
-                                    <div class="form-group mt-2">
-                                        <input class="form-control text-dark" type="text" name="business_address" placeholder="Business Address"   value="{{old('business_address')}}">
-                                        @error('business_address')
-                                             <small class="text-danger">{{$message}}</small>
-                                        @enderror
-                                    </div>
+                                    
                                     <div class="form-group mt-2">
                                         <input class="form-control text-dark" type="text" name="firstname" placeholder="Owner's Firstname"  value="{{old('firstname')}}">
                                         @error('firstname')
@@ -277,8 +272,63 @@
                                              <small class="text-danger">{{$message}}</small>
                                         @enderror
                                     </div>
+                                    <div class="form-group mt-2">
+                                        <input class="form-control text-dark" type="text" name="street" placeholder="Purok/Street/House No."   id="street">
+                                        @error('Address')
+                                            <small class="text-danger">{{$message}}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <select class="form-control text-dark" type="text" name="Barangay Select" id="selectedAddress">
+                                            <option value="">Select Address</option>
+                                            <option value="Aguada Norte, Magallanes Sorsogon">Aguada Norte</option>
+                                            <option value="Aguada Sur, Magallanes Sorsogon">Aguada Sur</option>
+                                            <option value="Anibong, Magallanes Sorsogon">Anibong</option>
+                                            <option value="Bacalon, Magallanes Sorsogon">Bacalon</option>
+                                            <option value="Bacolod, Magallanes Sorsogon">Bacolod</option>
+                                            <option value="Banacud, Magallanes Sorsogon">Banacud</option>
+                                            <option value="Biga, Magallanes Sorsogon">Biga</option>
+                                            <option value="Behia, Magallanes Sorsogon">Behia</option>
+                                            <option value="Binisitahan del Norte, Magallanes Sorsogon">Binisitahan del Norte</option>
+                                            <option value="Binisitahan del Sur, Magallanes Sorsogon">Binisitahan del Sur</option>
+                                            <option value="Biton, Magallanes Sorsogon">Biton</option>
+                                            <option value="Bulala, Magallanes Sorsogon">Bulala</option>
+                                            <option value="Busay, Magallanes Sorsogon">Busay</option>
+                                            <option value="Caditaan, Magallanes Sorsogon">Caditaan</option>
+                                            <option value="Cagbolo, Magallanes Sorsogon">Cagbolo</option>
+                                            <option value="Cagtalaba, Magallanes Sorsogon">Cagtalaba</option>
+                                            <option value="Cawit Extension, Magallanes Sorsogon">Cawit Extension</option>
+                                            <option value="Cawit Proper, Magallanes Sorsogon">Cawit Proper</option>
+                                            <option value="Ginangra, Magallanes Sorsogon">Ginangra</option>
+                                            <option value="Hubo, Magallanes Sorsogon">Hubo</option>
+                                            <option value="Incarizan, Magallanes Sorsogon">Incarizan</option>
+                                            <option value="Lapinig, Magallanes Sorsogon">Lapinig</option>
+                                            <option value="Magsaysay, Magallanes Sorsogon">Magsaysay</option>
+                                            <option value="Malbog, Magallanes Sorsogon">Malbog</option>
+                                            <option value="Pantalan, Magallanes Sorsogon">Pantalan</option>
+                                            <option value="Pawik, Magallanes Sorsogon">Pawik</option>
+                                            <option value="Pili, Magallanes Sorsogon">Pili</option>
+                                            <option value="Poblacion, Magallanes Sorsogon">Poblacion</option>
+                                            <option value="Salvacion, Magallanes Sorsogon">Salvacion</option>
+                                            <option value="Santa Elena, Magallanes Sorsogon">Santa Elena</option>
+                                            <option value="Siuton, Magallanes Sorsogon">Siuton</option>
+                                            <option value="Tagas, Magallanes Sorsogon">Tagas</option>
+                                            <option value="Tulatula Norte, Magallanes Sorsogon">Tulatula Norte</option>
+                                            <option value="Tulatula Sur, Magallanes Sorsogon">Tulatula Sur</option>
+                                        </select>
+                                        @error('Address')
+                                            <small class="text-danger">{{$message}}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <input id="business_address" class="form-control text-dark" type="text" name="business_address" placeholder="Business Address"   value="{{old('business_address')}}" hidden readonly>
+                                        <a type="button" class="float-end text-success text-sm" id="editAdd">Edit Address</a>
+                                        @error('business_address')
+                                             <small class="text-danger">{{$message}}</small>
+                                        @enderror
+                                    </div>
                                 </div>
-                                <div class="form-group d-flex justify-content-center">
+                                <div class="form-group d-flex justify-content-center mt-2 w-100">
                                     <button class="btn btn-primary btn-block py-1 px-4" type="submit">Sign Up</button>
                                 </div>
                                 <div class="d-flex justify-content-center mt-3">
