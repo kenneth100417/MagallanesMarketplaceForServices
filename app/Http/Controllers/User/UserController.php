@@ -243,6 +243,10 @@ class UserController extends Controller
     
         }
     }
+    public function serviceProviderTopServices(){
+        $user = ServiceProvider::where('user_id',Auth()->user()->id)->first();
+        return view('ServiceProviderPages.top_services',compact('user'));
+    }
 
     //Admin Pages
     public function AdminDashboard(){
@@ -269,7 +273,7 @@ class UserController extends Controller
         $user = Admin::where('user_id',Auth()->user()->id)->first();
         return view('AdminPages.profile',compact('user'));
     }
-    public function TopServices(){
+    public function adminTopServices(){
         $user = Admin::where('user_id',Auth()->user()->id)->first();
         return view('AdminPages.top_services',compact('user'));
     }

@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Livewire\Admin\TopServices;
+namespace App\Livewire\ServiceProviders\TopServices;
 
-use App\Models\Service;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 
 class Index extends Component
 {
+
     public $searchTerm;
     public $term = "";
 
     public function search(){
         $this->term = $this->searchTerm;
     }
-    
+
+
     public function render()
     {
         $topServices = DB::table('services')
@@ -23,8 +24,9 @@ class Index extends Component
                                 ->select('services.id', 'services.service_title','services.service_description', 'service_providers.business_name as service_provider', DB::raw('AVG(ratings.rating) as average_rating'))
                                 ->groupBy('services.id', 'services.service_title','services.service_description','service_providers.business_name')
                                 ->orderBy('average_rating', 'DESC')
+                                ->where('services.service_provider_id',auth()->user()->id)
                                 ->where('services.service_title','like','%' . $this->term . '%')
                                 ->get();
-        return view('livewire.admin.top-services.index',['topServices' => $topServices]);
+        return view('livewire.service-providers.top-services.index',['topServices' => $topServices]);
     }
 }

@@ -42,6 +42,10 @@
             .fc-content{
                 padding: 10 0px;
             }
+
+            .checked{
+                color: #ffc107;
+            }
         </style>
 
         @livewireStyles

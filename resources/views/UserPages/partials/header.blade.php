@@ -43,6 +43,10 @@
             .rating input:checked ~ label {
             color: gold;
             }
+
+            .checked{
+                color: #ffc107;
+            }
         </style>
     </head>
     <body class="sb-nav-fixed">

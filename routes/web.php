@@ -71,6 +71,8 @@ Route::middleware(['auth','isServiceProvider'])->name('service_provider')->group
         Route::get('/service_provider_services', 'ProviderServices');
         Route::get('/service_provider_appointments', 'ProviderAppointments');
         Route::get('/service_provider_profile', 'ProviderProfile');
+        Route::get('/service_provider_top_services', 'serviceProviderTopServices');
+
 
         //edit Profile
         Route::post('/edit_sp_profile', 'spEditProfile');
@@ -98,7 +100,7 @@ Route::controller(App\Http\Controllers\User\UserController::class)->middleware([
     Route::get('/admin_service_providers', 'AdminServiceProvider');
     Route::get('/admin_customers', 'AdminCustomer');
     Route::get('/admin_profile', 'AdminProfile');
-    Route::get('/admin_top_services', 'TopServices');
+    Route::get('/admin_top_services', 'adminTopServices');
 
     //edit Profile
     Route::post('/edit_ad_profile', 'adEditProfile');

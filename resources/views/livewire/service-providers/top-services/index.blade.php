@@ -6,7 +6,7 @@
         <div>
             <div class="input-group mt-4 px-4">
                 <input class="form-control " type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" wire:model = "searchTerm"/>
-                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search" wire:click = "search()"></i></button>
+                <button class="btn btn-primary" id="btnNavbarSearch" type="button" wire:click = "search()"><i class="fas fa-search"></i></button>
             </div>
         </div>
     </div>
