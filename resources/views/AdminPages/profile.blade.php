@@ -93,7 +93,7 @@
                                 <h6 class="mb-0">Password</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <a class="btn btn-success btn-sm" >Change Password</a>
+                                <a class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#changePassword">Change Password</a>
                             </div>
                         </div>
                         <hr>
@@ -156,6 +156,58 @@
         </div>
     </div>
 
+     <!-- Change Password Modal -->
+     <div class="modal fade" id="changePassword" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Edit Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{url('/ad_change_password')}}" method="POST" id="change-password-form">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <h6 class="mb-2">Current Password</h6>
+                                <div class="d-flex justify-content-center">
+                                    <input name="current_password" type="password" id="currentPass" class="form-control" style="width: 400px !important" required>
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <h6 class="mb-2">New Password</h6>
+                                <div class="d-flex justify-content-center">
+                                    <input name="password" type="password" id="newPass" class="form-control" style="width: 400px !important" required>
+                                </div>
+                                
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <h6 class="mb-2">Confirm New Password</h6>
+                                <div class="d-flex justify-content-center">
+                                    <input name="password_confirmation" type="password" id="confirmNewPass" class="form-control" style="width: 400px !important" required>
+                                </div>
+                                <p class="text-danger" id="errorMessage"></p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" id="changePassBtn" disabled>Submit</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script>
 
         //edit profile
@@ -176,6 +228,31 @@
 
         changeProfilePicForm.addEventListener('change', function(){
             changeProfilePicForm.submit();
+        });
+
+        //change password
+        var changePasswordForm = document.getElementById('change-password-form');
+        var submitButton = document.getElementById('changePassBtn');
+        var currentPass = document.getElementById('currentPass');
+        var newPass = document.getElementById('newPass');
+        var confirmNewPass = document.getElementById('confirmNewPass');
+        var errorMessage = document.getElementById('errorMessage');
+        var submitButton = document.getElementById('changePassBtn');
+
+        changePasswordForm.addEventListener('change', function(){
+            if(newPass.value != confirmNewPass.value){
+                errorMessage.innerHTML = "Password confirmation does not match."
+                submitButton.disabled = true;
+            }else{
+                if(newPass.value == currentPass.value){
+                    errorMessage.innerHTML = "Current password and new password cannot be the same."
+                    submitButton.disabled = true;
+                }else{
+                    errorMessage.innerHTML = ""
+                    submitButton.disabled = false;
+                }
+                
+            }
         });
     </script>
    

@@ -40,28 +40,28 @@
                   <img src="assets/img/carousel/barber.jpg" class="d-block w-100" alt="..." style="height: 70vh;object-fit: cover;">
                   <div class="carousel-caption d-none d-md-block" style="background-color: rgba(255, 255, 255, 0.4);width:100%;max-width:100%;left:0;">
                     <h3>Hair Salon Services</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam doloribus blanditiis aliquid reiciendis minus iure sequi. Ut ipsam mollitia autem!</p>
+                    <p>Discover a world of beauty and pampering at our hair salon, where skilled stylists offer a wide range of services to enhance your hair's natural beauty and boost your confidence.</p>
                   </div>
                 </div>
                 <div class="carousel-item" data-bs-interval="3000">
                   <img src="assets/img/carousel/electronic.jpg" class="d-block w-100" alt="..." style="height: 70vh;object-fit: cover;">
                   <div class="carousel-caption d-none d-md-block" style="background-color: rgba(255, 255, 255, 0.4);width:100%;max-width:100%;left:0;">
                     <h3>Electronic Repair Services</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur laudantium praesentium et eaque aut ipsam repellat hic ipsa eius cum.</p>
+                    <p>Discover a full spectrum of electronic repair services performed by skilled technicians, ensuring your gadgets and devices are restored to peak performance.</p>
                   </div>
                 </div>
                 <div class="carousel-item" data-bs-interval="3000">
                   <img src="assets/img/carousel/gadget.jpeg" class="d-block w-100" alt="..." style="height: 70vh;object-fit: cover;">
                   <div class="carousel-caption d-none d-md-block" style="background-color: rgba(255, 255, 255, 0.4);width:100%;max-width:100%;left:0;">
                     <h3>Gadget Repair Services</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint similique nulla at ducimus sequi itaque veniam doloribus molestiae aperiam officia.</p>
+                    <p>Experience a diverse range of gadget repair services delivered by skilled technicians, guaranteeing your devices are restored to their full functionality.</p>
                   </div>
                 </div>
                 <div class="carousel-item" data-bs-interval="3000">
                   <img src="assets/img/carousel/welding.jpeg" class="d-block w-100" alt="..." style="height: 70vh;object-fit: cover;">
                   <div class="carousel-caption d-none d-md-block" style="background-color: rgba(255, 255, 255, 0.4);width:100%;max-width:100%;left:0;">
                     <h3>Welding Services</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit consequuntur dolor doloremque praesentium natus blanditiis earum obcaecati quo laboriosam quod.</p>
+                    <p>Explore a variety of professional welding services by experienced craftsmen, ensuring precision and durability for your projects.</p>
                   </div>
                 </div>
               </div>

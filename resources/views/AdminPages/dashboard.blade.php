@@ -18,18 +18,21 @@
         <div class="container-fluid px-4 d-flex flex-column justify-content-between">
             <div class="row">
                 <div class="text-center">
-                    <img class="p-0" src="assets/img/logo.png" alt="Marketplace Services" style="width: 750px; filter: drop-shadow(2px 2px 2px white) !important;">
+                    <img class="px-0" src="assets/img/logo.png" alt="Marketplace Services" style="width: 730px; filter: drop-shadow(2px 2px 2px white) !important; margin-top: -50px;">
+                    <h3><blockquote style="font-style: italic; margin-top: -20px;margin-bottom:50px">"A better way to discover services."</blockquote></h3>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xl-4 col-md-6">
-                    <div class="card bg-primary text-white mb-4">
-                        <div class="card-body">Top Services</div>
-                        <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-white stretched-link" href="#">View Details</a>
-                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    <a class="text-white" href="{{url('/admin_top_services')}}" style="text-decoration: none;">
+                        <div class="card bg-primary text-white mb-4">
+                            <div class="card-body">Top Services</div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a class="small text-white stretched-link text-start" href="{{url('/admin_top_services')}}">View Details</a>
+                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-xl-4 col-md-6">
                     <a class="text-white" href="{{url('/admin_customers')}}" style="text-decoration: none;">

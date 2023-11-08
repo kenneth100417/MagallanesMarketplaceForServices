@@ -112,6 +112,29 @@ class UserController extends Controller
 
         return view('UserPages.service_provider_profile', ['user' => $user, 'services' => $services]);
     }
+    //change Password
+    public function cuChangePassword(Request $request){
+        $validated = $request->validate([
+            'current_password' => ['required'],
+            'password' => 'required|confirmed|min:6',
+        ]);
+
+        $user = User::where('id', auth()->user()->id)->first();
+
+        if($validated){
+            $currentPasswordStatus = Hash::check($validated['current_password'], $user->password);
+            if($currentPasswordStatus){
+                $validated['password'] = Hash::make($validated['password']);
+                $user->update([
+                    'password' => $validated['password']
+                ]);
+                return redirect()->back()->with('success','Your password has been changed. You can now use your new password the next time you log in.');
+            }else{
+                return redirect()->back()->with('error','Incorrect current password.');
+            }
+    
+        }
+    }
 
 
 
@@ -246,6 +269,10 @@ class UserController extends Controller
         $user = Admin::where('user_id',Auth()->user()->id)->first();
         return view('AdminPages.profile',compact('user'));
     }
+    public function TopServices(){
+        $user = Admin::where('user_id',Auth()->user()->id)->first();
+        return view('AdminPages.top_services',compact('user'));
+    }
     //edit Profile
     public function adEditProfile(Request $request){
         $validated = $request->validate([
@@ -304,6 +331,29 @@ class UserController extends Controller
 
 
         
+    }
+    //change Password
+    public function adChangePassword(Request $request){
+        $validated = $request->validate([
+            'current_password' => ['required'],
+            'password' => 'required|confirmed|min:6',
+        ]);
+
+        $user = User::where('id', auth()->user()->id)->first();
+
+        if($validated){
+            $currentPasswordStatus = Hash::check($validated['current_password'], $user->password);
+            if($currentPasswordStatus){
+                $validated['password'] = Hash::make($validated['password']);
+                $user->update([
+                    'password' => $validated['password']
+                ]);
+                return redirect()->back()->with('success','Your password has been changed. You can now use your new password the next time you log in.');
+            }else{
+                return redirect()->back()->with('error','Incorrect current password.');
+            }
+    
+        }
     }
     
 

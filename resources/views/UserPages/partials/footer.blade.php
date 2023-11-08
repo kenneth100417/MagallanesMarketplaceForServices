@@ -3,9 +3,7 @@
         <div class="d-flex align-items-center justify-content-between small">
             <div class="text-muted">Copyright &copy; Marketplace for Services 2023</div>
             <div>
-                <a href="#">Privacy Policy</a>
-                &middot;
-                <a href="#">Terms &amp; Conditions</a>
+                <a class="" data-bs-toggle="modal" data-bs-target="#terms" style="cursor: pointer">Terms &amp; Conditions</a>
             </div>
         </div>
     </div>

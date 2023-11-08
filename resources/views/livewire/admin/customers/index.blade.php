@@ -1,4 +1,16 @@
 <div>
+    <div class="d-flex justify-content-between">
+        <div>
+            <h3 class="text-dark mt-4 mx-4">Customers</h3>
+        </div>
+        <div>
+            <div class="input-group mt-4 px-4">
+                <input class="form-control " type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" wire:model="searchTerm" />
+                <button class="btn btn-primary" id="btnNavbarSearch" type="button" wire:click="search()"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </div>
+    <hr class="bg-dark mx-3"/>
     <div class="card mb-4 mx-3">
         <div class="card-header d-flex justify-content-between">
             <div>

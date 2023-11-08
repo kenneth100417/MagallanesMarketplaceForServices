@@ -85,3 +85,41 @@
                         {{session('message')}}
                     </div>
                 @endif
+
+                <!-- Terms and Condition Modal -->
+                <div class="modal fade" id="terms" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Terms and Conditions</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" style="padding: 20px 30px">
+                            <p>By accessing or using our platform, you agree to these terms and conditions.</p>
+
+                            <p style="font-weight: bold">1. User Registration:</p>
+                            <p style="text-indent: 30px;">1.1 Users must create an account and provide accurate information.</p>
+                            <p style="text-indent: 30px;">1.2  Users are responsible for maintaining the confidentiality of their account information.</p>
+                            <p style="font-weight: bold">2. Listing and Services</p>
+                            <p style="text-indent: 30px;">2.1 Users are responsible for the accuracy of their listings.</p>
+                            <p style="text-indent: 30px;">2.2 Prohibited content such as illegal services is not allowed.</p>
+                            <p style="font-weight: bold">3. Communications</p>
+                            <p style="text-indent: 30px;">3.1 Users must maintain respectful and professional communication.</p>
+                            <p style="text-indent: 30px;">3.2 We are not responsible for the content of user communications.</p>
+                            <p style="font-weight: bold">4. Reviews and Ratings</p>
+                            <p style="text-indent: 30px;">4.1 Users can leave reviews and ratings.</p>
+                            <p style="text-indent: 30px;">4.2 False or malicious reviews are prohibited.</p>
+                            <p style="font-weight: bold">5. Privacy</p>
+                            <p style="text-indent: 30px;">5.1 We collect and use personal information as described in our Privacy Policy.</p>
+                            <p style="font-weight: bold">6. Termination</p>
+                            <p style="text-indent: 30px;">6.1 We can suspend or terminate user accounts for violations of these terms.</p>
+                            <p style="font-weight: bold">7. Changes to Terms</p>
+                            <p style="text-indent: 30px;">7.1 We can update these terms, and users will be notified of changes.</p>
+                            
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>

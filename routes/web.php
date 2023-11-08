@@ -44,6 +44,8 @@ Route::middleware(['auth','isCustomer'])->name('customer')->group(function() {
         Route::get('/service_provider_profile/{service_provider_id}', 'viewServiceProvider');
         //rate Service
         Route::get('/rate_service/{service_id}', 'rateService');
+        //change password
+        Route::post('/cu_change_password', 'cuChangePassword');
 
     })->middleware('auth');
 
@@ -96,11 +98,14 @@ Route::controller(App\Http\Controllers\User\UserController::class)->middleware([
     Route::get('/admin_service_providers', 'AdminServiceProvider');
     Route::get('/admin_customers', 'AdminCustomer');
     Route::get('/admin_profile', 'AdminProfile');
+    Route::get('/admin_top_services', 'TopServices');
 
     //edit Profile
     Route::post('/edit_ad_profile', 'adEditProfile');
     //change profile puc
     Route::post('/change_ad_profile_pic', 'adChangeProfilePic');
+    //change password
+    Route::post('/ad_change_password', 'adChangePassword');
 
 });
 

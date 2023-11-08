@@ -82,7 +82,7 @@
                                 </div>
                                 <div class="">
                                     <div class="form-group mt-3">
-                                        <h5 class="text-dark"><small>Account Details</small></h5>
+                                        <h5 class="text-dark"><small>Customer Registration</small></h5>
                                     </div>
                                     <div class="form-group mt-2">
                                         <input class="form-control text-dark" type="email" name="Email" placeholder="Email"  value="{{old('Email')}}">
@@ -193,7 +193,7 @@
                                 </div>
                                 <div>
                                     <div class="form-group mt-3">
-                                        <h5 class="text-dark"><small>Acount Details</small></h5>
+                                        <h5 class="text-dark"><small>Service Provider Registration</small></h5>
                                     </div>
                                     <div class="form-group mt-1">
                                         <input class="form-control text-dark" type="email" name="email" placeholder="Email"  value="{{old('email')}}">

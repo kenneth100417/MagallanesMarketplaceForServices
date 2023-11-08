@@ -34,7 +34,6 @@
         street.hidden = false;
         address.hidden = true;
         edit.hidden = true;
-
     });
 
 </script>
