@@ -47,8 +47,6 @@ class AppointmentController extends Controller
                 $color = '#66c2ff';
             }
 
-
-
             $events[] = [
                 'title' => $title,
                 'start' => $appointment->start_date,
@@ -57,18 +55,15 @@ class AppointmentController extends Controller
             ];
         }
         
-        return view('UserPages.set_appointment',compact('user','service','events','remainingSlot','serviceReviews','avg_rating'));
+        //reviews
+        $reviews = Rating::where('ratings.service_id', $service_id)
+                            ->join('customers','ratings.user_id','customers.user_id')
+                            ->select('ratings.rating as star','ratings.comment as comment', 'customers.firstname as fname','customers.lastname as lname','customers.photo as photo')
+                            ->get();
+        return view('UserPages.set_appointment',compact('user','service','events','remainingSlot','serviceReviews','avg_rating','reviews'));
     }
 
     public function storeAppointment(Request $request){
-
-        //$service = Service::where('id',$request->service_id)->first();
-
-        // $date=new DateTime($request->start_date);
-        // $new_date = $date->add(new DateInterval("PT{12}H"));
-        // $end_date = $new_date->format('Y-m-d H:i:s');
-        // $date->format('Y-m-d H:i:s');
-        // //dd($request->customer_id);
        
         $appointmentExists = Appointment::where('service_id',$request->service_id)->where('customer_id',auth()->user()->id)->where('status','pending')->exists();
         $service = Service::where('id',$request->service_id)->first();

@@ -17,6 +17,7 @@
 
     <section style="background-color: #eee;">
         <div class="container py-5">
+            {{-- service details --}}
             <div class="row justify-content-center mb-3">
                 <div class="col-md-12 col-xl-10">
                     <div class="card shadow-0 border rounded-3">
@@ -82,6 +83,7 @@
                 </div>
             </div>
 
+            {{-- calendar --}}
             <div class="row justify-content-center mb-3">
                 <div class="col-md-12 col-xl-10">
                     <div class="card shadow-0 border rounded-3">
@@ -95,6 +97,57 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            {{-- Comments --}}
+            <div class="row justify-content-center mb-3">
+                <div class="col-md-12 col-xl-10">
+                    <h5 class="mt-3">Service Customer Reviews:</h5>
+                    @forelse ($reviews as $review)
+                    <div class="card shadow-0 border rounded-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12 col-lg-12 col-xl-12">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-12 col-lg-7">
+                                                <div class="d-flex align-items-center">
+                                                    <img class="rounded-circle" src="{{url($review->photo)}}" style="width: 40px;height:40px;"/>
+                                                    <h5 class="mx-2">{{$review->fname." ".$review->lname}}</h5>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-end flex-row col-sm-12 col-md-12 col-lg-5">
+                                                <span>Rating : </span>
+                                                <div class=" mb-1 ms-2">
+                                                    @for($i = 1; $i <= number_format($review->star); $i++)
+                                                        <i class="fa fa-star checked"></i>
+                                                    @endfor
+                                                    @for($i = number_format($review->star)+1; $i <= 5; $i++)
+                                                        <i class="fa fa-star"></i>
+                                                    @endfor
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                    <div class="row mt-3">
+                                        <div class="col-12">
+                                            <h6 class="text-success">Comment:</h6>
+                                            <div class="mb-2 text-muted small">
+                                                <p class="mb-4 mb-md-0">
+                                                    {{$review->comment}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @empty
+                        <div>No Reviews Yet.</div>
+                    @endforelse
                 </div>
             </div>
 

@@ -43,6 +43,7 @@ class Appointments extends Component
                                         'service_id',
                                         'id as apptId',
                                         'start_date as appointment_date',
+                                        'end_date as endDate',
                                         'status as appointmentStatus',
                                         DB::raw('(SELECT COUNT(*) FROM appointments AS a
                                                 WHERE a.service_id = appointments.service_id
@@ -50,6 +51,17 @@ class Appointments extends Component
                                                 AND TIME(a.created_at) < TIME(appointments.created_at)) as other_appointed_customers_count')
                                     )
                                     ->paginate(10);
+
+        foreach($appointments as $appointment){
+            if($appointment->endDate > date('Y-m-d')){
+                $appt = Appointment::where('id',$appointment->apptId)->where('status','pending')->first();
+                if($appt){
+                    $appt->update([
+                        'status' => 'expired'
+                    ]);
+                }
+            }
+        }                            
         return view('livewire.user.appointments',['appointments' => $appointments]);
     }
 }

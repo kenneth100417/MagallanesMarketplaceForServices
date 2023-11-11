@@ -45,7 +45,7 @@
                                         <textarea name="service_description" class="form-control" placeholder="Enter service description"></textarea>
                                     </div>
                                     <div class="form-group mt-3">
-                                        <label for="service">Service Rate</label>
+                                        <label for="service">Average Rate Per Service</label>
                                         <input name="service_rate" type="number" class="form-control" >
                                     </div>
                                     <div class="form-group mt-3">

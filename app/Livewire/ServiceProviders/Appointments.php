@@ -62,8 +62,8 @@ class Appointments extends Component
                                             ->paginate(10);
 
         foreach($this->appointments as $appointment){
-            if($appointment->start_date < date('Y-m-d')){
-                $appt = Appointment::where('id',$appointment->id)->where('status','pending')->first();
+            if($appointment->end_date < date('Y-m-d')){
+                $appt = Appointment::where('id',$appointment->appointmentId)->where('status','pending')->first();
                 if($appt){
                     $appt->update([
                         'status' => 'expired'

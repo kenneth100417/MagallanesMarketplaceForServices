@@ -69,7 +69,7 @@
                                         <div class="d-flex flex-row align-items-center mb-1">
                                             <h4 class="mb-1 me-1">&#8369;{{number_format($service->service_rate,2)}}</h4>
                                         </div>
-                                        <h6 class="text-success">Rate per Service</h6>
+                                        <h6 class="text-success">Average Rate Per Service</h6>
                                         <div class="d-flex flex-column mt-4">
                                             <form action="/set_appointment/{{$service->id}}" method="GET">
                                                 @csrf
