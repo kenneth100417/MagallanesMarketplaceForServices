@@ -15,7 +15,10 @@
         <div class="card-header d-flex justify-content-between">
             <div>
                 <i class="fas fa-table me-1"></i>
-            List of Appointments
+                {{$sort == '' ? 'All Appointments':''}}
+                {{$sort == 'pending' ? 'Pending Appointments':''}}
+                {{$sort == 'served' ? 'Completed Appointments':''}}
+                {{$sort == 'expired' ? 'Expired Appointments':''}}
             </div>
             <div class="d-flex">
                 <div class="dropdown">

@@ -90,6 +90,7 @@ Route::middleware(['auth','isServiceProvider'])->name('service_provider')->group
 
     Route::controller(App\Http\Controllers\User\AppointmentController::class)->group(function() {
         Route::get('/view_appointment_calendar','viewAppointmentCalendar');
+
      });
    
     
