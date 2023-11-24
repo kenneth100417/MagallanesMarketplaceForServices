@@ -1,10 +1,9 @@
-@include('UserPages.partials.header')
-
+@include('ServiceProviderPages.partials.header')
 
 <main>
     <div class="d-flex justify-content-between">
         <div>
-            <h3 class="text-dark mt-4 mx-4">Set Appointment</h3>
+            <h3 class="text-dark mt-4 mx-4">Service Details</h3>
         </div>
         <div>
             <div class="input-group mt-4 px-4">
@@ -45,14 +44,6 @@
                                             
                                         </div>
                                     
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="d-flex">
-                                                    <h6 class="text-success">Service Provider:</h6>
-                                                    <h6 class="text-dark mx-2">{{$service->serviceProviders->business_name}}</h6>
-                                                </div>
-                                            </div>
-                                        </div>
                                     
                                     <div class="row">
                                         <div class="col-12">
@@ -71,28 +62,6 @@
                                         <h4 class="mb-1 me-1">&#8369;{{number_format($service->service_rate,2)}}</h4>
                                     </div>
                                     <h6 class="text-success">Rate per Service</h6>
-                                    <div class="d-flex flex-column mt-4">
-                                        
-                                            <a class="btn btn-outline-primary btn-sm mt-2 w-100" href="{{url('/service_provider_profile/'.$service->serviceProviders->user_id)}}">View Service Provider's Profile</a>
-                              
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {{-- calendar --}}
-            <div class="row justify-content-center mb-3">
-                <div class="col-md-12 col-xl-10">
-                    <div class="card shadow-0 border rounded-3">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-12 col-lg-12 col-xl-12">
-                                    <div id="calendar">
-
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -103,7 +72,7 @@
             {{-- Comments --}}
             <div class="row justify-content-center mb-3">
                 <div class="col-md-12 col-xl-10">
-                    <h5 class="mt-3">Service Customer Reviews:</h5>
+                    <h5 class="mt-2">Customer Reviews:</h5>
                     @forelse ($reviews as $review)
                     <div class="card shadow-0 border rounded-3">
                         <div class="card-body">
@@ -205,50 +174,7 @@
         </div>
 
     </section>
-    <script>
-
-        var appointment = @json($events);
-        $('#calendar').fullCalendar({
-            header: {
-                right: 'prev, next today',
-                center: 'title',
-                left: 'none', //month, agendaWeek, agendaDay
-            },
-            events: appointment,
-            selectable: true,
-            selectAllow: function (selectInfo) {
-                var currentDate = new Date(); // Get the current date
-                currentDate.setHours(0, 0, 0, 0); // Set hours, minutes, seconds, and milliseconds to 0 for accurate date comparison
-                //currentDate.setDate(currentDate.getDate() + 1); // Set the current date to the day after the current date
-                var selectedDate = selectInfo.start;
-            
-                return selectedDate >= currentDate;    
-            },
-            selectHelper: true,
-            defaultView: 'month',
-            select: function(start, end, allDays, info){
-                $('#appointmentModal').modal('toggle');
-                $('#saveBtn').click(function(){
-                    var start_date = moment(start).format('YYYY-MM-DD HH:mm:ss');
-                    var end_date = moment(end).format('YYYY-MM-DD HH:mm:ss');
-                    $('#start_date').val(start_date);
-                    $('#end_date').val(end_date);
-                    $('#form').submit(); 
-                });
-            },
-        });
-
-        $('.fc-body tr td').css('cursor','pointer');
-        $('.fc-content-skeleton table tbody').css('overflow-y','scroll');
-        $('.fc-event').css('text-align','center');
-        $('.fc-event').css('height','20px');
-        $('.fc-title').css('white-space','nowrap');
-        $('.fc-content').css('align-items','center');
-        $('.fc-time').css('display','none');
-        $('.fc-content').css('padding','0px 3px');
-        $('.fc-content').css('text-align','left');
    
-    </script>
 </main
 
-@include('UserPages.partials.footer')
+@include('ServiceProviderPages.partials.footer')

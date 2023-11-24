@@ -60,4 +60,21 @@ class ServiceController extends Controller
         }
         return redirect()->back()->with('error', 'Rating cannot be empty.');
     }
+
+    public function view($id){
+        $user = ServiceProvider::where('user_id',Auth()->user()->id)->first();
+        $service = Service::where('service_provider_id', auth()->user()->id)
+                            ->where('id', $id)
+                            ->first();
+
+        $serviceReviews = Rating::where('service_id',$id)->get();
+        $avg_rating = Rating::where('service_id',$id)
+                                ->avg('rating');
+
+        $reviews = Rating::where('ratings.service_id', $id)
+        ->join('customers','ratings.user_id','customers.user_id')
+        ->select('ratings.rating as star','ratings.comment as comment', 'customers.firstname as fname','customers.lastname as lname','customers.photo as photo')
+        ->get();
+        return view('ServiceProviderPages.view_service_details', compact('service','user','serviceReviews','avg_rating','reviews'));
+    }
 }

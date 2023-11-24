@@ -33,11 +33,12 @@
                             {{$service->slot}}
                         </td>
                         <td class="{{$service->status == '1' ? 'text-success':'text-danger'}}" style="min-width: 98px;">{{$service->status == '1' ? 'Available':'Unavailable'}}</td>
-                        <td style="max-width: 150px;">
+                        <td style="max-width: 200px;">
                             <div class="d-flex align-items-center">
                                 <button class="btn btn-warning btn-sm py-1 px-3 mx-1 my-auto" {{$service->status == '1' ? '':'hidden'}} wire:click.prevent = 'disable({{$service->id}})' style="min-width: 90px !important">Disable</button>
                                 <button class="btn btn-success btn-sm py-1 px-3 mx-1 my-auto" {{$service->status == '1' ? 'hidden':''}} wire:click.prevent = 'enable({{$service->id}})' style="min-width: 90px !important">Enable</button>
                                 <button class="btn btn-danger btn-sm py-1 px-3 mx-1 my-auto" wire:click.prevent = 'showDeleteConfirmation({{$service->id}})' >Delete</button>
+                                <a class="btn btn-info btn-sm py-1 px-3 mx-1 my-auto" href="{{url('/view_service_details/'.$service->id)}}">View</a>
                             </div>
                         </td>
                     </tr>

@@ -73,7 +73,6 @@ Route::middleware(['auth','isServiceProvider'])->name('service_provider')->group
         Route::get('/service_provider_profile', 'ProviderProfile');
         Route::get('/service_provider_top_services', 'serviceProviderTopServices');
 
-
         //edit Profile
         Route::post('/edit_sp_profile', 'spEditProfile');
         //change profile puc
@@ -84,6 +83,9 @@ Route::middleware(['auth','isServiceProvider'])->name('service_provider')->group
 
     Route::controller(App\Http\Controllers\User\ServiceController::class)->group(function() {
        Route::post('/addService','create');
+
+       //view service details
+       Route::get('/view_service_details/{id}', 'view');
     });
 
     Route::controller(App\Http\Controllers\User\AppointmentController::class)->group(function() {

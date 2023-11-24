@@ -26,7 +26,7 @@
                             <td>&#8369;{{number_format($appointment->service->service_rate,2)}}</td>
                             <td class="text-primary" style="max-width: 150px;">
                                 {{$appointment->other_appointed_customers_count == '0' && $appointment->appointmentStatus == 'pending' ? 'Your turn.':''}}
-                                {{$appointment->other_appointed_customers_count == '1' && $appointment->appointmentStatus == 'pending' ? "You're next in line.":''}}
+                                {{$appointment->other_appointed_customers_count == 1 && $appointment->appointmentStatus == 'pending' ? "You're next in line.":''}}
                                 {{$appointment->other_appointed_customers_count > '1' && $appointment->appointmentStatus == 'pending' ? $appointment->other_appointed_customers_count." customers ahead.":''}}
                             </td>
                             <td class="{{$appointment->appointmentStatus == 'pending' ? 'text-success':''}}

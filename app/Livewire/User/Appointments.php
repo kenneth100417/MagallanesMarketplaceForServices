@@ -47,19 +47,22 @@ class Appointments extends Component
                                         'status as appointmentStatus',
                                         DB::raw('(SELECT COUNT(*) FROM appointments AS a
                                                 WHERE a.service_id = appointments.service_id
+                                                AND a.status = "pending"
                                                 AND DATE(a.start_date) = DATE(appointments.start_date)
                                                 AND TIME(a.created_at) < TIME(appointments.created_at)) as other_appointed_customers_count')
                                     )
+                                    ->orderBy('appointment_date','desc')
                                     ->paginate(10);
 
         foreach($appointments as $appointment){
-            if($appointment->endDate > date('Y-m-d')){
-                $appt = Appointment::where('id',$appointment->apptId)->where('status','pending')->first();
-                if($appt){
-                    $appt->update([
-                        'status' => 'expired'
-                    ]);
-                }
+          
+            $appt = Appointment::where('id',$appointment->apptId)
+                    ->where('end_date','<',date('Y-m-d'))
+                    ->where('status','pending')->first();
+            if($appt){
+                $appt->update([
+                    'status' => 'expired'
+                ]);
             }
         }                            
         return view('livewire.user.appointments',['appointments' => $appointments]);
