@@ -69,7 +69,7 @@
                         </td>
                         <td style="max-width: 150px;">
                             <div class="d-flex align-items-center">
-                                <button class="btn btn-success btn-sm py-1 px-3 mx-1 my-auto" style="min-width: 90px !important;{{$appointment->apptStatus == 'pending' ? '':'display:none !important;'}}" wire:click.prevent = "completed({{$appointment->appointmentId}})">Served</button>
+                                <button class="btn btn-success btn-sm py-1 px-3 mx-1 my-auto" style="min-width: 90px !important;{{$appointment->apptStatus == 'pending' ? '':'display:none !important;'}}" wire:click.prevent = "completed({{$appointment->appointmentId}})" {{date("Y-m-d",strtotime($appointment->appointmentDate)) == date('Y-m-d') ? '':'disabled'}}>Served</button>
                                 <small>{{$appointment->apptStatus == 'pending' ? ' ':'No action needed'}}</small>
                                 
                             </div>

@@ -57,7 +57,7 @@ class Appointments extends Component
         foreach($appointments as $appointment){
           
             $appt = Appointment::where('id',$appointment->apptId)
-                    ->where('end_date','<',date('Y-m-d'))
+                    ->where('start_date','<',date('Y-m-d'))
                     ->where('status','pending')->first();
             if($appt){
                 $appt->update([
