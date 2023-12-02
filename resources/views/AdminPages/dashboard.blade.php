@@ -22,7 +22,7 @@
                     <h3><blockquote style="font-style: italic; margin-top: -20px;margin-bottom:50px">"A better way to discover services."</blockquote></h3>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-5">
                 <div class="col-xl-4 col-md-6">
                     <a class="text-white" href="{{url('/admin_top_services')}}" style="text-decoration: none;">
                         <div class="card bg-primary text-white mb-4">

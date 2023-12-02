@@ -45,6 +45,27 @@
                                         <textarea name="service_description" class="form-control" placeholder="Enter service description"></textarea>
                                     </div>
                                     <div class="form-group mt-3">
+                                        <label for="service">Open Hour Per Day</label>
+                                        <div class="input-group mb-3">
+                                            <input type="time" class="form-control" id="start-time">
+                                            <span class="input-group-text">to</span>
+                                            <input type="time" class="form-control" id="end-time">
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label for="service">Days Available in a Week</label>
+                                        <select class="selectpicker form-control" multiple aria-label="size 3 select example">
+                                            <option value="1">Monday</option>
+                                            <option value="2">Tuesday</option>
+                                            <option value="3">Wednesday</option>
+                                            <option value="4">Thursday</option>
+                                            <option value="4">Friday</option>
+                                            <option value="4">Saturday</option>
+                                            <option value="4">Sunday</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mt-3">
                                         <label for="service">Average Rate Per Service</label>
                                         <input name="service_rate" type="number" class="form-control" >
                                     </div>
@@ -67,8 +88,10 @@
                 
         </div>
     </div>
-    {{-- datetimepicker --}}
+    <!-- {{-- datetimepicker --}} -->
     <script type="text/javascript">
+
+
         $('#date').datepicker({
             
                 startDate: '+2d',
@@ -101,7 +124,36 @@
 
             }
         });
-      </script>
+
+
+        // check valid time range
+
+
+        let startTime = document.getElementById('start-time');
+        let endTime = document.getElementById('end-time');
+
+        endTime.addEventListener('change', function(){
+                
+            if(startTime.value > endTime.value){
+                Swal.fire({
+                    title: "Oop!",
+                    text: "Invalid Time Range",
+                    icon: 'info',
+                    showConfirmButton: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        startTime.value = "";
+                        endTime.value = "";
+
+                    }
+                })
+            }
+        })
+
+
+    </script>
+    
+    
 
     
 </main

@@ -11,8 +11,8 @@
                         </div>
                     </div>
                     <div class="row gx-4 justify-content-center align-items-center ">
-                        <button type="button" class="btn  btn-success mx-1" data-bs-toggle="modal" data-bs-target="#login" style="width: 120px;border:none">Log In</button>
-                        <a type="button" class="btn btn-warning mx-1 text-white"  style="width: 130px;background-color: #fb8500;border:none" href="#features">Explore <i class="fa fa-arrow-right ms-2" aria-hidden="true"></i></a>
+                        <button type="button" class="btn  btn-success mx-3" data-bs-toggle="modal" data-bs-target="#login" style="width: 120px;border:none">Log In</button>
+                        <a type="button" class="btn btn-warning mx-3 text-white"  style="width: 130px;background-color: #fb8500;border:none" href="#features">Explore <i class="fa fa-arrow-right ms-2" aria-hidden="true"></i></a>
                         <div class="btn-group signup-btn-mobile text-center">
                             <button type="button" class="btn  dropdown-toggle text-light" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #2c64ac; width: 120px !important">
                               Sign Up
