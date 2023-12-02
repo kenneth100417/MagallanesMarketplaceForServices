@@ -16,7 +16,10 @@ class Service extends Model
         'service_title',
         'service_description',
         'service_rate',
-        'slot'
+        'slot',
+        'openTime',
+        'closingTime',
+        'openDays'
     ];
 
     public function serviceProviders(){

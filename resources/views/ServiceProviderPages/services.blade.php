@@ -47,23 +47,24 @@
                                     <div class="form-group mt-3">
                                         <label for="service">Open Hour Per Day</label>
                                         <div class="input-group mb-3">
-                                            <input type="time" class="form-control" id="start-time">
+                                            <input type="time" class="form-control" id="start-time" name="openTime">
                                             <span class="input-group-text">to</span>
-                                            <input type="time" class="form-control" id="end-time">
+                                            <input type="time" class="form-control" id="end-time" name="closingTime">
                                         </div>
                                         
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="service">Days Available in a Week</label>
                                         <select class="selectpicker form-control" multiple aria-label="size 3 select example">
-                                            <option value="1">Monday</option>
-                                            <option value="2">Tuesday</option>
-                                            <option value="3">Wednesday</option>
-                                            <option value="4">Thursday</option>
-                                            <option value="4">Friday</option>
-                                            <option value="4">Saturday</option>
-                                            <option value="4">Sunday</option>
+                                            <option value="Monday">Monday</option>
+                                            <option value="Tuesday">Tuesday</option>
+                                            <option value="Wednesday">Wednesday</option>
+                                            <option value="Thursday">Thursday</option>
+                                            <option value="Friday">Friday</option>
+                                            <option value="Saturday">Saturday</option>
+                                            <option value="Sunday">Sunday</option>
                                         </select>
+                                        <input hidden name="openDays" id="days">
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="service">Average Rate Per Service</label>
@@ -93,10 +94,8 @@
 
 
         $('#date').datepicker({
-            
                 startDate: '+2d',
                 todayHighlight: true
-            
            });
 
         var slotInput = document.getElementById('serviceSlot');
@@ -150,6 +149,11 @@
             }
         })
 
+        //set days value
+        $('.selectpicker').change(function () {
+            let days = $('.selectpicker').val();
+            $('#days').val(days);   
+        });
 
     </script>
     

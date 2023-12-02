@@ -16,7 +16,10 @@ class ServiceController extends Controller
             'service_title' => ['required'],
             'service_description' => ['required'],
             'service_rate' => ['required'],
-            'slot' => ['required']
+            'slot' => ['required'],
+            'openTime' => ['required'],
+            'closingTime' => ['required'],
+            'openDays' => ['required']
         ]);
         
         if($validated){
@@ -27,7 +30,10 @@ class ServiceController extends Controller
                     'service_title' => $validated['service_title'],
                     'service_description' => $validated['service_description'],
                     'service_rate' => $validated['service_rate'],
-                    'slot' => $validated['slot']
+                    'slot' => $validated['slot'],
+                    'openTime' => $validated['openTime'],
+                    'closingTime' => $validated['closingTime'],
+                    'openDays' => $validated['openDays'],
                 ]);
                 return redirect()->back()->with('success','Service added successfully.');
             }else{
