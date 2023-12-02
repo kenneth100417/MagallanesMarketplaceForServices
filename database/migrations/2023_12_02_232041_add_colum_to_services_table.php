@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('services', function (Blueprint $table) {
-            $table -> string('openTime');
-            $table -> string('closingTime');
+            $table -> time('openTime');
+            $table -> time('closingTime');
             $table -> string('openDays');
         });
     }
@@ -24,7 +24,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('services', function (Blueprint $table) {
-            //
+            $table -> dropColumn('openTime');
+            $table -> dropColumn('closingTime');
+            $table -> dropColumn('openDays');
         });
     }
 };

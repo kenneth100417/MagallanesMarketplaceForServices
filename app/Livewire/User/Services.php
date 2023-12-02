@@ -35,7 +35,7 @@ class Services extends Component
             ->where('services.status', '1')
             ->where('service_providers.status','1')
             ->where('services.service_title', 'like', '%' . $this->term . '%')
-            ->groupBy('services.id','services.service_title','services.service_provider_id','services.service_description','services.service_rate','services.slot','services.status','services.created_at','services.updated_at')
+            ->groupBy('services.id','services.service_title','services.service_provider_id','services.service_description','services.service_rate','services.slot','services.status','services.created_at','services.updated_at','services.openTime','services.closingTime','services.openDays')
             ->paginate(10);
 
         

@@ -29,6 +29,7 @@
                                                     <div class="col-sm-12 col-md-12 col-lg-7">
                                                         <h5>{{$service->service_title}}</h5>
                                                     </div>
+                                                    
                                                     <div class="d-flex justify-content-end flex-row col-sm-12 col-md-12 col-lg-5">
                                                         <span>{{$service->rating_count}} ratings | </span>
                                                         <div class=" mb-1 ms-2">
@@ -43,8 +44,10 @@
                                                     </div>
                                                 
                                             </div>
-                                        
-                                            <div class="row">
+
+                                            
+
+                                            <div class="row mt-2">
                                                 <div class="col-12">
                                                     <div class="d-flex">
                                                         <h6 class="text-success">Service Provider:</h6>
@@ -52,6 +55,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            
                                         
                                         <div class="row">
                                             <div class="col-12">
@@ -60,6 +64,20 @@
                                                     <p class="mb-4 mb-md-0">
                                                     {{$service->service_description}}
                                                     </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col-12">
+                                                <div class="d-flex align-items-center">
+                                                    <small for=""><span style="font-weight: bold" class="text-success">Avialable: </span> {{$service->openDays}} <span style="font-weight: bold"> | </span> {{Carbon\Carbon::createFromTimestamp(strtotime($service->openTime))->format('h:i A')}} - {{Carbon\Carbon::createFromTimestamp(strtotime($service->closingTime))->format('h:i A')}}</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row ">
+                                            <div class="col-12">
+                                                <div class="d-flex">
+                                                    <small for=""></small>
                                                 </div>
                                             </div>
                                         </div>
