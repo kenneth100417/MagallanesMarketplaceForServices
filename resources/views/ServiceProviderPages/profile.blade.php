@@ -25,10 +25,18 @@
                                 <h4>{{$user->business_name}}</h4>
                                 <p class="text-secondary mb-1">ID: MMS-SP{{$user->user_id}}</p>
                                 <p class="text-muted font-size-sm">{{$user->business_address}}</p>
-                                <button type="button" onclick="uploadProfilePic()" class="btn btn-sm btn-outline-primary">Change Profile Picture</button>
-                                @error('photo')
-                                    <p class="text-danger">{{$message}}</p>
-                                @enderror
+                                <div class="d-flex flex-column">
+                                    <div >
+                                        <button type="button" class="btn btn-sm btn-success" style="display: {{$user->status == 1 ? '':'none'}}">Verified <i class="fa fa-check" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-sm btn-danger" style="display: {{$user->status == 1 ? 'none':''}}"  data-bs-toggle="modal" data-bs-target="#submitVerReq">Submit Verification Request</button>
+                                    </div>
+                                    <div class="my-2">
+                                        <button type="button" onclick="uploadProfilePic()" class="btn btn-sm btn-outline-primary">Change Profile Picture</button>
+                                        @error('photo')
+                                            <p class="text-danger">{{$message}}</p>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -260,6 +268,64 @@
                 </form>
             </div>
         </div>
+    </div>
+
+   
+<!-- Modal -->
+    <div class="modal fade" id="submitVerReq" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Submit Verification Request</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+                <div class="row">
+                    <form action="" method="POST" id="submitVerReqForm">
+                    @csrf
+                    <div class="col-lg-12 mt-2">
+                        <label style="font-weight: bold;">Owner's Name:</label>
+                        <input type="text" class="form-control" value="{{$user->firstname.' '.$user->lastname}}" readonly>
+                    </div>
+                    <div class="col-lg-12 mt-2">
+                        <label style="font-weight: bold;">Business Name:</label>
+                        <input type="text" class="form-control" value="{{$user->business_name}}" readonly>
+                    </div>
+                    <div class="col-lg-12 mt-2">
+                        <label style="font-weight: bold;">Business Address:</label>
+                        <input type="text" class="form-control" value="{{$user->business_address}}" readonly>
+                    </div>
+                    <div class="col-lg-12 mt-2">
+                        <label style="font-weight: bold;">Type of Document:</label>
+                        <select class="form-select" name="document_type">
+                            <option selected value="">-- Select document type -- </option>
+                            <option value="National ID">Business Permit</option>
+                            <option value="PhilSys ID">National ID/PhilSys ID</option>
+                            <option value="Driver's License">Driver's License</option>
+                            <option value="National ID">Brgy. Clearance</option>
+                            <option value="National ID">Police Clearance</option>
+                            <option value="National ID">PhilHealth ID</option>
+                            <option value="National ID">UMID</option>
+                            <option value="National ID">SSS ID</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-12 mt-2">
+                        <label style="font-weight: bold;">Upload ID:</label>
+                        <input type="file" accept="image/png, image/jpeg, image/jpg, .pdf" class="form-control" name="document">
+                        <small class="text-success">*Accepted file types: .png, .jpeg, .pdf</small><br/>
+                        <small class="text-success">*Make sure that the document content is readable.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" >Submit</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+        </form>
+        </div>
+    </div>
     </div>
 
     <script>
