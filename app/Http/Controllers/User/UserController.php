@@ -327,7 +327,7 @@ class UserController extends Controller
                 'photo' => $photo
             ]);
 
-            return redirect()->back()->with('success','Profile picture uploaded successfully!.');
+            return redirect()->back()->with('success','Profile picture uploaded successfully!');
         
         }else{
             return redirect()->back()->with('error','Ann error occured while uploading your profile picture.');
@@ -469,7 +469,14 @@ class UserController extends Controller
                         
                     }else if($user->access == "service_provider"){
                         
-                        $user_info = ServiceProvider::where('user_id',$user->id)->where('status','1')->first();
+                        $user_info = ServiceProvider::where('user_id',$user->id)->first();
+                        if($user_info->status == "0"){
+                            $services = Service::where('service_provider_id',$user_info->user_id);
+
+                            $services->update([
+                                'status' => '0'
+                            ]);
+                        }
                         auth()->login($user);
                         return redirect('service_provider_dashboard')->with('message', 'Welcome back '.$user_info->firstname.' !');
                          

@@ -18,7 +18,7 @@
 
                             <form action="{{url('change_ad_profile_pic')}}" id="change-profile-pic-form" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <input type="file" accept="image/png, image/gif, image/jpeg" name="photo" id="profile-pic-input" hidden>
+                                <input type="file" accept="image/png, image/gif, image/jpeg, image/jpg" name="photo" id="profile-pic-input" hidden>
                             </form>
 
                             <div class="mt-3">

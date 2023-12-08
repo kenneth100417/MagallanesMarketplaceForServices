@@ -36,9 +36,9 @@
                         <td style="max-width: 200px;">
                             <div class="d-flex align-items-center">
                                 <button class="btn btn-warning btn-sm py-1 px-3 mx-1 my-auto" {{$service->status == '1' ? '':'hidden'}} wire:click.prevent = 'disable({{$service->id}})' style="min-width: 90px !important">Disable</button>
-                                <button class="btn btn-success btn-sm py-1 px-3 mx-1 my-auto" {{$service->status == '1' ? 'hidden':''}} wire:click.prevent = 'enable({{$service->id}})' style="min-width: 90px !important">Enable</button>
-                                <button class="btn btn-danger btn-sm py-1 px-3 mx-1 my-auto" wire:click.prevent = 'showDeleteConfirmation({{$service->id}})' >Delete</button>
+                                <button class="btn btn-success btn-sm py-1 px-3 mx-1 my-auto" {{$service->status == '1' ? 'hidden':''}} wire:click.prevent = 'enable({{$service->id}})' style="min-width: 90px !important" {{$user->status == "0" ? 'disabled':''}}>Enable</button>
                                 <a class="btn btn-info btn-sm py-1 px-3 mx-1 my-auto" href="{{url('/view_service_details/'.$service->id)}}">View</a>
+                                <button class="btn btn-danger btn-sm py-1 px-3 mx-1 my-auto" wire:click.prevent = 'showDeleteConfirmation({{$service->id}})' ><i class="fa fa-trash" aria-hidden="true"></i></button>
                             </div>
                         </td>
                     </tr>
