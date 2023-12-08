@@ -17,9 +17,9 @@
     <div class="">
         <div class="container-fluid px-4 d-flex flex-column justify-content-between">
             <div class="row">
-                <div class="text-center">
-                    <img class="px-0" src="assets/img/logo.png" alt="Marketplace Services" style="width: 730px; filter: drop-shadow(2px 2px 2px white) !important; margin-top: -50px;">
-                    <h3><blockquote style="font-style: italic; margin-top: -20px;margin-bottom:50px">"A better way to discover services."</blockquote></h3>
+                <div class="text-center" style="margin-top: -3% !important;">
+                    <img class="px-0" src="assets/img/logo.png" alt="Marketplace Services" style="max-width: 100%; filter: drop-shadow(2px 2px 2px white) !important;">
+                    <h3><blockquote style="font-style: italic; margin-top: -20px;">"A better way to discover services."</blockquote></h3>
                 </div>
             </div>
             <div class="row mt-5">

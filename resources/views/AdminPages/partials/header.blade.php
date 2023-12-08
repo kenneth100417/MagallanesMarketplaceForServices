@@ -22,13 +22,13 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">Marketplace Services</a>
+            <a class="navbar-brand ps-3">Marketplace Services</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             
             <!-- Navbar-->
-            <div class=" form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <ul class="d-none d-md-inline-block navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <div class=" form-inline ms-auto me-0 me-md-3 my-2 my-md-0" >
+                <ul class="d-md-inline-block navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img class="bg-info rounded-circle border border-info border-1" src="{{url($user->photo)}}" alt="" style="width: 35px; height: 35px;object-fit:cover;"></a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -43,6 +43,7 @@
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
+                        
                         <div class="nav">
                             <a class="nav-link mt-3 {{ 'admin_dashboard' == request()->path() ? 'active' : ''}}" href="{{url('/admin_dashboard')}}">
                                 <div class="sb-nav-link-icon mx-3" style="width: 20px !important"><i class="fas fa-tachometer-alt"></i></div>
@@ -59,6 +60,10 @@
                             <a class="nav-link {{ 'admin_profile' == request()->path() ? 'active' : ''}}" href="{{url('/admin_profile')}}">
                                 <div class="sb-nav-link-icon mx-3" style="width: 20px !important"><i class="fas fa-user-alt"></i></div>
                                 Profile
+                            </a>
+                            <a class="nav-link m-logout {{ 'admin_profile' == request()->path() ? 'active' : ''}}" href="{{url('/admin_profile')}}" style="display: none;">
+                                <div class="sb-nav-link-icon mx-3" style="width: 20px !important;"><i class="fas fa-power"></i></div>
+                                Log Out
                             </a>
                         </div>
                     </div>
