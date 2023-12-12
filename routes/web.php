@@ -92,6 +92,10 @@ Route::middleware(['auth','isServiceProvider'])->name('service_provider')->group
         Route::get('/view_appointment_calendar','viewAppointmentCalendar');
 
      });
+
+     Route::controller(App\Http\Controllers\User\VerificationController::class)->group(function() {
+        Route::put('/submitVerificationRequest','addVerificationRequest');
+     });
    
     
 });

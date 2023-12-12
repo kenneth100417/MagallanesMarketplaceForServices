@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('business_address');
             $table->string('document_type');
             $table->string('document');
+            $table->string('status')->default('0'); // pending
             $table->timestamps();
         });
     }
