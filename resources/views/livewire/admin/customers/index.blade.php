@@ -25,10 +25,9 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Customer ID</th>
                         <th scope="col">Customer Name</th>
                         <th scope="col">Address</th>
-                        <th scope="col">Mobile Number</th>
+                        <th scope="col">Document</th>
                         <th scope="col">Status</th>
                         <th scope="col"></th>
                     </tr>
@@ -36,14 +35,29 @@
                 <tbody>
                     @forelse ($customers as $customer)
                         <tr>
-                            <td style="max-width: 50px;">MMS-C{{$customer->id}}</td>
-                            <td>{{$customer->firstname}} {{$customer->lastname}}</td>
-                            <td>{{$customer->address}}</td>
-                            <td style="max-width: 200px;">{{$customer->mobile_number}}</td>
-                            <td class="{{$customer->status == '1' ? 'text-success':'text-danger'}}" style="width: 100px">{{$customer->status == '1' ? 'Active':'Inactive'}}</td>
-                            <td class="text-danger d-flex" style="width: 120px">
-                                <button class="btn btn-danger btn-sm py-1 px-3 mx-1 w-100" style="display:{{$customer->status == '1' ? '':'none'}}"  wire:click.prevent = 'block({{$customer->id}})'>Block</button>
-                                <button class="btn btn-success btn-sm py-1 px-3 mx-1 w-100" style="display:{{$customer->status == '1' ? 'none':''}}"  wire:click.prevent = 'activate({{$customer->id}})'>Activate</button>
+                            <td>{{$customer->name}}</td>
+                            <td>{{$customer->business_address}}</td>
+                            <td style="max-width: 200px;">
+                                {{$customer->document_type}}<br/>
+                                <a href="{{$customer->document}}" download>View Document</a>
+                            </td>
+                            <td class="
+                            {{$customer->status == '0' ? 'text-danger':''}}
+                            {{$customer->status == '1' ? 'text-success':''}}
+                            {{$customer->status == '2' ? 'text-danger':''}}
+                            ">
+                            {{$customer->status == '0' ? 'Unverified':''}}
+                            {{$customer->status == '1' ? 'Verified':''}}
+                            {{$customer->status == '2' ? 'Blocked':''}}
+                            </td>
+                            <td class="text-danger d-flex flex-column justify-content-center" style="max-width: 120px;">
+                                <button class="btn btn-danger btn-sm py-1 px-3 mx-1"  style="display:{{$customer->status == '1' ? 'block':'none'}}" wire:click.prevent = 'block({{$customer->user_id}})'>Block</button>
+                                <button class="btn btn-success btn-sm py-1 px-3 mx-1" style="display:
+                                {{$customer->status == '0' ? 'block':''}}
+                                {{$customer->status == '1' ? 'none':''}}
+                                {{$customer->status == '2' ? 'block':''}}
+                                " wire:click.prevent = 'activate({{$customer->user_id}})'>Activate</button>
+                                <button class="btn btn-danger btn-sm py-1 px-3 mx-1 my-1" style="display:{{$customer->status == '0' ? 'block':'none'}}" wire:click.prevent = 'decline({{$customer->user_id}})'>Decline</button>
                             </td>
                         </tr>
                     @empty

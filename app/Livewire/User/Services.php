@@ -3,6 +3,7 @@
 namespace App\Livewire\User;
 
 use App\Models\Service;
+use App\Models\Customer;
 use Livewire\Component;
 use App\Models\Appointment;
 use Livewire\WithPagination;
@@ -38,7 +39,7 @@ class Services extends Component
             ->groupBy('services.id','services.service_title','services.service_provider_id','services.service_description','services.service_rate','services.slot','services.status','services.created_at','services.updated_at','services.openTime','services.closingTime','services.openDays')
             ->paginate(10);
 
-        
-        return view('livewire.user.services',['services' => $services]);
+        $user = Customer::where('user_id', auth()->user()->id)->first();
+        return view('livewire.user.services',['services' => $services, 'user' => $user]);
     }
 }

@@ -25,10 +25,18 @@
                                 <h4>{{$user->firstname}} {{$user->lastname}}</h4>
                                 <p class="text-secondary mb-1">ID: MMS-CU{{$user->user_id}}</p>
                                 <p class="text-muted font-size-sm">{{$user->address}}</p>
-                                <button type="button" onclick="uploadProfilePic()" class="btn btn-sm btn-outline-primary">Change Profile Picture</button>
-                                @error('photo')
-                                    <p class="text-danger">{{$message}}</p>
-                                @enderror
+                                <div class="d-flex flex-column">
+                                    <div >
+                                        <button type="button" class="btn btn-sm btn-success" style="display: {{$user->status == 1 ? '':'none'}}">Verified <i class="fa fa-check" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-sm btn-danger" style="display: {{$user->status == 1 ? 'none':''}}"  data-bs-toggle="modal" data-bs-target="#submitVerReq">Submit Verification Request</button>
+                                    </div>
+                                    <div class="my-2">
+                                        <button type="button" onclick="uploadProfilePic()" class="btn btn-sm btn-outline-primary">Change Profile Picture</button>
+                                        @error('photo')
+                                            <p class="text-danger">{{$message}}</p>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -237,6 +245,71 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Verification Modal -->
+    <div class="modal fade" id="submitVerReq" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Submit Verification Request</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <form action="/submitVerificationRequest" method="POST" id="submitVerReqForm" enctype="multipart/form-data">
+                            @method('PUT')
+                        @csrf
+                        <div class="col-lg-12 mt-2">
+                            <label style="font-weight: bold;">Full Name:</label>
+                            <input name="name" type="text" class="form-control" value="{{$user->firstname.' '.$user->lastname}}" readonly>
+                            @error('name')
+                                <p class="text-danger">{{$message}}</p>
+                            @enderror
+                        </div>
+                        <div class="col-lg-12 mt-2">
+                            <label style="font-weight: bold;">Address:</label>
+                            <input name="address" type="text" class="form-control" value="{{$user->address}}" readonly>
+                            @error('address')
+                                <p class="text-danger">{{$message}}</p>
+                            @enderror
+                        </div>
+                        <div class="col-lg-12 mt-2">
+                            <label style="font-weight: bold;">Type of Document:</label>
+                            <select class="form-select" name="document_type">
+                                <option selected value="">-- Select document type -- </option>
+                                <option value="PhilSys ID">National ID/PhilSys ID</option>
+                                <option value="Driver's License">Driver's License</option>
+                                <option value="Brgy. Clearance">Brgy. Clearance</option>
+                                <option value="Police Clearance">Police Clearance</option>
+                                <option value="PhilHealth ID">PhilHealth ID</option>
+                                <option value="UMID">UMID</option>
+                                <option value="SSS ID">SSS ID</option>
+                            </select>
+                            @error('document_type')
+                                <p class="text-danger">{{$message}}</p>
+                            @enderror
+                        </div>
+                        <div class="col-lg-12 mt-2">
+                            <label style="font-weight: bold;">Upload ID:</label>
+                            <input type="file" accept="image/png, image/jpeg, image/jpg, .pdf" class="form-control" name="document">
+                            @error('document')
+                                <p class="text-danger">{{$message}}</p>
+                            @enderror
+                            <small class="text-success">*Accepted file types: .png, .jpeg, .jpg, .pdf</small><br/>
+                            <small class="text-success">*Make sure that the document content is readable.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" >Submit</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+            </form>
             </div>
         </div>
     </div>

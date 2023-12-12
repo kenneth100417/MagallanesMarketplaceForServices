@@ -61,6 +61,10 @@ Route::middleware(['auth','isCustomer'])->name('customer')->group(function() {
         Route::post('/rate_service/{service_id}', 'rateService');
 
     })->middleware('auth');
+
+    Route::controller(App\Http\Controllers\User\VerificationController::class)->group(function() {
+        Route::put('/submitVerificationRequest','addVerificationRequest');
+     });
 });
 
 

@@ -18,6 +18,7 @@ class Customer extends Model
         'mobile_number',
         'address',
         'photo',
+        'status'
     ];
 
     public function user(){

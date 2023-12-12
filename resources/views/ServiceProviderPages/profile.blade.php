@@ -273,75 +273,75 @@
    
 <!-- Modal -->
     <div class="modal fade" id="submitVerReq" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered ">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Submit Verification Request</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <div class="container">
-                <div class="row">
-                    <form action="/submitVerificationRequest" method="POST" id="submitVerReqForm" enctype="multipart/form-data">
-                        @method('PUT')
-                    @csrf
-                    <div class="col-lg-12 mt-2">
-                        <label style="font-weight: bold;">Owner's Name:</label>
-                        <input name="name" type="text" class="form-control" value="{{$user->firstname.' '.$user->lastname}}" readonly>
-                        @error('name')
-                            <p class="text-danger">{{$message}}</p>
-                        @enderror
-                    </div>
-                    <div class="col-lg-12 mt-2">
-                        <label style="font-weight: bold;">Business Name:</label>
-                        <input name="business_name" type="text" class="form-control" value="{{$user->business_name}}" readonly>
-                        @error('business_name')
-                            <p class="text-danger">{{$message}}</p>
-                        @enderror
-                    </div>
-                    <div class="col-lg-12 mt-2">
-                        <label style="font-weight: bold;">Business Address:</label>
-                        <input name="business_address" type="text" class="form-control" value="{{$user->business_address}}" readonly>
-                        @error('busines_Address')
-                            <p class="text-danger">{{$message}}</p>
-                        @enderror
-                    </div>
-                    <div class="col-lg-12 mt-2">
-                        <label style="font-weight: bold;">Type of Document:</label>
-                        <select class="form-select" name="document_type">
-                            <option selected value="">-- Select document type -- </option>
-                            <option value="Business Permit">Business Permit</option>
-                            <option value="PhilSys ID">National ID/PhilSys ID</option>
-                            <option value="Driver's License">Driver's License</option>
-                            <option value="Brgy. Clearance">Brgy. Clearance</option>
-                            <option value="Police Clearance">Police Clearance</option>
-                            <option value="PhilHealth ID">PhilHealth ID</option>
-                            <option value="UMID">UMID</option>
-                            <option value="SSS ID">SSS ID</option>
-                        </select>
-                        @error('document_type')
-                            <p class="text-danger">{{$message}}</p>
-                        @enderror
-                    </div>
-                    <div class="col-lg-12 mt-2">
-                        <label style="font-weight: bold;">Upload ID:</label>
-                        <input type="file" accept="image/png, image/jpeg, image/jpg, .pdf" class="form-control" name="document">
-                        @error('document')
-                            <p class="text-danger">{{$message}}</p>
-                        @enderror
-                        <small class="text-success">*Accepted file types: .png, .jpeg, .jpg, .pdf</small><br/>
-                        <small class="text-success">*Make sure that the document content is readable.</small>
+        <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Submit Verification Request</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <form action="/submitVerificationRequest" method="POST" id="submitVerReqForm" enctype="multipart/form-data">
+                            @method('PUT')
+                        @csrf
+                        <div class="col-lg-12 mt-2">
+                            <label style="font-weight: bold;">Owner's Name:</label>
+                            <input name="name" type="text" class="form-control" value="{{$user->firstname.' '.$user->lastname}}" readonly>
+                            @error('name')
+                                <p class="text-danger">{{$message}}</p>
+                            @enderror
+                        </div>
+                        <div class="col-lg-12 mt-2">
+                            <label style="font-weight: bold;">Business Name:</label>
+                            <input name="business_name" type="text" class="form-control" value="{{$user->business_name}}" readonly>
+                            @error('business_name')
+                                <p class="text-danger">{{$message}}</p>
+                            @enderror
+                        </div>
+                        <div class="col-lg-12 mt-2">
+                            <label style="font-weight: bold;">Business Address:</label>
+                            <input name="business_address" type="text" class="form-control" value="{{$user->business_address}}" readonly>
+                            @error('busines_Address')
+                                <p class="text-danger">{{$message}}</p>
+                            @enderror
+                        </div>
+                        <div class="col-lg-12 mt-2">
+                            <label style="font-weight: bold;">Type of Document:</label>
+                            <select class="form-select" name="document_type">
+                                <option selected value="">-- Select document type -- </option>
+                                <option value="Business Permit">Business Permit</option>
+                                <option value="PhilSys ID">National ID/PhilSys ID</option>
+                                <option value="Driver's License">Driver's License</option>
+                                <option value="Brgy. Clearance">Brgy. Clearance</option>
+                                <option value="Police Clearance">Police Clearance</option>
+                                <option value="PhilHealth ID">PhilHealth ID</option>
+                                <option value="UMID">UMID</option>
+                                <option value="SSS ID">SSS ID</option>
+                            </select>
+                            @error('document_type')
+                                <p class="text-danger">{{$message}}</p>
+                            @enderror
+                        </div>
+                        <div class="col-lg-12 mt-2">
+                            <label style="font-weight: bold;">Upload ID:</label>
+                            <input type="file" accept="image/png, image/jpeg, image/jpg, .pdf" class="form-control" name="document">
+                            @error('document')
+                                <p class="text-danger">{{$message}}</p>
+                            @enderror
+                            <small class="text-success">*Accepted file types: .png, .jpeg, .jpg, .pdf</small><br/>
+                            <small class="text-success">*Make sure that the document content is readable.</small>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" >Submit</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+            </form>
+            </div>
         </div>
-        <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" >Submit</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        </div>
-        </form>
-        </div>
-    </div>
     </div>
 
     <script>

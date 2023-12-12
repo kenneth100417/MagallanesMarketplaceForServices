@@ -70,7 +70,7 @@
                                         <div class="row mt-2">
                                             <div class="col-12">
                                                 <div class="d-flex align-items-center">
-                                                    <small for=""><span style="font-weight: bold" class="text-success">Avialable: </span> {{$service->openDays}} <span style="font-weight: bold"> | </span> {{Carbon\Carbon::createFromTimestamp(strtotime($service->openTime))->format('h:i A')}} - {{Carbon\Carbon::createFromTimestamp(strtotime($service->closingTime))->format('h:i A')}}</small>
+                                                    <small for=""><span style="font-weight: bold" class="text-success">Available: </span> {{$service->openDays}} <span style="font-weight: bold"> | </span> {{Carbon\Carbon::createFromTimestamp(strtotime($service->openTime))->format('h:i A')}} - {{Carbon\Carbon::createFromTimestamp(strtotime($service->closingTime))->format('h:i A')}}</small>
                                                 </div>
                                             </div>
                                         </div>
@@ -91,7 +91,7 @@
                                         <div class="d-flex flex-column mt-4">
                                             <form action="/set_appointment/{{$service->id}}" method="GET">
                                                 @csrf
-                                                <button type="submit" class="btn btn-primary btn-sm w-100" >Set Appointment</button>
+                                                <button type="submit" class="btn btn-primary btn-sm w-100" {{$user->status == '0' ? 'disabled':''}}>Set Appointment</button>
                                             </form>
                                                 <a class="btn btn-outline-primary btn-sm mt-2 w-100" href="{{url('/service_provider_profile/'.$service->serviceProviders->user_id)}}">View Service Provider's Profile</a>
                                   

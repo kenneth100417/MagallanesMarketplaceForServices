@@ -55,6 +55,13 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row mt-2">
+                                        <div class="col-12">
+                                            <div class="d-flex align-items-center">
+                                                <small for=""><span style="font-weight: bold" class="text-success">Available: </span> {{$service->openDays}} <span style="font-weight: bold"> | </span> {{Carbon\Carbon::createFromTimestamp(strtotime($service->openTime))->format('h:i A')}} - {{Carbon\Carbon::createFromTimestamp(strtotime($service->closingTime))->format('h:i A')}}</small>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 </div>
                                 <div class="col-md-6 col-lg-4 col-xl-4 border-sm-start-none border-start">
