@@ -65,6 +65,7 @@
                     </div>
                     <div class="form-group d-flex justify-content-center">
                         <button class="btn btn-primary btn-block py-1 px-2" type="submit">Sign Up</button>
+                        
                     </div>
                     <div class="d-flex justify-content-center mt-3">
                         <span class="text-dark text-sm" style="font-size: 13px;">Already have an account?<a href="/" class=" mx-1" style="color: #2c64ac;">Log In</a></span>

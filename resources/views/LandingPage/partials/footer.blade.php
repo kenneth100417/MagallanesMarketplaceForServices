@@ -11,6 +11,38 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
+
+    let customerForm =  document.getElementById('customerSignupForm');
+    let serviceProviderForm =  document.getElementById('serviceProviderSignupForm');
+    let customerBtn =  document.getElementById('customerSignupBtn');
+    let serviceProviderBtn =  document.getElementById('serviceProviderSignupBtn');
+    let customerCbx =  document.getElementById('customerCheckbox');
+    let serviceProviderCbx =  document.getElementById('serviceProviderCheckbox');
+
+    customerForm.addEventListener('change', function(){
+        if(customerCbx.checked){
+            customerBtn.removeAttribute("disabled");
+        }else{
+            customerBtn.setAttribute("disabled","disabled");
+        }
+    });
+
+    serviceProviderForm.addEventListener('change', function(){
+        if(serviceProviderCbx.checked){
+            serviceProviderBtn.removeAttribute("disabled");
+        }else{
+            serviceProviderBtn.setAttribute("disabled","disabled");
+        }
+    });
+
+
+
+
+
+
+
+
+
     var selectedAddress = document.getElementById('selectedAddress');
     var street = document.getElementById('street');
     var address = document.getElementById('business_address');
