@@ -97,7 +97,8 @@ class UserController extends Controller
     }
     //view service provider profile
     public function viewServiceProvider($sp_user_id){
-        $user = ServiceProvider::where('user_id',$sp_user_id)->where('status','1')->first();
+        $user = Customer::where('user_id',Auth()->user()->id)->first();
+        $serviceProvider = ServiceProvider::where('user_id',$sp_user_id)->where('status','1')->first();
         //$services = Service::where('service_provider_id',$sp_user_id)->where('status', '1')->get();
 
         $services = Service::select('services.*')
@@ -107,10 +108,10 @@ class UserController extends Controller
             ->orderBy('services.id', 'DESC')
             ->where('services.status', '1')
             ->where('services.service_provider_id', $sp_user_id)
-            ->groupBy('services.id','services.service_title','services.service_provider_id','services.service_description','services.service_rate','services.slot','services.status','services.created_at','services.updated_at')
+            ->groupBy('services.id','services.service_title','services.service_provider_id','services.service_description','services.service_rate','services.slot','services.status','services.created_at','services.updated_at','services.openTime','services.closingTime','services.openDays')
             ->paginate(10);
 
-        return view('UserPages.service_provider_profile', ['user' => $user, 'services' => $services]);
+        return view('UserPages.service_provider_profile', ['user' => $user, 'services' => $services, 'serviceProvider' => $serviceProvider]);
     }
     //change Password
     public function cuChangePassword(Request $request){

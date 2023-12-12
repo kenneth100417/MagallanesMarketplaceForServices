@@ -14,12 +14,12 @@
                 <div class="card" >
                     <div class="card-body mt-4 mb-3" >
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="{{url($user->photo)}}" alt="Service Provider" class="rounded-circle"  width="180" height="180" style="object-fit: cover">
+                            <img src="{{url($serviceProvider->photo)}}" alt="Service Provider" class="rounded-circle"  width="180" height="180" style="object-fit: cover">
 
                             <div class="mt-3">
-                                <h4>{{$user->business_name}}</h4>
-                                <p class="text-secondary mb-1">ID: MMS-SP{{$user->user_id}}</p>
-                                <p class="text-muted font-size-sm">{{$user->business_address}}</p>
+                                <h4>{{$serviceProvider->business_name}}</h4>
+                                <p class="text-secondary mb-1">ID: MMS-SP{{$serviceProvider->user_id}}</p>
+                                <p class="text-muted font-size-sm">{{$serviceProvider->business_address}}</p>
                             </div>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                                 <h6 class="mb-0">Business Name</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                {{$user->business_name}}
+                                {{$serviceProvider->business_name}}
                             </div>
                         </div>
                         <hr>
@@ -48,7 +48,7 @@
                                 <h6 class="mb-0">Owner's Name</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                {{$user->firstname}} {{$user->lastname}} 
+                                {{$serviceProvider->firstname}} {{$serviceProvider->lastname}} 
                             </div>
                         </div>
                         <hr>
@@ -57,7 +57,7 @@
                                 <h6 class="mb-0">Email</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                {{$user->user->email}}
+                                {{$serviceProvider->user->email}}
                             </div>
                         </div>
                         <hr>
@@ -66,7 +66,7 @@
                                 <h6 class="mb-0">Mobile Number</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                {{$user->mobile_number}}
+                                {{$serviceProvider->mobile_number}}
                             </div>
                          </div>
                         <hr>
@@ -75,7 +75,7 @@
                                 <h6 class="mb-0">Business Address</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                {{$user->business_address}}
+                                {{$serviceProvider->business_address}}
                             </div>
                         </div>
                         <hr>
@@ -139,7 +139,7 @@
                                                         <div class="d-flex flex-column mt-4">
                                                             <form action="/set_appointment/{{$service->id}}" method="GET">
                                                                 @csrf
-                                                                <button type="submit" class="btn btn-primary btn-sm w-100" >Set Appointment</button>
+                                                                <button type="submit" class="btn btn-primary btn-sm w-100" {{$user->status == '0' ? 'disabled':''}}>Set Appointment</button>
                                                             </form>
                                                         </div>
                                                     </div>
