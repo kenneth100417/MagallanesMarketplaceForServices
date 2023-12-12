@@ -213,9 +213,18 @@
 
     </section>
     <script>
-
+        var openDays = @json($daysArray);
         var appointment = @json($events);
         $('#calendar').fullCalendar({
+            dayClick: function(date, jsEvent, view) {
+            // Check if the clicked date is in the array of open days
+                if (openDays.includes(date.format('dddd'))) {
+                    // enable the click for this specific day
+                    return true;
+                } else {
+                    return false;
+                }
+            },
             header: {
                 right: 'prev, next today',
                 center: 'title',
@@ -224,10 +233,20 @@
             events: appointment,
             selectable: true,
             selectAllow: function (selectInfo) {
-                var currentDate = new Date(); // Get the current date
-                currentDate.setHours(0, 0, 0, 0); // Set hours, minutes, seconds, and milliseconds to 0 for accurate date comparison
+                
                 //currentDate.setDate(currentDate.getDate() + 1); // Set the current date to the day after the current date
                 var selectedDate = selectInfo.start;
+                if (!openDays.includes(selectedDate.format('dddd'))) {
+                    Swal.fire({
+                        title: "Sorry!",
+                        text: "Service is unavailable for this day!",
+                        icon: "info"
+                    });
+                    return false;
+                }
+
+                var currentDate = new Date(); // Get the current date
+                currentDate.setHours(0, 0, 0, 0); // Set hours, minutes, seconds, and milliseconds to 0 for accurate date comparison
             
                 return selectedDate >= currentDate;    
             },

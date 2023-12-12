@@ -32,10 +32,11 @@ class AppointmentController extends Controller
         $title = '';
         $color = '';
 
-        //dd($remainingSlot);
+        //get days available
+        $openDays = $service->openDays;
+        $daysArray = explode(',',$openDays);
         foreach($appointments as $appointment){
             
-           
             $customer = Customer::where('user_id',$appointment->customer_id)->first();
             $service = Service::where('id',$appointment->service_id)->first();
             
@@ -60,7 +61,7 @@ class AppointmentController extends Controller
                             ->join('customers','ratings.user_id','customers.user_id')
                             ->select('ratings.rating as star','ratings.comment as comment', 'customers.firstname as fname','customers.lastname as lname','customers.photo as photo')
                             ->get();
-        return view('UserPages.set_appointment',compact('user','service','events','remainingSlot','serviceReviews','avg_rating','reviews'));
+        return view('UserPages.set_appointment',compact('user','service','events','remainingSlot','serviceReviews','avg_rating','reviews','daysArray'));
     }
 
     public function storeAppointment(Request $request){

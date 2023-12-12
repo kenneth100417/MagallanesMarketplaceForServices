@@ -326,19 +326,18 @@
                                             <small class="text-danger">{{$message}}</small>
                                         @enderror
                                     </div>
-                                    
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="serviceProviderCheckbox">
+                                        <label class="form-check-label text-dark" for="flexCheckChecked" style="font-size: 13px;">
+                                          I agree to the <a class="text-primary" data-bs-toggle="modal" data-bs-target="#terms" style="cursor: pointer">Terms & Conditions</a>.
+                                        </label>
+                                    </div>
                                     <div class="form-group mt-2">
                                         <input id="business_address" class="form-control text-dark" type="text" name="business_address" placeholder="Business Address"   value="{{old('business_address')}}" hidden readonly>
                                         <a type="button" class="float-end text-success text-sm" id="editAdd">Edit Address</a>
                                         @error('business_address')
                                              <small class="text-danger">{{$message}}</small>
                                         @enderror
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="serviceProviderCheckbox">
-                                        <label class="form-check-label text-dark" for="flexCheckChecked" style="font-size: 13px;">
-                                          I agree to the <a class="text-primary" data-bs-toggle="modal" data-bs-target="#terms" style="cursor: pointer">Terms & Conditions</a>.
-                                        </label>
                                     </div>
                                 </div>
                                

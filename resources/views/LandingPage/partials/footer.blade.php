@@ -37,12 +37,6 @@
 
 
 
-
-
-
-
-
-
     var selectedAddress = document.getElementById('selectedAddress');
     var street = document.getElementById('street');
     var address = document.getElementById('business_address');
