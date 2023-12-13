@@ -216,15 +216,7 @@
         var openDays = @json($daysArray);
         var appointment = @json($events);
         $('#calendar').fullCalendar({
-            dayClick: function(date, jsEvent, view) {
-            // Check if the clicked date is in the array of open days
-                if (openDays.includes(date.format('dddd'))) {
-                    // enable the click for this specific day
-                    return true;
-                } else {
-                    return false;
-                }
-            },
+            dayClick: true,
             header: {
                 right: 'prev, next today',
                 center: 'title',
